@@ -6,7 +6,8 @@ const initialState = {
   data: {},
   method: "idle",
   status: "idle",
-  error: null
+  error: null,
+  isLoggedIn: false
 }
 
 axios.defaults.withCredentials = true
@@ -38,6 +39,8 @@ export const fetchUserDetails = createAsyncThunk("fetch/fetchUserDetails", async
     const response = await axios.get(apiUserDetails, { withCredentials: true })
     return response.data
   } catch (err) {
+    // console.log(err.response.data)
+    console.log("rejecteddjkwjdwdn")
     return rejectWithValue("You are not logged in!")
   }
 })
@@ -49,6 +52,9 @@ const userSlice = createSlice({
     reset: () => initialState,
     setStatus: (state, action) => {
       state.status = "idle"
+    },
+    setIsLoggedIn: (state, action) => {
+        state.status = false
     },
     setData: (state, action) => {
       state.data = action.payload
@@ -90,11 +96,12 @@ const userSlice = createSlice({
         state.error = "Logged in successfully!"
       })
       .addCase(fetchUser.rejected, (state, action) => {
+        console.log(action.payload.response.data.error)
         state.loading = false
         state.status = "failed"
         state.method = "login"
         state.data = {}
-        state.error = "Your credentials do not match any credentials in our system!"
+        state.error = action.payload.response.data.error
     })
     .addCase(fetchOutUser.pending, (state, action) => {
         state.loading = true
@@ -140,4 +147,5 @@ const userSlice = createSlice({
 })
 
 export const { setName, setData, setEmail, setImage, setLoggedIn, setMethod, setState, setStatus } = userSlice.actions
+export const userActions = userSlice.actions
 export default userSlice.reducer

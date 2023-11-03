@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Login.css"
 import { useNavigate } from "react-router";
+import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { fetchUser, userActions } from "../features/userSlice";
 
 const Login = () => {
 
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
+    const User = useAppSelector((state) => state.user)
 
     const [isInvalidEmail, setIsInvalidEmail] = useState(false)
     const [alertZone, setAlertZone] = useState("")
@@ -16,11 +21,18 @@ const Login = () => {
     const [emailBG, setEmailBG] = useState("#a3d4ec")
     const [passwordOutline, setPasswordOutline] = useState("none")
     const [passwordBG, setPasswordBG] = useState("#a3d4ec")
-    
+
+    // useEffect(() => {
+    //     emailValidation()
+    //     onFocusoutEmail()
+    //     onFocusoutPass()
+    //     disableButton()
+    // }, [])
+
     function emailValidation() {
         var emailRegex = /\S+@\S+\.\S+/;
         
-        if (email == "" || !email.match(emailRegex)) {
+        if (email === "" || !email.match(emailRegex)) {
             setAlertZone("Please enter a valid email address")
             setIsInvalidEmail(true);
         } else {
@@ -66,12 +78,27 @@ const Login = () => {
         }
     }
 
+    const submitHandler = async (e) => {
+        e.preventDefault()
+        dispatch(fetchUser({email: email, password: password}))
+    }
+
+    useEffect(() => {
+        // console.log(User)
+        if (User.status==="failed" && User.method==="login") {
+            setAlertZone(User.error)
+        }
+        else if (User.status==="succeeded" && User.method==="login") {
+            navigate("/")
+        }
+    }, [User])
+
     return (
         <div className="mainLogin">
             <div className="div-container">
                 <img src="/assets/Logo.png" onClick={() => navigate("/")} alt="picture" className="logo" />
                 <div className="text-div">
-                    <form id="loginForm" onChange={() => emailValidation()}>
+                    <form id="loginForm" onChange={() => emailValidation()} onSubmit={submitHandler}>
                         <div className="head-div">Log in</div>
                         <div className="email-div">
                             <label
@@ -87,9 +114,7 @@ const Login = () => {
                                 onBlur={() => onFocusoutEmail()}
                                 type="text"
                                 name="email"
-                                onChange={(e) => {
-                                    setEmail(e.target.value)
-                                }}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="email-box"
                                 placeholder="input@example.com"
                                 id="email-input"

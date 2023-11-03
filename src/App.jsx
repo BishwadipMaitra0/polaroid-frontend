@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import E404 from './pages/E404'
 import { useAppDispatch, useAppSelector } from './app/hooks'
 import { fetchUserDetails, setMethod, setStatus, setLoggedIn } from './features/userSlice'
+import { userActions } from './features/userSlice'
 import { setLogin } from './features/loginSlice'
 import E505 from './pages/E505'
 import AboutUs from './pages/AboutUs'
@@ -22,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     if (User.loading === false && User.status === "succeeded" && User.method === "fetchingUserDetails") {
-      dispatch(setLogin(true))
+      dispatch(userActions.setLoggedIn(true))
       dispatch(setMethod("idle"))
       dispatch(setStatus("succeeded"))
     }
