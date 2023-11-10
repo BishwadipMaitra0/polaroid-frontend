@@ -3,6 +3,9 @@ import "../styles/Nav.css"
 import { useAppDispatch, useAppSelector } from '../app/hooks'
 import { useNavigate } from 'react-router'
 
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+
 const Navbar = () => {
 
   const user = useAppSelector((state) => state.user)
@@ -27,8 +30,8 @@ const Navbar = () => {
         </svg>
       </label>
       <div> <a href="/"> <img src="/assets/Logo.png" height="45px" /> </a> </div>
-      <div id='navElements'>
-        <ul>
+      <div id="navElementsDiv">
+        <ul id="navElements">
           <li class="navbar-list-element">
             <a class="navbar-anchor" href="/" id="home">Home</a>
           </li>
@@ -46,23 +49,33 @@ const Navbar = () => {
             </li>
             :
             <li class="navbar-list-element" className="nav-item dropdown">
-              <div class="dropdown">
-                <a class="dropdown-toggle navbar-anchor" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  {/* <%= !check ? "Sign In" : username %> */}
-                  {user.data && user.data.username}
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark">
-                  <li><a class="dropdown-item" href="/user/profile">My Account</a></li>
-                  <li><a class="dropdown-item" href="/user/settings">Settings</a></li>
-                  <li><a class="dropdown-item" href="/user/list">My Lists</a></li>
-                  <li><a class="dropdown-item" href="/user/watchlist">Watchlist</a></li>
-                  {/* <!-- <li><a class="dropdown-item" href="/user/bookinghistory">Booking History</a></li> --> */}
-                  <li><a class="dropdown-item" href="/user/watchedfilms">Watched Films</a></li>
-                  <li><a class="dropdown-item" href={'/followers/' + user.data && user.data.username ? user.data.username.split(" ").join("%20") : ""} >Network</a></li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li><a class="dropdown-item" href="/user/logout">Sign Out</a></li>
-                </ul>
-              </div>
+              <Nav>
+                <NavDropdown
+                  title={user.data && user.data.username}
+                  id="navbar-anchor-id"
+                  menuVariant="dark"
+                >
+                  <NavDropdown.Item href="/user/profile">
+                    My Account
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/user/settings">
+                    Settings
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/user/list">
+                    My Lists
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="/user/watchlist">
+                    Watchlist
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href={'/followers/' + user.data && user.data.username ? user.data.username.split(" ").join("%20") : ""}>
+                    Network
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/user/logout">
+                    Sign Out
+                  </NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
             </li>
           }
           <li class="navbar-list-element" id="searchButtonLi">

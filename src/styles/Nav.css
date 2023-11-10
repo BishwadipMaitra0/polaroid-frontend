@@ -1,8 +1,8 @@
 @media screen and (max-width: 850px) {
   .nav-main {
-      padding-left: 0px;
-      padding-right: 0px;
-      width: 90%;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 90%;
   }
 }
 
@@ -24,10 +24,16 @@ nav {
   /* width: 80%; */
 }
 
+#navElementsDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 #navElements {
-    display: flex;
-    flex-direction: row;
-    min-width: 350px;
+  display: flex;
+  flex-direction: row;
+  align-items: first baseline;
 }
 
 nav ul {
@@ -39,7 +45,8 @@ nav ul {
   font-weight: 550;
 }
 
-.navbar-anchor {
+.navbar-anchor,
+#navbar-anchor-id {
   text-decoration: none;
   color: #8291A5;
   padding: 8px 8px;
@@ -47,7 +54,9 @@ nav ul {
   transition: all .3s ease;
 }
 
-.navbar-anchor:hover, .active {
+.navbar-anchor:hover,
+#navbar-anchor-id:hover,
+.active {
   color: #628ebc;
   text-decoration: none;
 }
@@ -58,8 +67,8 @@ nav ul {
 }
 
 .nav-search {
-color: whitesmoke;
-font-size: 19px;
+  color: whitesmoke;
+  font-size: 19px;
 }
 
 #searchButton {
@@ -103,37 +112,37 @@ font-size: 19px;
 
 @media screen and (max-width: 768px) {
   nav {
-      border-bottom: 1px solid #455468;
+    border-bottom: 1px solid #455468;
   }
 
   nav ul {
-      position: absolute;
-      height: 100vh;
-      /* height: 100vh; */
-      /* height: calc(100vh - 71px); */
-      background-color: #18283B;
-      left: 0;
-      top: 0;
-      text-align: center;
-      display: none;
-      margin-top: 71px;
+    position: absolute;
+    height: 100vh;
+    /* height: 100vh; */
+    /* height: calc(100vh - 71px); */
+    background-color: #18283B;
+    left: 0;
+    top: 0;
+    text-align: center;
+    display: none;
+    margin-top: 71px;
   }
 
   .navbar-list-element {
-      display: block;
-      padding: 10px 15px;
+    display: block;
+    padding: 10px 15px;
   }
 
   .navbar-anchor {
-      display: block;
-      padding: 10px 0;
+    display: block;
+    padding: 10px 0;
   }
 
   #icon {
-      display: block;
+    display: block;
   }
 
   #checkbox:checked~ul {
-      display: block;
+    display: block;
   }
 }
