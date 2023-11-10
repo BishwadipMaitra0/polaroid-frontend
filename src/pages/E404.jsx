@@ -22,7 +22,7 @@ const E404 = () => {
                 <p>This page does not exist.</p>
 
 
-                <button onClick={() => navigate('/')}>Home</button>
+                <button className='button-404' onClick={() => navigate('/')}>Home</button>
             </div>
             <div class="img">
                 <img src="/assets/red_cross.svg" />

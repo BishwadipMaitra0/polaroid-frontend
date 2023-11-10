@@ -1,8 +1,8 @@
-const variables = require("../config")
-const axios = require('axios')
+import axios from "axios"
+import { api_key } from "../config"
 
 const getTrendingListsWeek = async () => {
-    const listDetailsWeek = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${variables.api_key}`)
+    const listDetailsWeek = await axios.get(`https://api.themoviedb.org/3/trending/movie/week?api_key=${api_key}`)
     await listDetailsWeek.data
 
     return listDetailsWeek.data

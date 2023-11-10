@@ -1,6 +1,6 @@
-const axios = require('axios')
-const variables = require('../config')
-const getMovieById = require('./getMovieById')
+import axios from 'axios'
+import { api_key } from '../config'
+import getMovieById from './getMovieById'
 
 const getMovieByName = async (name) => {
     // console.log("hi")
@@ -8,7 +8,7 @@ const getMovieByName = async (name) => {
     while (name.includes(" ")) {
         name = name.split(" ").join("%20")
     }
-    let url = `https://api.themoviedb.org/3/search/movie?api_key=${variables.api_key}&language=en-US&query=${name}&page=1&include_adult=false`
+    let url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${name}&page=1&include_adult=false`
 
     const movieDetails = await axios.get(url)
     await movieDetails.data

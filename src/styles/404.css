@@ -58,7 +58,7 @@ body {
   }
 }
 
-button {
+.button-404 {
   width: 120px;
   padding: 8px;
   font-size: 18px;

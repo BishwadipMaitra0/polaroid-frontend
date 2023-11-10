@@ -10,6 +10,7 @@ import { setLogin } from './features/loginSlice'
 import E505 from './pages/E505'
 import AboutUs from './pages/AboutUs'
 import FAQ from './pages/FAQ'
+import Home from './pages/Home'
 
 const App = () => {
 
@@ -36,8 +37,8 @@ const App = () => {
 
   return (
     <Routes>
+      <Route path='/' element={<Home />}></Route>
       <Route path='/user/login' element={<Login />}></Route>
-      <Route path='/' element={<Navbar />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
