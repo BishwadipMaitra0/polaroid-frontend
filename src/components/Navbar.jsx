@@ -7,7 +7,6 @@ const Navbar = () => {
 
   const user = useAppSelector((state) => state.user)
   const login = useAppSelector((state) => state.login)
-  console.log(user.data)
 
   return (
     <nav>
@@ -28,7 +27,7 @@ const Navbar = () => {
         </svg>
       </label>
       <div> <a href="/"> <img src="/assets/Logo.png" height="45px" /> </a> </div>
-      <div>
+      <div id='navElements'>
         <ul>
           <li class="navbar-list-element">
             <a class="navbar-anchor" href="/" id="home">Home</a>
@@ -41,7 +40,7 @@ const Navbar = () => {
           </li>
 
           {/* <% if (check === false) { %> */}
-          {login.login === false ?
+          {!user.isLoggedIn ?
             <li class="navbar-list-element">
               <a class="navbar-anchor" href="/user/login" id="sing-in">Sign In</a>
             </li>
@@ -50,6 +49,7 @@ const Navbar = () => {
               <div class="dropdown">
                 <a class="dropdown-toggle navbar-anchor" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   {/* <%= !check ? "Sign In" : username %> */}
+                  {user.data && user.data.username}
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark">
                   <li><a class="dropdown-item" href="/user/profile">My Account</a></li>
@@ -58,7 +58,7 @@ const Navbar = () => {
                   <li><a class="dropdown-item" href="/user/watchlist">Watchlist</a></li>
                   {/* <!-- <li><a class="dropdown-item" href="/user/bookinghistory">Booking History</a></li> --> */}
                   <li><a class="dropdown-item" href="/user/watchedfilms">Watched Films</a></li>
-                  <li><a class="dropdown-item" href={'/followers/' + user.data && user.data.name ? user.data.name.split(" ").join("%20") : ""} >Network</a></li>
+                  <li><a class="dropdown-item" href={'/followers/' + user.data && user.data.username ? user.data.username.split(" ").join("%20") : ""} >Network</a></li>
                   <li><hr class="dropdown-divider" /></li>
                   <li><a class="dropdown-item" href="/user/logout">Sign Out</a></li>
                 </ul>

@@ -24,6 +24,12 @@ nav {
   /* width: 80%; */
 }
 
+#navElements {
+    display: flex;
+    flex-direction: row;
+    min-width: 350px;
+}
+
 nav ul {
   list-style: none;
 }
@@ -61,6 +67,7 @@ font-size: 19px;
   border: none;
   cursor: pointer;
   scale: 1.2;
+  width: 50px !important;
 }
 
 #searchButton img {

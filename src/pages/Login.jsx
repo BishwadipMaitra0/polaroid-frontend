@@ -91,6 +91,10 @@ const Login = () => {
         else if (User.status==="succeeded" && User.method==="login") {
             navigate("/")
         }
+
+        if (User.isLoggedIn === true) {
+            navigate('/', {replace: true})
+        }
     }, [User])
 
     return (

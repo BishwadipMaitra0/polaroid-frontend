@@ -37,11 +37,12 @@ const apiUserDetails = BASE_URL + "user/check"
 export const fetchUserDetails = createAsyncThunk("fetch/fetchUserDetails", async (Params, { rejectWithValue }) => {
   try {
     const response = await axios.get(apiUserDetails, { withCredentials: true })
+    console.log(response)
     return response.data
   } catch (err) {
     // console.log(err.response.data)
-    console.log("rejecteddjkwjdwdn")
-    return rejectWithValue("You are not logged in!")
+    console.log(err)
+    return rejectWithValue(err.response)
   }
 })
 
@@ -94,12 +95,14 @@ const userSlice = createSlice({
         state.method = "login"
         state.data = action.payload
         state.error = "Logged in successfully!"
+        state.isLoggedIn = true
       })
       .addCase(fetchUser.rejected, (state, action) => {
         console.log(action.payload.response.data.error)
         state.loading = false
         state.status = "failed"
         state.method = "login"
+        state.isLoggedIn = false
         state.data = {}
         state.error = action.payload.response.data.error
     })
@@ -114,6 +117,7 @@ const userSlice = createSlice({
         state.method = "logout"
         state.data = action.payload
         state.error = "Logged out successfully!"
+        state.isLoggedIn = false
     })
     .addCase(fetchOutUser.rejected, (state, action) => {
         state.loading = false
@@ -121,6 +125,7 @@ const userSlice = createSlice({
         state.method = "logout"
         state.data = {}
         state.error = "Logout failed!"
+        state.isLoggedIn = true
     })
     .addCase(fetchUserDetails.pending, (state, action) => {
         state.loading = true
@@ -133,15 +138,15 @@ const userSlice = createSlice({
         state.method = "fetchingUserDetails"
         state.data = action.payload
         state.error = "Fetched User Details Successfully!"
-        // console.log("action payload fetch user details is : ", action.payload)
+        state.isLoggedIn = true
     })
     .addCase(fetchUserDetails.rejected, (state, action) => {
         state.loading = false
         state.status = "failed"
         state.method = "fetchingUserDetails"
+        state.isLoggedIn = false
         state.data = {}
         state.error = "Failed to fetch user details!"
-        // console.log("rejected, state error is : ", state.error)
     })
   }
 })
