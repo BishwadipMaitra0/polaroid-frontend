@@ -10,7 +10,9 @@ const getMovieByName = async (name) => {
     }
     let url = `https://api.themoviedb.org/3/search/movie?api_key=${api_key}&language=en-US&query=${name}&page=1&include_adult=false`
 
-    const movieDetails = await axios.get(url)
+    const movieDetails = await axios.get(url, {
+        withCredentials: false
+    })
     await movieDetails.data
 
     const arr = movieDetails.data.results

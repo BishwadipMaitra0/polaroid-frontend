@@ -11,6 +11,8 @@ import E505 from './pages/E505'
 import AboutUs from './pages/AboutUs'
 import FAQ from './pages/FAQ'
 import Home from './pages/Home'
+import Settings from './pages/Settings'
+import Film from './pages/Film'
 
 const App = () => {
 
@@ -38,7 +40,9 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />}></Route>
+      <Route path='/film/:id' element={<Film />}></Route>
       <Route path='/user/login' element={<Login />}></Route>
+      <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>

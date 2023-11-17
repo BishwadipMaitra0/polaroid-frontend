@@ -7,8 +7,8 @@ const E404 = () => {
   const navigate = useNavigate()
 
   return (
-    <div class="card">
-        <div class="star top">
+    <div class="card_404">
+        <div class="star_404 top">
             <div align="center">
                 <a href="/">
                     <img class="imgg" src='/assets/Logo.png' />

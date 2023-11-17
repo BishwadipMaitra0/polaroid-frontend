@@ -1,19 +1,16 @@
-* {
-  margin: 0;
-  font-family: sans-serif;
-}
-
 body {
   background-color: #14181c;
 }
 
-.card {
+.card_404 {
+  margin: 0; 
+  font-family: sans-serif;
   background-color: #14181c;
   margin-top: 9%;
   position: relative;
 }
 
-.star {
+.star_404 {
   position: absolute;
 }
 

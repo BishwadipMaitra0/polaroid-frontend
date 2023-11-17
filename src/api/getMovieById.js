@@ -2,10 +2,14 @@ import axios from "axios"
 import { api_key } from "../config"
 
 const getMovieById = async (id) => {
-    const movieDetails = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=en-US`)
+    const movieDetails = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}&language=en-US`, {
+        withCredentials: false
+    })
     await movieDetails.data
 
-    const movieCredits = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`)
+    const movieCredits = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`, {
+        withCredentials: false
+    })
     await movieCredits.data
     let director
     if (movieCredits.data.crew.filter(({job}) => job==="Director") && movieCredits.data.crew.filter(({job}) => job==="Director")[0]) {
