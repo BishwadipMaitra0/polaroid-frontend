@@ -13,7 +13,7 @@ const Footer = () => {
             <a href="/faq"> FAQs </a>
           </li>
         </ul>
-        &#169 Polaroid Limited. Made by Arka, Prasad, Urjasvi, Biswadip and Kalyan
+        &copy; Polaroid Limited. Made by Arka, Prasad, Kalyan, Urjasvi, and Biswadip
       </div>
       <ul class="right-footer">
         <li>
