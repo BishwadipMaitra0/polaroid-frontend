@@ -13,6 +13,8 @@ import FAQ from './pages/FAQ'
 import Home from './pages/Home'
 import Settings from './pages/Settings'
 import Film from './pages/Film'
+import Films from './pages/Films'
+
 
 const App = () => {
 
@@ -40,6 +42,7 @@ const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Home />}></Route>
+      <Route path='/films' element={<Films />}></Route>
       <Route path='/film/:id' element={<Film />}></Route>
       <Route path='/user/login' element={<Login />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
@@ -48,7 +51,7 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='*' element={<E404 />}></Route>
-    </Routes>
+    </Routes >
   )
 }
 
