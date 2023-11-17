@@ -73,53 +73,72 @@ const Film = () => {
             email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsFavourite(true)
+        }
+
     }
 
     const removeFromFavs = async () => {
         const res = await axios.post(`http://localhost:3500/removefromfavs/${id}`, {
-            email: email
+            email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsFavourite(false)
+        }
     }
 
     const addToWatchlist = async () => {
         const res = await axios.post(`http://localhost:3500/addtowatchlist/${id}`, {
-            email: email
+            email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsWatchlist(true)
+        }
     }
 
     const removeFromWatchlist = async () => {
         const res = await axios.post(`http://localhost:3500/removefromwatchlist/${id}`, {
-            email: email
+            email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsWatchlist(false)
+        }
     }
 
     const addToWatched = async () => {
         const res = await axios.post(`http://localhost:3500/addtowatched/${id}`, {
-            email: email
+            email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsWatched(true)   
+        }
     }
 
     const removeFromWatched = async () => {
         const res = await axios.post(`http://localhost:3500/removefromwatched/${id}`, {
-            email: email
+            email: user.data.email
         })
         await res.data
+        console.log(res)
 
-        console.log(res.data)
+        if (res.status < 400) {
+            setIsWatched(false)
+        }
     }
 
     const addToList = (listName) => {
@@ -536,7 +555,7 @@ const Film = () => {
                                 {similar.results.slice(0, Math.min(similar.results.length, 10)).map((item, index) => (
                                     <img
                                         key={index}
-                                        onClick={() => { window.location.href = `/${item.id}`; }}
+                                        onClick={() => { window.location.href = `/film/${item.id}`; }}
                                         src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
                                         width="18%"
                                         height="auto"

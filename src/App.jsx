@@ -13,6 +13,7 @@ import FAQ from './pages/FAQ'
 import Home from './pages/Home'
 import Settings from './pages/Settings'
 import Film from './pages/Film'
+import Profile from './pages/Profile'
 
 const App = () => {
 
@@ -43,6 +44,7 @@ const App = () => {
       <Route path='/film/:id' element={<Film />}></Route>
       <Route path='/user/login' element={<Login />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
+      <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
