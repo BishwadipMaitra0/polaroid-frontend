@@ -10,10 +10,12 @@ import axios from 'axios'
 import "../styles/Film.css"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useNavigate } from 'react-router'
 
 const Film = () => {
 
-    var email
+    const navigate = useNavigate()
+
     const { id } = useParams()
     const [isLoading, setLoading] = useState(true)
     const user = useAppSelector((state) => state.user)
@@ -35,6 +37,10 @@ const Film = () => {
     const getData = async () => {
         setLoading(true)
         const movieData = await getMovieById(id)
+        console.log(movieData)
+        // if (!movieData.success) {
+        //     navigate('/movienotfound')
+        // }
         setData(movieData)
         const cast = await getMovieCredits(id)
         setCast(cast)

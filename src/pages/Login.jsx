@@ -95,7 +95,7 @@ const Login = () => {
         if (User.isLoggedIn === true) {
             navigate('/', {replace: true})
         }
-    }, [User])
+    }, [,User])
 
     return (
         <div className="mainLogin">

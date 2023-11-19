@@ -7,7 +7,7 @@ const AboutUs = () => {
   return (
     <>
       <Navbar />
-      <div class="main">
+      <div class="main_abtus">
         <article>
           <h2>About Us</h2>
           <hr />

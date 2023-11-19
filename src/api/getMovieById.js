@@ -7,6 +7,15 @@ const getMovieById = async (id) => {
     })
     await movieDetails.data
 
+    console.log(movieDetails)
+
+    if (movieDetails.status > 400) {
+        console.log("404")
+        return {status: 404}
+    }
+
+    console.log(movieDetails.data)
+
     const movieCredits = await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${api_key}`, {
         withCredentials: false
     })
