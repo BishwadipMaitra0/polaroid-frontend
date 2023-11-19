@@ -1,7 +1,7 @@
 .main_profilepage {
-    margin: 0;
-    padding: 0;
-    background-color: #14181c;
+  margin: 0;
+  padding: 0;
+  background-color: #14181c;
   width: 60%;
   min-height: 100vh;
 }
@@ -103,7 +103,7 @@
   transition: 0.2s;
 }
 
-.nav-link {
+.profile_nav-link {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,7 +121,7 @@
 }
 
 
-.section-heading {
+.profile_section-heading {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -137,7 +137,7 @@
   width: 100%;
 }
 
-.grid-container {
+.profile_grid-container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 11px;
@@ -154,12 +154,12 @@
   outline: 1.8px solid grey;
 }
 
-.grid-container .grid-img:hover {
+.profile_grid-container .grid-img:hover {
   outline: 2.25px solid white;
   transition: 0.125s;
 }
 
-.section-heading > a {
+.profile_section-heading>a {
   text-decoration: none;
   color: #9ab;
   font-size: 1rem;
@@ -168,12 +168,12 @@
   transition: 0.2s;
 }
 
-.section-heading > a:hover {
+.profile_section-heading>a:hover {
   color: #40bcf4;
   transition: 0.2s;
 }
 
-.element-container {
+.profile_element-container {
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #2c3440;
@@ -256,62 +256,62 @@
 
 
 .followButton {
-    /* width: 50%; */
-    background-color: rgb(68, 82, 95);
-    font-size: 12px;
-    font-weight: 600;
-    opacity: 0.9;
-    cursor: pointer;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    color: white;
-    max-width: 70px;
+  /* width: 50%; */
+  background-color: rgb(68, 82, 95);
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.9;
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  max-width: 70px;
 }
 
 .followButton:hover {
-    background-color: rgb(80, 94, 106);
+  background-color: rgb(80, 94, 106);
 }
 
 .dp {
-    border-radius: 100%;
+  border-radius: 100%;
 }
 
 .bottom {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .favFilmsHead {
-    font-size: 14px;
-    opacity: 0.8;
-    letter-spacing: 1.5px;
-    color: white;
-    margin: 10px;
-    margin-left: 0px;
-    margin-top: 50px;
+  font-size: 14px;
+  opacity: 0.8;
+  letter-spacing: 1.5px;
+  color: white;
+  margin: 10px;
+  margin-left: 0px;
+  margin-top: 50px;
 }
 
 .favFilms {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    width: 80%;
-    max-width: 850px;
-    min-width: 350px;
-    border-top: 1px solid white;
-    margin-top: -5px;
-    padding-top: 5px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 80%;
+  max-width: 850px;
+  min-width: 350px;
+  border-top: 1px solid white;
+  margin-top: -5px;
+  padding-top: 5px;
 }
 
-.favFilms img  {
-    max-height: 200px;
-    cursor: pointer;
+.favFilms img {
+  max-height: 200px;
+  cursor: pointer;
 }
 
 .notFirst {
-    margin-top: 50px;
+  margin-top: 50px;
 }
 
 .favFilms img:hover {
-    outline: 2px solid white;
+  outline: 2px solid white;
 }
