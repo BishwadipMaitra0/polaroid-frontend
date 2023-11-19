@@ -4,10 +4,12 @@ import Navbar from "../components/Navbar"
 import "../styles/Settings.css"
 import Footer from '../components/Footer'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
 const Settings = () => {
 
   const user = useAppSelector((state) => state.user)
+  const navigate = useNavigate()
 
   const [error, setError] = useState("")
   const [canSubmit, setCanSubmit] = useState(false)
@@ -71,7 +73,12 @@ const Settings = () => {
       newPassword: newPassword,
       email: user.data.email
     })
-    console.log(res)
+    .then((data) => {
+        navigate('/user/settings')
+    })
+    .catch((err) => {
+        setError(err.response.data.error)
+    })
   }
 
   return (

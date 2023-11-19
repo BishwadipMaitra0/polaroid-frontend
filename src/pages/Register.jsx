@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "../styles/Login.css"
 import { useNavigate } from 'react-router'
 import { useAppSelector } from '../app/hooks'
+import axios from 'axios'
 
 const Register = () => {
 
@@ -11,6 +12,7 @@ const Register = () => {
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
+    const [repeatPassword, setRepeatPassword] = useState("")
 
     const [sbDisabled, setDisabled] = useState(false)
 
@@ -103,7 +105,7 @@ const Register = () => {
     function strongPassCheck() {
         var passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,16}$/;
 
-        var pass = document.getElementById('password-input').value;
+        var pass = password;
 
         if ((pass != "") && !pass.match(passRegex))
             setIsPassStrong(false);
@@ -116,8 +118,8 @@ const Register = () => {
     function checkPassword() {
         console.log('checkPassword');
 
-        var pass = document.getElementById('password-input').value;
-        var repass = document.getElementById('repassword-input').value;
+        var pass = password;
+        var repass = repeatPassword;
 
         if (pass !== repass) {
             setIsPassSame(false);
@@ -136,8 +138,6 @@ const Register = () => {
 
     function checkEmail() {
         var emailRegex = /\S+@\S+\.\S+/;
-
-        var email = document.getElementById('email-input').value;
 
         if ((email === '') || (!email.match(emailRegex))) {
             // document.getElementById('email-input').style.outline = "2px solid red";
@@ -191,8 +191,21 @@ const Register = () => {
         return emailValidation && passValidation && passStrength;
     }
 
-    const submitHandler = async () => {
-
+    const submitHandler = async (e) => {
+        e.preventDefault()
+        const res = await axios.post("http://localhost:3500/user/register", {
+            email: email,
+            username: username,
+            password: password
+        })
+        .then((data) => {
+            console.log(data)
+            navigate('/user/login')
+        })
+        .catch((err) => {
+            console.log(err)
+            setError(err.response.data.error)
+        })
     }
 
     return (
@@ -235,7 +248,7 @@ const Register = () => {
 
                         <div class="pass-div">
                             <label htmlFor="repassword-input" class="password-label" style={{ opacity: "70%" }}>Enter the password again</label>
-                            <input type="password" name="re-password" class="password-box" placeholder="Password" id="repassword-input" 
+                            <input type="password" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} name="re-password" class="password-box" placeholder="Password" id="repassword-input" 
                                 onFocus={onFocusinRePass}
                                 onBlur={onFocusoutRePass}
                                 required autoComplete="off" />

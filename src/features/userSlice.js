@@ -115,7 +115,7 @@ const userSlice = createSlice({
         state.loading = false
         state.status = "succeeded"
         state.method = "logout"
-        state.data = action.payload
+        state.data = {}
         state.error = "Logged out successfully!"
         state.isLoggedIn = false
     })

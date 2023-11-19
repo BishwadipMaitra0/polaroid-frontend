@@ -5,11 +5,18 @@ import { useNavigate } from 'react-router'
 
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { fetchOutUser } from '../features/userSlice';
 
 const Navbar = () => {
 
   const user = useAppSelector((state) => state.user)
-  const login = useAppSelector((state) => state.login)
+  const navigate = useNavigate()
+  const dispatch = useAppDispatch()
+  
+  const logoutHandler = () => {
+    dispatch(fetchOutUser())
+    navigate('/')
+  }
 
   return (
     <nav>
@@ -71,7 +78,7 @@ const Navbar = () => {
                     Network
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/user/logout">
+                  <NavDropdown.Item onClick={() => logoutHandler()}>
                     Sign Out
                   </NavDropdown.Item>
                 </NavDropdown>

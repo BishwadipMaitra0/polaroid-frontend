@@ -5,6 +5,8 @@
   font-size: 18px;
   margin: 2% 20% 2% 20%;
   /* min-height: 100vh; */
+  color: whitesmoke;
+  background-color: #14181c;
 }
 
 .main_abtus ul {
@@ -21,7 +23,7 @@ border-bottom: 2px solid #456;
 }
 
 hr {
-border-color: #456;
+  border-color: #456;
 }
 
 .main_abtus li p {

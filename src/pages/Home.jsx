@@ -8,8 +8,11 @@ import getTrendingThisWeek from "../api/getTrendingThisWeek"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Loader from '../components/Loader'
+import { useNavigate } from 'react-router'
 
 const Home = () => {
+
+    const navigate = useNavigate()
 
     const [latest, setLatest] = useState()
     const [nowPlaying, setNowPlaying] = useState()
@@ -63,7 +66,7 @@ const Home = () => {
                             Tell your friends what's good.
                         </h2>
                         {!user.isLoggedIn &&
-                            <button type="button" class="getstarted-button" onClick="location.href='/user/register'">
+                            <button type="button" class="getstarted-button" onClick={() => navigate('/user/register')}>
                                 <div>get started &mdash; it's free!</div>
                             </button>
                         }
