@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import "../styles/Login.css"
 import { useNavigate } from 'react-router'
 import { useAppSelector } from '../app/hooks'
@@ -20,86 +20,100 @@ const Register = () => {
     const [isInvalidEmail, setIsInvalidEmail] = useState(false)
     const [isPassStrong, setIsPassStrong] = useState(true)
 
+    const emailRef = useRef(null)
+    const nameRef = useRef(null)
+    const passRef = useRef(null)
+    const rePassRef = useRef(null)
+
+    const altert1Ref = useRef(null)
+    const altert2Ref = useRef(null)
+
     const User = useAppSelector((state) => state.user)
 
     useEffect(() => {
         // console.log(User)
-        if (User.status==="failed" && User.method==="login") {
+        if (User.status === "failed" && User.method === "login") {
             setError(User.error)
         }
-        else if (User.status==="succeeded" && User.method==="login") {
+        else if (User.status === "succeeded" && User.method === "login") {
             navigate("/")
         }
 
         if (User.isLoggedIn === true) {
-            navigate('/', {replace: true})
+            navigate('/', { replace: true })
         }
-    }, [,User])
+    }, [, User])
 
     function onFocusoutRePass() {
         if (!isPassSame || !isPassStrong) {
-            document.getElementById('repassword-input').style.backgroundColor = "#eb9898";
-            document.getElementById('repassword-input').style.outline = "2px solid red";
+            rePassRef.current.style.backgroundColor = "#eb9898";
+            rePassRef.current.style.outline = "2px solid red";
         }
         else {
-            document.getElementById('repassword-input').style.backgroundColor = "#a3d4ec";
-            document.getElementById('repassword-input').style.outline = "none";
+            rePassRef.current.style.backgroundColor = "#a3d4ec";
+            rePassRef.current.style.outline = "none";
         }
     }
 
     function disableButton() {
         if (!isPassSame || isInvalidEmail || !isPassStrong) {
-            setDisabled(true);
+            setDisabled((val) => {
+                val = true
+                return val
+            })
         }
         else {
-            setDisabled(false);
+            setDisabled((val) => {
+                val = false
+                return val
+            })
         }
     }
 
     function onFocusoutEmail() {
         if (isInvalidEmail) {
-            document.getElementById('email-input').style.backgroundColor = "#eb9898";
-            document.getElementById('email-input').style.outline = "2px solid red";
+            emailRef.current.style.backgroundColor = "#eb9898";
+            emailRef.current.style.outline = "2px solid red";
         }
         else {
-            document.getElementById('email-input').style.backgroundColor = "#a3d4ec";
-            document.getElementById('email-input').style.outline = "none";
+            emailRef.current.style.backgroundColor = "#a3d4ec";
+            emailRef.current.style.outline = "none";
         }
     }
 
     function onFocusoutName() {
-        document.getElementById('name-input').style.backgroundColor = "#a3d4ec";
+        nameRef.current.style.backgroundColor = "#a3d4ec";
     }
 
     function onFocusoutPass() {
         if (!isPassSame || !isPassStrong) {
-            document.getElementById('password-input').style.backgroundColor = "#eb9898";
-            document.getElementById('password-input').style.outline = "2px solid red";
+            passRef.current.style.backgroundColor = "#eb9898";
+            passRef.current.style.outline = "2px solid red";
         }
         else {
-            document.getElementById('password-input').style.outline = "none";
-            document.getElementById('password-input').style.backgroundColor = "#a3d4ec";
+            passRef.current.style.outline = "none";
+            passRef.current.style.backgroundColor = "#a3d4ec";
         }
     }
 
     function onFocusinEmail() {
-        document.getElementById('email-input').style.outline = "none";
-        document.getElementById('email-input').style.backgroundColor = "white";
+        emailRef.current.style.outline = "none";
+        emailRef.current.style.backgroundColor = "white";
     }
 
     function onFocusinName() {
-        document.getElementById('name-input').style.outline = "none";
-        document.getElementById('name-input').style.backgroundColor = "white";
+        nameRef.current.style.outline = "none";
+        nameRef.current.style.backgroundColor = "white";
     }
 
     function onFocusinPass() {
-        document.getElementById('password-input').style.outline = "none";
-        document.getElementById('password-input').style.backgroundColor = "white";
+        passRef.current.style.outline = "none";
+        passRef.current.style.backgroundColor = "white";
     }
 
     function onFocusinRePass() {
-        document.getElementById('repassword-input').style.outline = "none";
-        document.getElementById('repassword-input').style.backgroundColor = "white";
+        rePassRef.current.style.outline = "none";
+        rePassRef.current.style.backgroundColor = "white";
     }
 
     function strongPassCheck() {
@@ -108,26 +122,51 @@ const Register = () => {
         var pass = password;
 
         if ((pass != "") && !pass.match(passRegex))
-            setIsPassStrong(false);
+            setIsPassStrong((val) => {
+                val = false
+                return val
+            })
         else
-            setIsPassStrong(true);
+            setIsPassStrong((val) => {
+                val = true
+                return val
+            })
 
         return isPassStrong;
     }
 
-    function checkPassword() {
-        console.log('checkPassword');
+    function CheckPassword() {
+        // console.log('checkPassword');
 
         var pass = password;
         var repass = repeatPassword;
 
-        if (pass !== repass) {
-            setIsPassSame(false);
+        // console.log(password)
+        // console.log(repeatPassword)
 
+        if (pass !== repass) {
+            // console.log(password)
+            // console.log(repeatPassword)
+
+
+            setIsPassSame((val) => {
+                val = false
+                return val
+            })
         }
         else {
-            setIsPassSame(true);
+            // console.log("pass is true")
+            // console.log(password)
+            // console.log(repeatPassword)
+
+
+            setIsPassSame((val) => {
+                val = true
+                return val
+            })
         }
+
+        console.log("isPassSame: " + isPassSame)
 
         onFocusoutPass();
         onFocusoutRePass();
@@ -139,19 +178,25 @@ const Register = () => {
     function checkEmail() {
         var emailRegex = /\S+@\S+\.\S+/;
 
-        if ((email === '') || (!email.match(emailRegex))) {
-            // document.getElementById('email-input').style.outline = "2px solid red";
-            // document.getElementById('email-input').style.backgroundColor = "#eb9898";
+        if ((email !== '') && (!email.match(emailRegex))) {
+            // emailRef.current.style.outline = "2px solid red";
+            // emailRef.current.style.backgroundColor = "#eb9898";
 
-            setIsInvalidEmail(true);
+            setIsInvalidEmail((val) => {
+                val = true
+                return val
+            })
         }
         else {
-            setIsInvalidEmail(false);
+            setIsInvalidEmail((val) => {
+                val = false
+                return val
+            })
         }
 
-        onFocusoutEmail();
+        onFocusoutEmail()
 
-        return !isInvalidEmail;
+        return !isInvalidEmail
     }
 
     function validateForm() {
@@ -160,32 +205,32 @@ const Register = () => {
         var passStrength;
 
         emailValidation = checkEmail();
-        passValidation = checkPassword();
+        passValidation = CheckPassword();
         passStrength = strongPassCheck();
 
         if ((emailValidation === false) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
-            document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
-            document.getElementById('alert-zone-2').innerHTML = "Password does not match";
+            altert1Ref.current.innerHTML = "Please enter a valid email address";
+            altert2Ref.current.innerHTML = "Password does not match";
         }
         else if ((emailValidation === false) && (passValidation === true) && (passStrength === false)) {
-            document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
-            document.getElementById('alert-zone-2').innerHTML = "Please enter a strong password";
+            altert1Ref.current.innerHTML = "Please enter a valid email address";
+            altert2Ref.current.innerHTML = "Please enter a strong password";
         }
         else if ((emailValidation === false) && (passValidation === true) && (passStrength === true)) {
-            document.getElementById('alert-zone-1').innerHTML = "Please enter a valid email address";
-            document.getElementById('alert-zone-2').innerHTML = "";
+            altert1Ref.current.innerHTML = "Please enter a valid email address";
+            altert2Ref.current.innerHTML = "";
         }
         else if ((emailValidation === true) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
-            document.getElementById('alert-zone-1').innerHTML = "Password does not match";
-            document.getElementById('alert-zone-2').innerHTML = "";
+            altert1Ref.current.innerHTML = "Password does not match";
+            altert2Ref.current.innerHTML = "";
         }
         else if (passStrength === false) {
-            document.getElementById('alert-zone-1').innerHTML = "Please enter a strong password";
-            document.getElementById('alert-zone-2').innerHTML = "";
+            altert1Ref.current.innerHTML = "Please enter a strong password";
+            altert2Ref.current.innerHTML = "";
         }
         else {
-            document.getElementById('alert-zone-1').innerHTML = "";
-            document.getElementById('alert-zone-2').innerHTML = "";
+            altert1Ref.current.innerHTML = "";
+            altert2Ref.current.innerHTML = "";
         }
 
         return emailValidation && passValidation && passStrength;
@@ -198,61 +243,65 @@ const Register = () => {
             username: username,
             password: password
         })
-        .then((data) => {
-            console.log(data)
-            navigate('/user/login')
-        })
-        .catch((err) => {
-            console.log(err)
-            setError(err.response.data.error)
-        })
+            .then((data) => {
+                console.log(data)
+                navigate('/user/login')
+            })
+            .catch((err) => {
+                console.log(err)
+                setError(err.response.data.error)
+            })
     }
+
+    useEffect(() => {
+        validateForm()
+    }, [email, username, password, repeatPassword, isPassSame, isInvalidEmail, isPassStrong])
 
     return (
         <div class="main-register">
             <div class="div-container">
                 <img src="/assets/Logo.png" onClick={() => navigate('/')} class="logoreg" />
                 <div class="text-div">
-                    <form id="registerForm" onChange={() => validateForm()} onSubmit={submitHandler}>
+                    <form id="registerForm" onSubmit={submitHandler}>
                         <div class="head-div">Sign up</div>
 
                         <div class="email-div">
                             <label htmlFor="email-input" class="email-label" style={{ opacity: "70%" }}>Email address</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="text" name="email" class="email-box" placeholder="input@example.com" id="email-input" required autoComplete="off"
+                            <input value={email} ref={emailRef} onChange={(e) => setEmail(e.target.value)} type="text" name="email" class="email-box" placeholder="input@example.com" id="email-input" required autoComplete="off"
                                 onInvalid={(e) => e.target.setCustomValidity('Email Address can not be empty')}
                                 onFocus={onFocusinEmail}
                                 onBlur={onFocusoutEmail}
-                                onInput={(e) => e.target.setCustomValidity('')} 
-                                />
+                                onInput={(e) => e.target.setCustomValidity('')}
+                            />
                         </div>
 
                         <div class="email-div">
                             <label htmlFor="name-input" class="email-label" style={{ opacity: "70%" }}>Username</label>
-                            <input type="username" value={username} onChange={(e) => setUsername(e.target.value)} name="username" class="email-box" placeholder="Alex John" id="name-input" required autoComplete="off"
+                            <input type="username" ref={nameRef} value={username} onChange={(e) => setUsername(e.target.value)} name="username" class="email-box" placeholder="Alex John" id="name-input" required autoComplete="off"
                                 onFocus={onFocusinName}
                                 onBlur={onFocusoutName}
                                 onInvalid={(e) => e.target.setCustomValidity('Username can not be empty')}
-                                onInput={(e) => e.target.setCustomValidity('')} 
-                                />
+                                onInput={(e) => e.target.setCustomValidity('')}
+                            />
                         </div>
 
                         <div class="pass-div">
                             <label htmlFor="password-input" class="password-label" style={{ opacity: "70%" }}>Password</label>
-                            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} name="password" class="password-box" placeholder="Password" id="password-input" required autoComplete="off"
+                            <input type="password" ref={passRef} value={password} onChange={(e) => setPassword(e.target.value)} name="password" class="password-box" placeholder="Password" id="password-input" required autoComplete="off"
                                 onFocus={onFocusinPass}
                                 onBlur={onFocusoutPass}
                                 onInvalid={(e) => e.target.setCustomValidity('Password can not be empty')}
-                                onInput={(e) => e.target.setCustomValidity('')} 
-                                />
+                                onInput={(e) => e.target.setCustomValidity('')}
+                            />
                         </div>
 
                         <div class="pass-div">
                             <label htmlFor="repassword-input" class="password-label" style={{ opacity: "70%" }}>Enter the password again</label>
-                            <input type="password" value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} name="re-password" class="password-box" placeholder="Password" id="repassword-input" 
+                            <input type="password" ref={rePassRef} value={repeatPassword} onChange={(e) => setRepeatPassword(e.target.value)} name="re-password" class="password-box" placeholder="Password" id="repassword-input"
                                 onFocus={onFocusinRePass}
                                 onBlur={onFocusoutRePass}
                                 required autoComplete="off" />
-                            
+
                         </div>
 
                         <button type="submit" class="btn btn-outline-info" style={{ width: "100%" }} id="submit-button" disabled={sbDisabled}>
@@ -268,8 +317,8 @@ const Register = () => {
                         one number, one special character.
                     </div>
                     <div class="header-line"></div>
-                    <div class="error-div" id="alert-zone-1"> {error} </div>
-                    <div class="error-div" id="alert-zone-2"></div>
+                    <div class="error-div" ref={altert1Ref} id="alert-zone-1"> {error} </div>
+                    <div class="error-div" ref={altert2Ref} id="alert-zone-2"></div>
                 </div>
                 <div class="img-div"></div>
             </div>
