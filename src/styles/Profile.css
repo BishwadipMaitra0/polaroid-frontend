@@ -1,3 +1,12 @@
+.profile_main-div {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
 .main_profilepage {
   margin: 0;
   padding: 0;
