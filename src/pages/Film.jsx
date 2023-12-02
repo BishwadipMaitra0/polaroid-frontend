@@ -38,9 +38,6 @@ const Film = () => {
         setLoading(true)
         const movieData = await getMovieById(id)
         console.log(movieData)
-        // if (!movieData.success) {
-        //     navigate('/movienotfound')
-        // }
         setData(movieData)
         const cast = await getMovieCredits(id)
         setCast(cast)
@@ -132,7 +129,7 @@ const Film = () => {
         console.log(res)
 
         if (res.status < 400) {
-            setIsWatched(true)   
+            setIsWatched(true)
         }
     }
 
@@ -162,6 +159,13 @@ const Film = () => {
             rating: stars,
             body: review
         })
+            .then((data) => {
+                console.log("Review done!!")
+                window.location.reload()
+            })
+            .catch((data) => {
+                setErrorReview(data.response.data.error)
+            })
         await res.data
 
         console.log(res.data)
@@ -174,8 +178,6 @@ const Film = () => {
                 <div>
                     {data.backdrop_path ?
                         <div class="image">
-                            {/* <div class="inner-image" style="background-image: url('<%= " https://image.tmdb.org/t/p/original/" + */}
-                            {/* data.backdrop_path %>');"> */}
                             <div className="inner-image" style={{ backgroundImage: `url('https://image.tmdb.org/t/p/original/${data.backdrop_path}')` }}></div>
                         </div>
                         :
@@ -200,37 +202,25 @@ const Film = () => {
                                 </div>
                                 <table>
                                     <tr>
-                                        {/* <!-- <td class="wtw">WHERE TO WATCH <a class="trailer" target="_blank" href="http://youtube.com"> <img src="/assets/favicon-16x16.png" alt="favicon"></a> </td> --> */}
                                         <td>
                                             <div class="wtw">
                                                 <div class="wtw-left">
                                                     WHERE TO WATCH
                                                 </div>
                                                 <div class="wtw-right">
-                                                    {/* <!-- <a href="http://google.com" target="_blank"> */}
                                                     Trailer
                                                     <img src="/assets/movie.png" height="16px" />
-                                                    {/* </a> --> */}
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
-                                    {/* <% if (watchProviders) { %> */}
                                     {watchProviders && watchProviders.buy ?
-                                        //   <% if (watchProviders.buy) { %>
-                                        // <% for( let index=0; index < watchProviders.buy.length; index++ ) { %>
-                                        //   <tr>
-                                        //     <td>
-                                        //       <a><img src=<%="https://image.tmdb.org/t/p/original/" + watchProviders.buy[index].logo_path %>
-                                        //         height="16px"> <%= watchProviders.buy[index].provider_name %> </a>
-                                        //     </td>
-                                        //   </tr>
                                         watchProviders.buy.map((item, index) => {
                                             <tr>
                                                 <td>
                                                     <a>
-                                                        <img src={`https://image.tmdb.org/t/p/original/${item[index].logo_path}`} height="16px" />
-                                                        {item[index].provider_name}
+                                                        <img src={`https://image.tmdb.org/t/p/original/${item.logo_path}`} height="16px" />
+                                                        {item.provider_name}
                                                     </a>
                                                 </td>
                                             </tr>
@@ -238,7 +228,6 @@ const Film = () => {
                                         :
                                         <></>
                                     }
-                                    {/* <% } %> */}
                                     {!watchProviders ?
                                         <tr>
                                             <td>
@@ -262,50 +251,21 @@ const Film = () => {
                                     GENRES
                                 </p>
                                 <div class="castDiv">
-                                    {/* <% for (let i=0; i<data.genres.length; i++) { %> */}
                                     {data.genres.map((item, index) => {
                                         <div class="castBlock">
                                             {data.genres[index].name}
                                         </div>
                                     })}
-                                    {/* //   <% } %> */}
                                 </div>
                                 <p class="genres">
                                     CAST
                                 </p>
                                 <div class="castDiv">
-                                    {/* <% for (let i=0; i<Math.min(cast.cast.length, 10); i++) { %> */}
-                                    <div class="castBlock">
-                                        {cast.cast[0].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[1].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[2].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[3].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[4].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[5].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[6].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[7].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[8].name}
-                                    </div>
-                                    <div class="castBlock">
-                                        {cast.cast[9].name}
-                                    </div>
-                                    {/* <% } %> */}
+                                    {cast.cast.map((actor, index) => (
+                                        <div key={index} className="castBlock">
+                                            {actor.name}
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                             <div class="right-side">
@@ -314,10 +274,6 @@ const Film = () => {
                                         <div class="add-to-fav">
                                             <div class="add-to-fav-title">Add to favorites:</div>
                                             <div class="add-to-fav-icon">
-                                                {/* <!-- show this if film has not added to favorites
-                for now I used the checked variable
-            --> */}
-                                                {/* <% if (isFavourite===false) { %> */}
                                                 {!isFavourite ?
                                                     <button type="button">
                                                         <a href={"/addtofavs/" + data.id} >
@@ -341,9 +297,6 @@ const Film = () => {
                                         <div class="add-to-fav">
                                             <div class="add-to-fav-title">Add to watchlist:</div>
                                             <div class="add-to-fav-icon">
-                                                {/* <!-- show this if film has not added to watchlist
-              for now I used the checked variable
-            --> */}
                                                 {!isWatchlist ?
                                                     <button type="button">
                                                         <a href={'/addtowatchlist/' + data.id}>
@@ -366,9 +319,6 @@ const Film = () => {
                                         <div class="add-to-fav">
                                             <div class="add-to-fav-title">Watched:</div>
                                             <div class="add-to-fav-icon">
-                                                {/* <!-- show this if film has not added to watched
-                for now I used the checked variable
-            --> */}
                                                 {!isWatched ?
                                                     <button type="button">
                                                         <a href={'/addtowatched/' + data.id}>
@@ -396,7 +346,7 @@ const Film = () => {
                                                 onchange="location = this.value;">
                                                 <option value="">--Select a list--</option>
                                                 {lists.map((item, index) => {
-                                                    <option value={"/list/add/" + item[index].listName.split(" ").join("%20") + "/" + data.id} >  {item[index].listName} </option>
+                                                    <option value={"/list/add/" + item.listName.split(" ").join("%20") + "/" + data.id} >  {item.listName} </option>
                                                 })}
                                             </select>
                                         </div>
@@ -404,7 +354,6 @@ const Film = () => {
                                     :
                                     <></>
                                 }
-                                {/* <% if (check===false) { %> */}
                                 {!user.data.isLoggedIn ?
                                     <a href="/user/login">
                                         <button class="sign-in">
@@ -445,138 +394,102 @@ const Film = () => {
                                     {reviews !== undefined && reviews.comment}
                                 </p>
                                 {reviews !== undefined && reviews.comment.length <= 0 ?
-                                    // <% for( let index=0; index < Math.min(reviews.reviews.length, 3); index++ ) { %>
                                     reviews.reviews.length < 3 ?
                                         reviews.reviews.map((item, index) => {
                                             <>
                                                 <div class="review-header">
                                                     <div class="reviewName">
                                                         Review by
-                                                        <a class="profileLink" href={'/profile/' + item[index].username.split(" ").join("%20")}>
+                                                        <a class="profileLink" href={'/profile/' + item.username.split(" ").join("%20")}>
                                                             <span class="reviewN">
-                                                                {item[index].username}
+                                                                {item.username}
                                                             </span>
                                                         </a>
                                                         <span class="starsReview">
-                                                            {item[index].stars} ⭐
+                                                            {item.stars} ⭐
                                                         </span>
                                                     </div>
                                                 </div>
 
                                                 <p class="reviewMain">
-                                                    {item[index].body}
+                                                    {item.body}
                                                 </p>
                                             </>
                                         })
                                         :
                                         <>
-                                            <div class="review-header">
-                                                <div class="reviewName">
-                                                    Review by
-                                                    <a class="profileLink" href={'/profile/' + reviews.reviews[0].username.split(" ").join("%20")}>
-                                                        <span class="reviewN">
-                                                            {reviews.reviews[0].username}
-                                                        </span>
-                                                    </a>
-                                                    <span class="starsReview">
-                                                        {reviews.reviews[0].stars} ⭐
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="reviewMain">
-                                                {reviews.reviews[0].body}
-                                            </p>
-
-                                            <div class="review-header">
-                                                <div class="reviewName">
-                                                    Review by
-                                                    <a class="profileLink" href={'/profile/' + reviews.reviews[1].username.split(" ").join("%20")}>
-                                                        <span class="reviewN">
-                                                            {reviews.reviews[1].username}
-                                                        </span>
-                                                    </a>
-                                                    <span class="starsReview">
-                                                        {reviews.reviews[1].stars} ⭐
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <p class="reviewMain">
-                                                {reviews.reviews[1].body}
-                                            </p>
-
-                                        <div class="review-header">
-                                            <div class="reviewName">
-                                                Review by
-                                                <a class="profileLink" href={'/profile/' + reviews.reviews[2].username.split(" ").join("%20")}>
-                                                    <span class="reviewN">
-                                                        {reviews.reviews[2].username}
-                                                    </span>
-                                                </a>
-                                                <span class="starsReview">
-                                                    {reviews.reviews[2].stars} ⭐
-                                                </span>
-                                            </div>
+                                            {reviews.reviews.map((review, index) => (
+                                                <>
+                                                    <div key={index} className="review-header">
+                                                        <div className="reviewName">
+                                                            Review by
+                                                            <a className="profileLink" href={`/profile/${review.username.split(" ").join("%20")}`}>
+                                                                <span className="reviewN">{review.username}</span>
+                                                            </a>
+                                                            <span className="starsReview">{review.stars} ⭐</span>
+                                                        </div>
+                                                    </div>
+                                                    <p key={`reviewBody${index}`} className="reviewMain">
+                                                        {review.body}
+                                                    </p>
+                                                </>
+                                            ))}
+                                        </>
+                                    :
+                                    <></>
+                                }
+                                {user.data.isLoggedIn ?
+                                    <form class="addReview" onSubmit={submitReview}>
+                                        <p class="reviewAdd">Add your review: </p>
+                                        <div class="star-rating">
+                                            <input type="radio" id="5-stars" name="rating" value="5" onClick={() => setStars(5)} required />
+                                            <label for="5-stars" class="star">&#9733;</label>
+                                            <input type="radio" id="4-stars" name="rating" value="4" onClick={() => setStars(4)} />
+                                            <label for="4-stars" class="star">&#9733;</label>
+                                            <input type="radio" id="3-stars" name="rating" value="3" onClick={() => setStars(3)} />
+                                            <label for="3-stars" class="star">&#9733;</label>
+                                            <input type="radio" id="2-stars" name="rating" value="2" onClick={() => setStars(2)} />
+                                            <label for="2-stars" class="star">&#9733;</label>
+                                            <input type="radio" id="1-star" name="rating" value="1" onClick={() => setStars(1)} />
+                                            <label for="1-star" class="star">&#9733;</label>
                                         </div>
-                                        <p class="reviewMain">
-                                            {reviews.reviews[2].body}
+                                        <textarea name="body" onChange={(e) => setReview(e.target.value)} value={review} rows="7" class="inputReview" required autocomplete="off"></textarea>
+                                        <button type="submit" class="submitReview btn btn-outline-info">Submit Review</button>
+                                        <p class="errorReview">
+                                            {errorReview}
                                         </p>
+                                    </form>
+                                    :
+                                    <>
                                     </>
-                                // <% } %>
-                                :
-                                <></>
-                            }
-                            {user.data.isLoggedIn ?
-                                <form class="addReview" onSubmit={submitReview}>
-                                    <p class="reviewAdd">Add your review: </p>
-                                    <div class="star-rating">
-                                        <input type="radio" id="5-stars" name="rating" value="5" onClick={() => setStars(5)} required />
-                                        <label for="5-stars" class="star">&#9733;</label>
-                                        <input type="radio" id="4-stars" name="rating" value="4" onClick={() => setStars(4)} />
-                                        <label for="4-stars" class="star">&#9733;</label>
-                                        <input type="radio" id="3-stars" name="rating" value="3" onClick={() => setStars(3)} />
-                                        <label for="3-stars" class="star">&#9733;</label>
-                                        <input type="radio" id="2-stars" name="rating" value="2" onClick={() => setStars(2)} />
-                                        <label for="2-stars" class="star">&#9733;</label>
-                                        <input type="radio" id="1-star" name="rating" value="1" onClick={() => setStars(1)} />
-                                        <label for="1-star" class="star">&#9733;</label>
-                                    </div>
-                                    <textarea name="body" onChange={(e) => setReview(e.target.value)} value={review} rows="7" class="inputReview" required autocomplete="off"></textarea>
-                                    <button type="submit" class="submitReview btn btn-outline-info">Submit Review</button>
-                                    <p class="errorReview">
-                                        {errorReview}
-                                    </p>
-                                </form>
-                                :
-                                <>
-                                </>
-                            }
+                                }
+                            </div>
                         </div>
-                    </div>
-                    <div class="bottom-content">
-                        <div></div>
-                        <div class="rightBottom">
-                            <p class="genres">
-                                RELATED FILMS
-                            </p>
-                            <div class="relFilms">
-                                {similar.results.slice(0, Math.min(similar.results.length, 10)).map((item, index) => (
-                                    <img
-                                        key={index}
-                                        onClick={() => { window.location.href = `/film/${item.id}`; }}
-                                        src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                                        width="18%"
-                                        height="auto"
-                                    />
-                                ))}
+                        <div class="bottom-content">
+                            <div></div>
+                            <div class="rightBottom">
+                                <p class="genres">
+                                    RELATED FILMS
+                                </p>
+                                <div class="relFilms">
+                                    {similar.results.slice(0, Math.min(similar.results.length, 10)).map((item, index) => (
+                                        <img
+                                            key={index}
+                                            onClick={() => { window.location.href = `/film/${item.id}`; }}
+                                            src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                                            width="18%"
+                                            height="auto"
+                                        />
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <Footer />
-        </>
-        :
-        <Loader />
+                <Footer />
+            </>
+            :
+            <Loader />
     )
 }
 

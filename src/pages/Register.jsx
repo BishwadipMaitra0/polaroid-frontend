@@ -7,6 +7,7 @@ import axios from 'axios'
 const Register = () => {
 
     const [error, setError] = useState("")
+    const [error2, setError2] = useState("")
     const navigate = useNavigate()
 
     const [email, setEmail] = useState("")
@@ -237,6 +238,7 @@ const Register = () => {
     }
 
     const submitHandler = async (e) => {
+        console.log("hi")
         e.preventDefault()
         const res = await axios.post("http://localhost:3500/user/register", {
             email: email,
@@ -249,7 +251,8 @@ const Register = () => {
             })
             .catch((err) => {
                 console.log(err)
-                setError(err.response.data.error)
+                // setError(err.response.data.error)
+                altert1Ref.current.innerHTML = err.response.data.error
             })
     }
 
@@ -318,7 +321,7 @@ const Register = () => {
                     </div>
                     <div class="header-line"></div>
                     <div class="error-div" ref={altert1Ref} id="alert-zone-1"> {error} </div>
-                    <div class="error-div" ref={altert2Ref} id="alert-zone-2"></div>
+                    <div class="error-div" ref={altert2Ref} id="alert-zone-2"> {error2} </div>
                 </div>
                 <div class="img-div"></div>
             </div>

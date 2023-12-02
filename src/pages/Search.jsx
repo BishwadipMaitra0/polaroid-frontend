@@ -7,7 +7,7 @@ const Search = () => {
     const [searchQuery, setSearchQuery] = useState("")
 
     const searchHandler = async () => {
-
+        
     }
 
     return (

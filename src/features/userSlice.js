@@ -73,6 +73,7 @@ const userSlice = createSlice({
       state.data.image = action.payload.image
     },
     setName: (state, action) => {
+      console.log("setname")
       state.data.name = action.payload.name
     },
     setEmail: (state, action) => {
