@@ -16,6 +16,7 @@ import Film from './pages/Film'
 import Profile from './pages/Profile'
 import Films from './pages/Films'
 import Register from './pages/Register'
+import Search from './pages/Search'
 
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
+      <Route path='/search' element={<Search />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
