@@ -11,7 +11,7 @@ const AboutUs = () => {
         <article>
           <h2>About Us</h2>
           <hr />
-          <p>We are blah blah..Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
             aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
             dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
@@ -21,23 +21,23 @@ const AboutUs = () => {
           <ul>
             <li>
               <h3>Prasad</h3>
-              <p>He did blah bah blah</p>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil, assumenda.</p>
             </li>
             <li>
               <h3>Arka</h3>
-              <p>He did blah bah blah</p>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et, illo.</p>
             </li>
             <li>
               <h3>Urjasvi</h3>
-              <p>He did blah bah blah</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, illum!</p>
             </li>
             <li>
               <h3>Kalyan</h3>
-              <p>He did blah bah blah</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, illum!</p>
             </li>
             <li>
               <h3>Biswadip</h3>
-              <p>He did blah bah blah</p>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, illum!</p>
             </li>
           </ul>
         </article>

@@ -18,7 +18,6 @@ import Films from './pages/Films'
 import Register from './pages/Register'
 import Search from './pages/Search'
 
-
 const App = () => {
 
   const dispatch = useAppDispatch()

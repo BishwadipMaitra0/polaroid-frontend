@@ -352,7 +352,7 @@ const Film = () => {
                                                 }
                                             </div>
                                         </div>
-                                        <div class="add-to-list-section">
+                                        {/* <div class="add-to-list-section">
                                             <label for="add-to-list">Add to List&nbsp;:</label>
                                             <select id="add-to-list" class="list-selector" autocomplete="off"
                                                 oninvalid="this.setCustomValidity('Please select a date')"
@@ -363,7 +363,7 @@ const Film = () => {
                                                     <option value={"/list/add/" + item.listName.split(" ").join("%20") + "/" + data.id} >  {item.listName} </option>
                                                 })}
                                             </select>
-                                        </div>
+                                            </div> */}
                                     </>
                                     :
                                     <></>
@@ -377,13 +377,13 @@ const Film = () => {
                                     :
                                     <></>
                                 }
-                                {user.data.isLoggedIn ?
-                                    <button class="bookTickets" onclick="location.href='<%= '/bookingdetails/'+data.id %>'">
+                                {/* {user.data.isLoggedIn ?
+                                    <button class="bookTickets" onClick={navigate('/booking')}>
                                         Book Tickets
                                     </button>
                                     :
                                     <></>
-                                }
+                                } */}
                                 <p class="genres" style={{ marginBottom: "25px" }}>
                                     RATING
                                 </p>
