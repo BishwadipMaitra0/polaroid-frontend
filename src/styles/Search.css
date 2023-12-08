@@ -1,3 +1,10 @@
+.searchpage_main_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .main_searchpage {
   background-color: #14181c;
   font-family: sans-serif;
@@ -6,7 +13,8 @@
   /* width: 100%; */
   /* margin: 0% 20% 0% 20%; */
   min-height: 100vh;
-  min-width: 900px;
+  /* min-width: 900px; */
+  width: 60%;
   /* width: 100%; */
   /* margin: 0% 20% 0% 20%; */
 }
