@@ -20,6 +20,7 @@ import Search from './pages/Search'
 import Follower from './pages/Followers'
 import Following from './pages/Following'
 import OthersProfile from './pages/OthersProfile'
+import WatchedFilms from './pages/WatchedFilms'
 
 const App = () => {
 
@@ -53,6 +54,7 @@ const App = () => {
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
+      <Route path='/user/watchedfilms' element={<WatchedFilms />}></Route>
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
