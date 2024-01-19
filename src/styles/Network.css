@@ -1,16 +1,22 @@
-body {
-  /* min-height: 100vh; */
+.network-main {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
   background-color: #14181c;
   font-family: sans-serif;
-}
-
-.main {
-  min-width: 45%;
+  width: 100%;
   min-height: 100vh;
 }
 
-.follower-watched-count, .follower-list-count, .follower-favorite-count {
-  color:  #789;
+.network-content {
+  width: 55%;
+}
+
+.follower-watched-count,
+.follower-list-count,
+.follower-favorite-count {
+  color: #789;
   font-size: 14px;
   margin-left: 5px;
   letter-spacing: 1px;
@@ -18,12 +24,16 @@ body {
   transition: 0.4s;
 }
 
-.follower-watched-count:hover, .follower-list-count:hover, .follower-favorite-count:hover {
+.follower-watched-count:hover,
+.follower-list-count:hover,
+.follower-favorite-count:hover {
   color: whitesmoke;
   transition: 0.4s;
 }
 
-.follower-watched, .follower-list, .follower-favorite {
+.follower-watched,
+.follower-list,
+.follower-favorite {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -47,7 +57,7 @@ body {
   border-bottom: 1px solid #345;
 }
 
-.header-line {
+.network-header-line {
   border-bottom: 1px solid #345;
 }
 
@@ -82,13 +92,13 @@ body {
   font-size: 14px;
 }
 
-.follower-network > a {
+.follower-network>a {
   text-decoration: none;
   color: #789;
   transition: 0.4s;
 }
 
-.follower-network > a:hover {
+.follower-network>a:hover {
   color: #bcd;
   transition: 0.4s;
 }
@@ -108,7 +118,7 @@ body {
   transition: 0.4s;
 }
 
-.select-section {
+.network-select-section {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -141,7 +151,7 @@ body {
 }
 
 .active:hover {
-  color : #ff9010 !important;
+  color: #ff9010 !important;
 }
 
 .section-name:hover {
