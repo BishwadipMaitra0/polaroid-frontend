@@ -16,6 +16,9 @@ const Followers = () => {
   const fetchData = async () => {
     setLoading(true)
 
+    if (user.data.username == undefined)
+        return
+    
     console.log(user.data.username)
 
     const followers = await axios.get(`http://localhost:3500/followers/${user.data.username}`)

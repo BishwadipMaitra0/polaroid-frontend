@@ -18,7 +18,7 @@ import Films from './pages/Films'
 import Register from './pages/Register'
 import Search from './pages/Search'
 import Follower from './pages/Followers'
-import Following from './pages/following'
+import Following from './pages/Following'
 
 const App = () => {
 
