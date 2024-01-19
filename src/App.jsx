@@ -53,9 +53,9 @@ const App = () => {
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
-      <Route path='/followers/:username' element={<Follower />}></Route>
-      <Route path='/following/:username' element={<Following />}></Route>
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
+      <Route path='/followers/:user' element={<Follower />}></Route>
+      <Route path='/following/:user' element={<Following />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
