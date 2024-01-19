@@ -19,6 +19,7 @@ import Register from './pages/Register'
 import Search from './pages/Search'
 import Follower from './pages/Followers'
 import Following from './pages/Following'
+import OthersProfile from './pages/OthersProfile'
 
 const App = () => {
 
@@ -54,6 +55,7 @@ const App = () => {
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
       <Route path='/followers/:username' element={<Follower />}></Route>
       <Route path='/following/:username' element={<Following />}></Route>
+      <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
