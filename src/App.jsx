@@ -19,6 +19,8 @@ import Register from './pages/Register'
 import Search from './pages/Search'
 import Follower from './pages/Followers'
 import Following from './pages/following'
+import AdminDashboard from './pages/AdminDashboard'
+import AdminRegister from './pages/AdminRegister'
 
 const App = () => {
 
@@ -59,6 +61,8 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='/search' element={<Search />}></Route>
+      <Route path='/admin/dashboard' element={<AdminDashboard/>}></Route>
+      <Route path='/admin/register' element={<AdminRegister/>}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

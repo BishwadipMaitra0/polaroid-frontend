@@ -1,0 +1,60 @@
+.admin_main{
+  background-color: #14181c;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.admin_table{
+    color: white;
+    word-wrap:break-word;
+    table-layout: fixed;
+    margin-top: 25px;
+}
+
+.admin_table, .admin_th, .admin_td {
+    border: 1px solid rgb(86, 92, 100);
+}
+
+.admin_th, .admin_td{
+    padding: 15px;
+}
+
+.admin_hr {
+    border: 1px solid rgb(86, 92, 100);
+}
+
+.admin_details > .admin_summary {
+  list-style: none;
+}
+.admin_details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.delete_column {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.admin_button {
+    width: 20%;
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: 550;
+}
+
+.admin_button:hover {
+    opacity: 0.8;
+}
+
+.admin_button:active{
+    background-color: red;
+    color: white;
+    border: 1px solid transparent;
+}
