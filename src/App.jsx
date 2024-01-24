@@ -21,6 +21,8 @@ import Follower from './pages/Followers'
 import Following from './pages/following'
 import AdminDashboard from './pages/AdminDashboard'
 import AdminRegister from './pages/AdminRegister'
+import OthersProfile from './pages/OthersProfile'
+import WatchedFilms from './pages/WatchedFilms'
 
 const App = () => {
 
@@ -54,8 +56,10 @@ const App = () => {
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
-      <Route path='/followers/:username' element={<Follower />}></Route>
-      <Route path='/following/:username' element={<Following />}></Route>
+      <Route path='/user/watchedfilms' element={<WatchedFilms />}></Route>
+      <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
+      <Route path='/followers/:user' element={<Follower />}></Route>
+      <Route path='/following/:user' element={<Following />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
