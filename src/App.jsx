@@ -18,9 +18,11 @@ import Films from './pages/Films'
 import Register from './pages/Register'
 import Search from './pages/Search'
 import Follower from './pages/Followers'
-import Following from './pages/following'
+import Following from './pages/Following'
 import AdminDashboard from './pages/AdminDashboard'
+import TheaterAdminDashboard from './pages/TheaterAdminDashboard'
 import AdminRegister from './pages/AdminRegister'
+import TheaterAdminTiming from './pages/TheaterAdminTiming'
 import OthersProfile from './pages/OthersProfile'
 import WatchedFilms from './pages/WatchedFilms'
 
@@ -67,6 +69,8 @@ const App = () => {
       <Route path='/search' element={<Search />}></Route>
       <Route path='/admin/dashboard' element={<AdminDashboard/>}></Route>
       <Route path='/admin/register' element={<AdminRegister/>}></Route>
+      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard/>}></Route>
+      <Route path='/theater_admin/timing' element={<TheaterAdminTiming/>}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
