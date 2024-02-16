@@ -12,7 +12,7 @@ const Navbar = () => {
   const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  
+
   const logoutHandler = () => {
     dispatch(fetchOutUser())
     navigate('/')
@@ -45,9 +45,9 @@ const Navbar = () => {
           <li class="navbar-list-element">
             <a class="navbar-anchor" href="/films" id="films">Films</a>
           </li>
-          {/* <li class="navbar-list-element">
+          <li class="navbar-list-element">
             <a class="navbar-anchor" href="/lists" id="lists">Lists</a>
-          </li> */}
+          </li>
 
           {/* <% if (check === false) { %> */}
           {!user.isLoggedIn ?
@@ -68,15 +68,15 @@ const Navbar = () => {
                   <NavDropdown.Item href="/user/settings">
                     Settings
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item href="/user/list">
+                  <NavDropdown.Item href="/user/list">
                     My Lists
                   </NavDropdown.Item>
-                  <NavDropdown.Item href="/user/watchlist">
+                  {/*<NavDropdown.Item href="/user/watchlist">
                     Watchlist
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href={'/followers/' + user.data && user.data.username ? user.data.username.split(" ").join("%20") : ""}>
-                    Network
                   </NavDropdown.Item> */}
+                  <NavDropdown.Item href={`/followers/${user.data.username ? user.data.username.split(" ").join("%20") : ""}`}>
+                    Network
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={() => logoutHandler()}>
                     Sign Out
