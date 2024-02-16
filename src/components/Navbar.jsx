@@ -12,7 +12,7 @@ const Navbar = () => {
   const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  
+
   const logoutHandler = () => {
     dispatch(fetchOutUser())
     navigate('/')
@@ -45,9 +45,9 @@ const Navbar = () => {
           <li class="navbar-list-element">
             <a class="navbar-anchor" href="/films" id="films">Films</a>
           </li>
-          {/* <li class="navbar-list-element">
+          <li class="navbar-list-element">
             <a class="navbar-anchor" href="/lists" id="lists">Lists</a>
-          </li> */}
+          </li>
 
           {/* <% if (check === false) { %> */}
           {!user.isLoggedIn ?

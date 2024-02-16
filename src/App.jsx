@@ -27,6 +27,7 @@ import OthersProfile from './pages/OthersProfile'
 import WatchedFilms from './pages/WatchedFilms'
 import Watchlist from './pages/Watchlist'
 import TheaterAdminLogin from './pages/TheaterAdminLogin'
+import UesrList from './pages/UserList'
 
 const App = () => {
 
@@ -62,6 +63,7 @@ const App = () => {
       <Route path='/user/login' element={<Login />}></Route>
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
+      <Route path='/user/list' element={<UesrList />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
       <Route path='/user/watchedfilms' element={<WatchedFilms editable={true} />}></Route>
       <Route path='/user/watchlist' element={<Watchlist editable={true} />}></Route>
@@ -73,11 +75,11 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='/search' element={<Search />}></Route>
-      <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin}/>}></Route>
-      <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin}/>}></Route>
-      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
+      <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
+      <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
+      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
-      <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
+      <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
