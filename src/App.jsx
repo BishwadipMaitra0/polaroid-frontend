@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Navbar from './components/Navbar'
@@ -25,12 +25,17 @@ import AdminRegister from './pages/AdminRegister'
 import TheaterAdminTiming from './pages/TheaterAdminTiming'
 import OthersProfile from './pages/OthersProfile'
 import WatchedFilms from './pages/WatchedFilms'
+import Watchlist from './pages/Watchlist'
+import TheaterAdminLogin from './pages/TheaterAdminLogin'
 
 const App = () => {
 
   const dispatch = useAppDispatch()
   const User = useAppSelector((state) => state.user)
   const LoginState = useAppSelector((state) => state.login)
+
+  const [adminLogin, setAdminLogin] = useState(false)
+  const [theatreAdminLogin, setTheatreAdminLogin] = useState(false)
 
   useEffect(() => {
     dispatch(fetchUserDetails({}))
@@ -58,7 +63,8 @@ const App = () => {
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
-      <Route path='/user/watchedfilms' element={<WatchedFilms />}></Route>
+      <Route path='/user/watchedfilms' element={<WatchedFilms editable={true} />}></Route>
+      <Route path='/user/watchlist' element={<Watchlist editable={true} />}></Route>
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
@@ -67,10 +73,11 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='/search' element={<Search />}></Route>
-      <Route path='/admin/dashboard' element={<AdminDashboard/>}></Route>
-      <Route path='/admin/register' element={<AdminRegister/>}></Route>
-      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard/>}></Route>
-      <Route path='/theater_admin/timing' element={<TheaterAdminTiming/>}></Route>
+      <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin}/>}></Route>
+      <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin}/>}></Route>
+      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
+      <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
+      <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

@@ -1,14 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 import "../styles/Login.css"
-import { useNavigate } from 'react-router'
 import { useAppSelector } from '../app/hooks'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
-const Register = () => {
+const TheatreAdminTiming = (props) => {
+
+    const { theatreAdminLogin, setTheatreAdminLogin } = props
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!theatreAdminLogin) {
+            navigate('/theater_admin/login')
+        }
+    }, [])
 
     const [error, setError] = useState("")
     const [error2, setError2] = useState("")
-    const navigate = useNavigate()
 
     const [location, setLocation] = useState("")
     const [mname, setMName] = useState("")
@@ -197,4 +205,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default TheatreAdminTiming

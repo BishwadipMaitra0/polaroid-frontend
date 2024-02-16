@@ -1,10 +1,20 @@
 import Loader from '../components/Loader'
 import AdminNavbar from '../components/TheaterAdminNavbar'
 import Footer from '../components/Footer'
-
+import { useEffect } from 'react'
 import '../styles/AdminDashboard.css'
+import { useNavigate } from 'react-router'
 
-const TheaterAdminDashboard = () => {
+const TheaterAdminDashboard = (props) => {
+
+    const { theatreAdminLogin, setTheatreAdminLogin } = props
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!theatreAdminLogin) {
+            navigate('/theater_admin/login')
+        }
+    }, [])
 
     return (
     <>
@@ -12,8 +22,8 @@ const TheaterAdminDashboard = () => {
         <div class="admin_main">
         <table class="admin_table">
             <tr>
-                <th class="admin_th">Name of Admin</th>
-                <th class="admin_th">No. of theaters</th> 
+                <th class="admin_th">Name of Theatre</th>
+                <th class="admin_th">No. of movies</th> 
                 <th class="admin_th"> </th>
             </tr>
             <tr>

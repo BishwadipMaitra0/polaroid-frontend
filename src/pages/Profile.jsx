@@ -92,7 +92,7 @@ const Profile = ({ currentUser }) => {
                   <a href="/user/list" class="section-name">list</a>
                 </div>
                 <div class="profile_nav-link">
-                  <a href="/user/followers" class="section-name">network</a>
+                  <a href={`/followers/${user.data.username}`} class="section-name">network</a>
                 </div>
               </div>
 

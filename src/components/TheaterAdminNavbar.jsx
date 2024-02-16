@@ -24,10 +24,10 @@ const TheaterAdminNavbar = () => {
       <div id="navElementsDiv">
         <ul id="navElements">
           <li class="navbar-list-element">
-            <a class="navbar-anchor" href="/theater_admin/timing" id="theater_admin_timing">Add timing</a>
+            <button class="navbar-anchor" onClick={() => navigate('/theater_admin/timing')} id="theater_admin_timing">Add timing</button>
           </li>
           <li class="navbar-list-element">
-            <a class="navbar-anchor" href="/" id="home">Logout</a>
+            <button class="navbar-anchor" onClick={() => navigate('/')} id="home">Logout</button>
           </li>
         </ul>
       </div>

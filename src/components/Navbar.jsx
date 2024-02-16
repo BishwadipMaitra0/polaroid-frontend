@@ -63,20 +63,23 @@ const Navbar = () => {
                   menuVariant="dark"
                 >
                   <NavDropdown.Item href="/user/profile">
-                    My Account
+                    My Profile
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/user/settings">
                     Settings
                   </NavDropdown.Item>
-                  {/* <NavDropdown.Item href="/user/list">
+                  <NavDropdown.Item href="/user/list">
                     My Lists
                   </NavDropdown.Item>
                   <NavDropdown.Item href="/user/watchlist">
                     Watchlist
                   </NavDropdown.Item>
-                  <NavDropdown.Item href={'/followers/' + user.data && user.data.username ? user.data.username.split(" ").join("%20") : ""}>
+                  <NavDropdown.Item href="/user/watchedfilms">
+                    Watched Films
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href={'/followers/' + user.data && user.data.username}>
                     Network
-                  </NavDropdown.Item> */}
+                  </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={() => logoutHandler()}>
                     Sign Out

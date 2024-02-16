@@ -57,7 +57,7 @@ const Followers = () => {
                                             <div class="follower-metadata">
                                                 <a href={"/profile/" + item.username} class="follower-name"> {item.username} </a>
                                                 <div class="follower-network">
-                                                    <a href={"/followers/" + item.username}> {item.followers}followers</a>,
+                                                    <a href={"/followers/" + item.username}> {item.followers} followers</a>,
                                                     <a href={"/following/" + item.username}> following {item.following}</a>
                                                 </div>
                                             </div>

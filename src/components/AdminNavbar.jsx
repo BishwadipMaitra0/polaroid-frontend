@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import "../styles/Nav.css"
 import { useAppDispatch, useAppSelector } from '../app/hooks'
@@ -25,7 +24,7 @@ const AdminNavbar = () => {
       <div id="navElementsDiv">
         <ul id="navElements">
           <li class="navbar-list-element">
-            <a class="navbar-anchor" href="/admin/register" id="admin_register">Add admin</a>
+            <a class="navbar-anchor" href="/admin/addtadmin" id="admin_register">Add theatre admin</a>
           </li>
           <li class="navbar-list-element">
             <a class="navbar-anchor" href="/" id="home">Logout</a>
