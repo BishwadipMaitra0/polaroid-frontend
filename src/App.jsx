@@ -25,6 +25,7 @@ import AdminRegister from './pages/AdminRegister'
 import TheaterAdminTiming from './pages/TheaterAdminTiming'
 import OthersProfile from './pages/OthersProfile'
 import WatchedFilms from './pages/WatchedFilms'
+import UesrList from './pages/UserList'
 
 const App = () => {
 
@@ -57,6 +58,7 @@ const App = () => {
       <Route path='/user/login' element={<Login />}></Route>
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
+      <Route path='/user/list' element={<UesrList />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
       <Route path='/user/watchedfilms' element={<WatchedFilms />}></Route>
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
@@ -67,10 +69,10 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='/search' element={<Search />}></Route>
-      <Route path='/admin/dashboard' element={<AdminDashboard/>}></Route>
-      <Route path='/admin/register' element={<AdminRegister/>}></Route>
-      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard/>}></Route>
-      <Route path='/theater_admin/timing' element={<TheaterAdminTiming/>}></Route>
+      <Route path='/admin/dashboard' element={<AdminDashboard />}></Route>
+      <Route path='/admin/register' element={<AdminRegister />}></Route>
+      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard />}></Route>
+      <Route path='/theater_admin/timing' element={<TheaterAdminTiming />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
