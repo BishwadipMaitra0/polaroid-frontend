@@ -42,6 +42,7 @@ const Home = () => {
     }
 
     useEffect(() => {
+        document.title = "Home"
         fetchData()
     }, [])
 

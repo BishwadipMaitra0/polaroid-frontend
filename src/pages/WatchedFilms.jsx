@@ -17,9 +17,9 @@ const WatchedFilms = ({ editable }) => {
     }
 
     useEffect(() => {
-        
+        document.title = "Watched Films"
     }, [, user])
-    
+
     return (
         <div class="wfmain">
             <Navbar />

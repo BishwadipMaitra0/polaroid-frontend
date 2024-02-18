@@ -16,19 +16,20 @@ const Profile = ({ currentUser }) => {
   const getUserData = async () => {
     setLoading(true)
     const res = await axios.post("http://localhost:3500/user/getuser", {
-        username: user.data.username
+      username: user.data.username
     })
-    .then((data) => {
+      .then((data) => {
         console.log(data.data)
         setLoading(false)
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(err)
         setLoading(false)
-    })
+      })
   }
 
   useEffect(() => {
+    document.title = "Profile"
     getUserData()
   }, [, user])
 

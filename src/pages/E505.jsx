@@ -1,7 +1,12 @@
-import React from 'react'
+import { React, useEffect } from 'react'
 import "../styles/505.css"
 
 const E505 = () => {
+
+  useEffect(() => {
+    document.title = "Network Error"
+  }, [])
+
   return (
     <div id="notfound">
       <div class="notfound">

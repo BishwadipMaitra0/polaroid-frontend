@@ -59,6 +59,10 @@ const Settings = () => {
   }
 
   useEffect(() => {
+    document.title = "Settings"
+  }, [])
+
+  useEffect(() => {
     setUsername(user.data.username)
   }, [user])
 
@@ -75,24 +79,24 @@ const Settings = () => {
       newPassword: newPassword,
       email: user.data.email
     })
-    .then((data) => {
+      .then((data) => {
         console.log(data)
-        setName({name: username})
+        setName({ name: username })
         navigate('/')
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         setError(err.response.data.error)
-    })
+      })
   }
 
   useEffect(() => {
     if (newPassword !== repeatNewPassword) {
-        setDisabled(true)
-        setError("Passwords don't match!")
+      setDisabled(true)
+      setError("Passwords don't match!")
     }
     else {
-        setDisabled(false)
-        setError("")
+      setDisabled(false)
+      setError("")
     }
   }, [newPassword, repeatNewPassword])
 
