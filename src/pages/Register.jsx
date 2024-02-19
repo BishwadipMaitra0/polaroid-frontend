@@ -257,6 +257,10 @@ const Register = () => {
     }
 
     useEffect(() => {
+        document.title = "Register"
+    }, [])
+
+    useEffect(() => {
         validateForm()
     }, [email, username, password, repeatPassword, isPassSame, isInvalidEmail, isPassStrong])
 

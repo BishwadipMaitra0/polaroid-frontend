@@ -26,18 +26,22 @@ const UesrList = () => {
   const handleShow = () => setShowModal(true)
 
   const handleListCreate = async () => {
+    setLoading(true)
     const newlist = await axios.post('http://localhost:3500/user/createlist', {
       listName: listHeading,
       description: listDesc
     })
 
     await newlist.data
+    setLoading(false)
 
     handleClose()
     fetchData()
   }
 
   const deleteSubmitHandler = async (listname) => {
+    setLoading(true)
+
     const deleteList = await axios.post('http://localhost:3500/user/list/delete', {
       username: user?.data?.username,
       listName: listname
@@ -47,6 +51,8 @@ const UesrList = () => {
 
     console.log(listname)
     fetchData()
+
+    setLoading(false)
   }
 
 
@@ -68,6 +74,7 @@ const UesrList = () => {
 
   useEffect(() => {
     fetchData()
+    document.title = "User Lists"
   }, [, user])
 
 

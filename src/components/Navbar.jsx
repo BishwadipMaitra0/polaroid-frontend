@@ -77,7 +77,7 @@ const Navbar = () => {
                   <NavDropdown.Item href="/user/watchedfilms">
                     Watched Films
                   </NavDropdown.Item>
-                  <NavDropdown.Item href={'/followers/' + user.data && user.data.username}>
+                  <NavDropdown.Item href={'/followers/' + user.data.username}>
                     Network
                   </NavDropdown.Item>
                   <NavDropdown.Divider />

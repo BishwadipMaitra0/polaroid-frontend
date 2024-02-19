@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import "../styles/Search.css"
 import axios from 'axios'
 import getMovieByName from '../api/getMovieByName'
@@ -9,14 +9,20 @@ const Search = () => {
 
     const [data, setData] = useState([])
     const [searchQuery, setSearchQuery] = useState("")
+    const [absQuery, setAbsQuery] = useState("")
 
     const searchHandler = async (e) => {
-        console.log(searchQuery)
+        // console.log(searchQuery)
         e.preventDefault()
         const res = await getMovieByName(searchQuery)
         console.log(res)
         setData(res)
+        setAbsQuery(searchQuery)
     }
+
+    useEffect(() => {
+        document.title = "Search"
+    }, [])
 
     return (
         <>
@@ -31,10 +37,13 @@ const Search = () => {
                             </svg>
                         </button>
                     </form>
-                    {data && data.results ?
-                        <div class="section-heading-search"> Enter your search query above </div>
+                    {data.length === 0 ?
+                        (absQuery === "") ?
+                            <div class="section-heading-search"> Enter your search query above </div>
+                            :
+                            <div class="section-heading-search"> No matches found for "{absQuery}" </div>
                         :
-                        <div class="section-heading-search">found {data.length} matches for "{searchQuery}" </div>
+                        <div class="section-heading-search">found {data.length} matches for "{absQuery}" </div>
                     }
                     {data && data.map((item, index) =>
                         <div class="element-container">

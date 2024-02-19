@@ -26,6 +26,7 @@ const Followers = () => {
     }
 
     useEffect(() => {
+        document.title = "Followers"
         fetchData()
     }, [])
 

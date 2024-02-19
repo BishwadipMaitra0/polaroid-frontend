@@ -9,7 +9,7 @@ const Watchlist = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
 
-    const removedFromWatchlist= async (id) => {
+    const removedFromWatchlist = async (id) => {
         const res = await axios.post(`http://localhost:3500/user/watchlist/${id}`, {
             email: user?.data?.email
         })
@@ -17,9 +17,9 @@ const Watchlist = ({ editable }) => {
     }
 
     useEffect(() => {
-        
+        document.title = "Watchlist"
     }, [, user])
-    
+
     return (
         <div class="wfmain">
             <Navbar />
