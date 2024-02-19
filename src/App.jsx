@@ -28,6 +28,7 @@ import WatchedFilms from './pages/WatchedFilms'
 import Watchlist from './pages/Watchlist'
 import TheaterAdminLogin from './pages/TheaterAdminLogin'
 import UesrList from './pages/UserList'
+import AdminLogin from './pages/AdminLogin'
 
 const App = () => {
 
@@ -77,6 +78,7 @@ const App = () => {
       <Route path='/search' element={<Search />}></Route>
       <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
+      <Route path='/admin/login' element={<AdminLogin adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
