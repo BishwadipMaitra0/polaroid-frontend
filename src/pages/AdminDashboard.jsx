@@ -53,7 +53,7 @@ const AdminDashboard = (props) => {
 
     return (
         <>
-            <AdminNavbar />
+            <AdminNavbar adminLogin={adminLogin} setAdminLogin={setAdminLogin} />
             <div class="admin_main">
                 <table class="admin_table">
                     <tr>

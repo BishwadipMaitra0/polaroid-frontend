@@ -18,7 +18,7 @@ const TheaterAdminDashboard = (props) => {
 
     return (
     <>
-        <AdminNavbar/>
+        <AdminNavbar theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />
         <div class="admin_main">
         <table class="admin_table">
             <tr>

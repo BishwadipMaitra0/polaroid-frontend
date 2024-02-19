@@ -7,15 +7,17 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 //import { fetchOutUser } from '../features/userSlice';
 
-const TheaterAdminNavbar = () => {
+const TheaterAdminNavbar = (props) => {
+
+    const { theatreAdminLogin, setTheatreAdminLogin } = props
 
   //const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
   //const dispatch = useAppDispatch()
   
   const logoutHandler = () => {
-    //dispatch(fetchOutUser())
-    navigate('/')
+    setTheatreAdminLogin(false)
+    navigate('/theater_admin/login')
   }
 
   return (

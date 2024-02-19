@@ -30,23 +30,12 @@ const TheatreAdminTiming = (props) => {
 
     const altert1Ref = useRef(null)
     const altert2Ref = useRef(null)
-
-    const User = useAppSelector((state) => state.user)
     
     useEffect(() => {
-        // console.log(User)
-// TODO: Uncomment this and update it backend part
-//        if (User.status === "failed" && User.method === "login") {
-//            setError(User.error)
-//        }
-//        else if (User.status === "succeeded" && User.method === "login") {
-//            navigate("/")
-//        }
-//
-//        if (User.isLoggedIn === true) {
-//            navigate('/', { replace: true })
-//        }
-    }, [, User])
+        if (!theatreAdminLogin) {
+            navigate('/theater_admin/login')
+        }
+    }, [])
 
     function disableButton() {
 //        if (!isPassSame || isInvalidEmail || !isPassStrong) {

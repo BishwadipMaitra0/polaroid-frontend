@@ -9,11 +9,19 @@ const WatchedFilms = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
 
-    const removedFromWatched = async (id) => {
-        const res = await axios.post(`http://localhost:3500/user/watched/${id}`, {
-            email: user?.data?.email
-        })
-        const resData = await res.data
+    const removedFromWatched = async (e, id) => {
+        e.preventDefault()
+        try {
+            const res = await axios.post(`http://localhost:3500/user/watcheddelete/${id}`, {
+                email: user.data.email
+            })
+            const resData = await res.data
+            
+            console.log(resData)
+        }
+        catch (err) {
+            console.log(err)
+        }
     }
 
     useEffect(() => {
@@ -44,8 +52,8 @@ const WatchedFilms = ({ editable }) => {
                                     />
                                 </a>
                                 {editable && (
-                                    <form>
-                                        <button type="submit" className="wfdelete-film-button" onClick={() => removedFromWatched(film.id)}>
+                                    <form onSubmit={(e) => removedFromWatched(e, film.id)}>
+                                        <button type="submit" className="wfdelete-film-button">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="18"

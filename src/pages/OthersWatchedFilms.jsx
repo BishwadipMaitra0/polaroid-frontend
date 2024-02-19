@@ -5,28 +5,35 @@ import Footer from '../components/Footer'
 import "../styles/WatchedFilms.css"
 import axios from 'axios'
 
-const Watchlist = ({ editable }) => {
+const WatchedFilms = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
+    const { username } = useParams()
 
-    const removedFromWatchlist = async (e, id) => {
-        e.preventDefault()
-        console.log(user.data.email)
-        try {
-            const res = await axios.post(`http://localhost:3500/user/watchlistdelete/${id}`, {
-                email: user.data.email
+    const getUserData = async () => {
+        setLoading(true)
+        const res = await axios.post("http://localhost:3500/user/getuser", {
+            username: username
+        })
+            .then((data) => {
+                const userData = data.data
+                for (let i=0; i<userData?.user?.followers?.length; i++) {
+                    if (userData?.user?.followers[i] === user?.data?.email) {
+                        setFollowingThisUser(true)
+                        break
+                    }
+                }
+                setThisUserData(userData)
+                setLoading(false)
             })
-            const resData = await res.data
-
-            console.log(resData)
-        }
-        catch (err) {
-            console.log(err)
-        }
+            .catch((err) => {
+                console.log(err)
+                setLoading(false)
+            })
     }
 
     useEffect(() => {
-        document.title = "Watchlist"
+        document.title = "Watched Films"
     }, [, user])
 
     return (
@@ -34,7 +41,7 @@ const Watchlist = ({ editable }) => {
             <Navbar />
             <div class="wf-main">
                 <div class="wfheader">
-                    <div> {user?.data?.username}'s watchlist</div>
+                    <div> {user?.data?.username}'s watched films</div>
                     {/* <label class="switch">
                         <input type="checkbox" class="grid-num-control" autocomplete="off" onclick="changeGridLayout()"
                             id="grid-checkbox" />
@@ -42,7 +49,7 @@ const Watchlist = ({ editable }) => {
                     </label> */}
                 </div>
                 <div class="wfgrid-container" id="wfgrid-container">
-                    {user?.data?.planToWatch?.map((film) => (
+                    {user?.data?.watched?.map((film) => (
                         <div key={film.id} className="wfgrid-img-container">
                             <div className="wfgrid-img-elements">
                                 <a href={`/film/${film.id}`}>
@@ -53,7 +60,7 @@ const Watchlist = ({ editable }) => {
                                     />
                                 </a>
                                 {editable && (
-                                    <form onSubmit={(e) => removedFromWatchlist(e, film.id)}>
+                                    <form onSubmit={(e) => removedFromWatched(e, film.id)}>
                                         <button type="submit" className="wfdelete-film-button">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -79,4 +86,4 @@ const Watchlist = ({ editable }) => {
     )
 }
 
-export default Watchlist
+export default WatchedFilms

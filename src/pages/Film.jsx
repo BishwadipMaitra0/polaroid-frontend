@@ -87,92 +87,115 @@ const Film = () => {
     }
 
     const addToFavs = async () => {
-        const res = await axios.post(`http://localhost:3500/addtofavs/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsFavourite(true)
+        try {
+            const res = await axios.post(`http://localhost:3500/addtofavs/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsFavourite(true)
+            }
+        } catch (err) {
+            console.log(err)
         }
     }
 
     const removeFromFavs = async () => {
-        const res = await axios.post(`http://localhost:3500/removefromfavs/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsFavourite(false)
+        try {
+            const res = await axios.post(`http://localhost:3500/removefromfavs/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsFavourite(false)
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // setIsFavourite(false)
     }
 
     const addToWatchlist = async () => {
-        const res = await axios.post(`http://localhost:3500/addtowatchlist/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsWatchlist(true)
+        try {
+            const res = await axios.post(`http://localhost:3500/addtowatchlist/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsWatchlist(true)
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // setIsWatchlist(true)
     }
 
     const removeFromWatchlist = async () => {
-        const res = await axios.post(`http://localhost:3500/removefromwatchlist/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsWatchlist(false)
+        try {
+            const res = await axios.post(`http://localhost:3500/removefromwatchlist/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsWatchlist(false)
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // setIsWatchlist(false)
     }
 
     const addToWatched = async () => {
-        const res = await axios.post(`http://localhost:3500/addtowatched/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsWatched(true)
+        try {
+            const res = await axios.post(`http://localhost:3500/addtowatched/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsWatched(true)
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // setIsWatched(true)
     }
 
     const removeFromWatched = async () => {
-        const res = await axios.post(`http://localhost:3500/removefromwatched/${id}`, {
-            email: user.data.email
-        })
-        await res.data
-        console.log(res)
-
-        if (res.status < 400) {
-            setIsWatched(false)
+        try {
+            const res = await axios.post(`http://localhost:3500/removefromwatched/${id}`, {
+                email: user.data.email
+            })
+            await res.data
+            console.log(res)
+    
+            if (res.status < 400) {
+                setIsWatched(false)
+            }
+        } catch (err) {
+            console.log(err)
         }
-        // setIsWatched(false)
     }
 
     const addToList = async (listName) => {
         console.log(listName)
 
-        const res = await axios.post("http://localhost:3500/user/addtolist", {
-            listItem: id,
-            listName: listName
-        })
-        await res.data
-
-        console.log(res.data)
+        try {
+            const res = await axios.post("http://localhost:3500/user/addtolist", {
+                listItem: id,
+                listName: listName
+            })
+            await res.data
+    
+            console.log(res.data)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
     useEffect(() => {
@@ -333,7 +356,7 @@ const Film = () => {
                                                         {/* </a> */}
                                                     </button>
                                                     :
-                                                    <button type="button" onClick={() => removeFromWatched()}>
+                                                    <button type="button" onClick={() => removeFromWatchlist()}>
                                                         {/* <a href={'/removefromwatchlist/' + data.id}> */}
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="wheat" class="bi bi-calendar-check-fill" viewBox="0 0 16 16">
                                                             <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2zm-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
