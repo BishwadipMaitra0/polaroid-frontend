@@ -6,6 +6,7 @@ import "../styles/AboutUs.css"
 const AboutUs = () => {
   return (
     <>
+      {document.title = "About Us"}
       <Navbar />
       <div class="main_abtus">
         <article>

@@ -31,7 +31,7 @@ const Login = () => {
 
     function emailValidation() {
         var emailRegex = /\S+@\S+\.\S+/;
-        
+
         if (email === "" || !email.match(emailRegex)) {
             setAlertZone("Please enter a valid email address")
             setIsInvalidEmail(true);
@@ -39,10 +39,10 @@ const Login = () => {
             setAlertZone("")
             setIsInvalidEmail(false);
         }
-        
+
         onFocusoutEmail();
         disableButton();
-        
+
         return !isInvalidEmail;
     }
 
@@ -80,22 +80,23 @@ const Login = () => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        dispatch(fetchUser({email: email, password: password}))
+        dispatch(fetchUser({ email: email, password: password }))
     }
 
     useEffect(() => {
         // console.log(User)
-        if (User.status==="failed" && User.method==="login") {
+        document.title = "Login"
+        if (User.status === "failed" && User.method === "login") {
             setAlertZone(User.error)
         }
-        else if (User.status==="succeeded" && User.method==="login") {
+        else if (User.status === "succeeded" && User.method === "login") {
             navigate("/")
         }
 
         if (User.isLoggedIn === true) {
-            navigate('/', {replace: true})
+            navigate('/', { replace: true })
         }
-    }, [,User])
+    }, [, User])
 
     return (
         <div className="mainLogin">
