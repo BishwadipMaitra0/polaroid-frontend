@@ -7,7 +7,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import Loader from '../components/Loader'
 
-const OthersWatchedFilms = () => {
+const OthersWatchlist = () => {
 
     const user = useAppSelector((state) => state.user)
     const { username } = useParams()
@@ -32,7 +32,7 @@ const OthersWatchedFilms = () => {
     }
 
     useEffect(() => {
-        document.title = "Watched Films"
+        document.title = "Watchlist"
         getUserData()
     }, [, user])
 
@@ -47,7 +47,7 @@ const OthersWatchedFilms = () => {
                     <Navbar />
                     <div class="wf-main">
                         <div class="wfheader">
-                            <div> {thisUserData?.user?.username}'s watched films</div>
+                            <div> {thisUserData?.user?.username}'s watchlist</div>
                             {/* <label class="switch">
                         <input type="checkbox" class="grid-num-control" autocomplete="off" onclick="changeGridLayout()"
                             id="grid-checkbox" />
@@ -55,7 +55,7 @@ const OthersWatchedFilms = () => {
                     </label> */}
                         </div>
                         <div class="wfgrid-container" id="wfgrid-container">
-                            {thisUserData?.user?.watched?.map((film) => (
+                            {thisUserData?.user?.planToWatch?.map((film) => (
                                 <div key={film.id} className="wfgrid-img-container">
                                     <div className="wfgrid-img-elements">
                                         <a href={`/film/${film.id}`}>
@@ -77,4 +77,4 @@ const OthersWatchedFilms = () => {
     )
 }
 
-export default OthersWatchedFilms
+export default OthersWatchlist

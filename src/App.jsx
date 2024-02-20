@@ -29,6 +29,12 @@ import Watchlist from './pages/Watchlist'
 import TheaterAdminLogin from './pages/TheaterAdminLogin'
 import UesrList from './pages/UserList'
 import AdminLogin from './pages/AdminLogin'
+import OthersWatchedFilms from './pages/OthersWatchedFilms'
+import OthersWatchlist from './pages/OthersWatchlist'
+import MyListPage from './pages/MyListPage'
+import OthersListPage from './pages/OthersListPage'
+import OthersLists from './pages/OthersLists'
+import Lists from './pages/Lists'
 
 const App = () => {
 
@@ -65,8 +71,11 @@ const App = () => {
       <Route path='/user/register' element={<Register />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/list' element={<UesrList />}></Route>
+      <Route path='/user/list/:listName' element={<MyListPage isTrending={false} />}></Route>
       <Route path='/user/profile' element={<Profile currentUser={true} />}></Route>
       <Route path='/user/watchedfilms' element={<WatchedFilms editable={true} />}></Route>
+      <Route path='/watchedfilms/:username' element={<OthersWatchedFilms />}></Route>
+      <Route path='/watchlist/:username' element={<OthersWatchlist />}></Route>
       <Route path='/user/watchlist' element={<Watchlist editable={true} />}></Route>
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
@@ -76,6 +85,9 @@ const App = () => {
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
       <Route path='/search' element={<Search />}></Route>
+      <Route path='/list/:username/:listName' element={<OthersListPage isTrending={false} />}></Route>
+      <Route path='/lists/:username' element={<OthersLists />}></Route>
+      <Route path='/lists' element={<Lists />}></Route>
       <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/login' element={<AdminLogin adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
