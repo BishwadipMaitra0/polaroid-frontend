@@ -30,6 +30,7 @@ const Film = () => {
     const [isFavourite, setIsFavourite] = useState(false)
     const [isWatched, setIsWatched] = useState(false)
     const [isWatchlist, setIsWatchlist] = useState(false)
+    const [moviename, setMoviename] = useState("")
 
     const [stars, setStars] = useState(0)
     const [review, setReview] = useState("")
@@ -84,6 +85,8 @@ const Film = () => {
         }
 
         setLoading(false)
+
+        setMoviename(() => movieData.title)
     }
 
     const addToFavs = async () => {
@@ -93,7 +96,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsFavourite(true)
             }
@@ -109,7 +112,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsFavourite(false)
             }
@@ -125,7 +128,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsWatchlist(true)
             }
@@ -141,7 +144,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsWatchlist(false)
             }
@@ -157,7 +160,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsWatched(true)
             }
@@ -173,7 +176,7 @@ const Film = () => {
             })
             await res.data
             console.log(res)
-    
+
             if (res.status < 400) {
                 setIsWatched(false)
             }
@@ -191,7 +194,7 @@ const Film = () => {
                 listName: listName
             })
             await res.data
-    
+
             console.log(res.data)
         } catch (err) {
             console.log(err)
@@ -199,9 +202,13 @@ const Film = () => {
     }
 
     useEffect(() => {
-        document.title = "Film Page"
         getData()
+        // document.title = `${moviename}`
     }, [, user])
+
+    useEffect(() => {
+        document.title = `${moviename}`
+    }, [, moviename])
 
     const submitReview = async (e) => {
         e.preventDefault()

@@ -13,18 +13,19 @@ const Lists = () => {
     const getLists = async () => {
         setLoading(true)
         const res = await axios.get("http://localhost:3500/lists")
-        .then((data) => {
-            console.log(data.data)
-            setLists(data.data)
-            setLoading(false)
-        })
-        .catch((err) => {
-            console.log(err)
-            setLoading(false)
-        })
+            .then((data) => {
+                console.log(data.data)
+                setLists(data.data)
+                setLoading(false)
+            })
+            .catch((err) => {
+                console.log(err)
+                setLoading(false)
+            })
     }
 
     useEffect(() => {
+        document.title = `Lists Page`
         getLists()
     }, [])
 
@@ -70,7 +71,7 @@ const Lists = () => {
                         {lists?.length === 0 &&
                             <p>There are no lists created by any user!</p>
                         }
-                        <div class="alllists_list-card-group" id="alllists_card-group">
+                        <div class="alllists_list-card-group" id="alllists_card-group-user">
                             {lists?.slice(0, Math.min(lists?.length, 12)).map((list, index) => (
                                 <div className="alllists_list-card" key={index}>
                                     <a href={`list/${list.createdBy.split(" ").join("%20")}/${list.listName.split(" ").join("%20")}`}>

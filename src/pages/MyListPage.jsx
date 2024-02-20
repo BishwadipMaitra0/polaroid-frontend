@@ -42,6 +42,10 @@ const MyListPage = ({ isTrending }) => {
     }
 
     useEffect(() => {
+        document.title = `${listName}`
+    }, [])
+
+    useEffect(() => {
         !isTrending && getListData()
     }, [, user])
 

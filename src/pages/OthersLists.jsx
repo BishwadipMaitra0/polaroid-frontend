@@ -28,6 +28,7 @@ const OthersLists = () => {
     }
 
     useEffect(() => {
+        document.title = `${username}'s Lists`
         getData()
     }, [])
 

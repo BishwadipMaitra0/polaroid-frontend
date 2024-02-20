@@ -74,7 +74,7 @@ const UesrList = () => {
 
   useEffect(() => {
     fetchData()
-    document.title = "User Lists"
+    document.title = "My Lists"
   }, [, user])
 
 
