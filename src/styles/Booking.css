@@ -1,165 +1,136 @@
-/* Your existing styles */
-
-.card {
-    background-color: white;
-    border: 1px solid rgba(128, 128, 128, 0.299);
-}
-
-/* FlexBox */
-.flex {
-    display: flex;
-    flex-wrap: wrap;
-    /* Allow items to wrap to the next row */
-}
-
-.flex-row {
-    flex-direction: row;
-}
-
-.flex-column {
-    flex-direction: column;
-    flex-wrap: nowrap;
-    /* Disable wrapping for columns */
-}
-
-.justify-centre {
-    justify-content: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.justify-around {
-    justify-content: space-around;
-}
-
-.justify-end {
-    justify-content: flex-end;
-}
-
-.items-center {
+.seat-booking-main {
+    font-family: sans-serif;
     align-items: center;
-}
-
-.items-end {
-    align-items: flex-end;
-}
-
-.items-between {
-    align-items: space-between;
-}
-
-.txt-align {
-    text-align: center;
-}
-
-/* Margins */
-.m-1 {
-    margin: 10px;
-}
-
-.m-2 {
-    margin: 30px;
-}
-
-.m-3 {
-    margin: 30px;
-}
-
-/* ... other margin styles ... */
-
-/* Padding */
-.p-1 {
-    padding: 10px;
-}
-
-.p-2 {
-    padding: 20px;
-}
-
-.p-3 {
-    padding: 30px;
-}
-
-/* ... other padding styles ... */
-
-/* Spaces */
-.gap-1 {
-    gap: 10px;
-}
-
-.gap-2 {
-    gap: 20px;
-}
-
-.gap-3 {
-    gap: 30px;
-}
-
-/* Screen and Text Sizes */
-.h-screen {
+    justify-content: center;
+    align-content: center;
     height: 100vh;
-}
-
-.w-screen {
-    width: 100vw;
-}
-
-.w-full {
-    width: 100%;
-}
-
-.text-sm {
-    font-size: 14px;
-}
-
-.text-md {
-    font-size: 16px;
-}
-
-.text-lg {
-    font-size: 18px;
-}
-
-.text-xl {
-    font-size: 20px;
-}
-
-.text-2xl {
-    font-size: 24px;
-}
-
-/* Border */
-.border {
-    border-width: 1px;
-}
-
-/* Seat Styles */
-.seat {
-    height: 50px;
-    width: 50px;
     display: flex;
+    flex-direction: column;
+    color: #fcffe7;
+    background-color: #14181c;
+    min-height: 100vh;
+}
+
+.seat {
+    background-color: #bad7e9;
+    height: 18px;
+    width: 23px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin: 12px;
+    box-sizing: border-box;
+    transition: 0.2s;
+}
+
+.movie-selector {
+    display: block;
+    margin: 12px 0px 15px 0px;
+    width: auto;
+    padding: 4% 4%;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #a3d4ec;
+    border: none;
+}
+
+.button-submit {
+    margin: 20px 0px;
+    background-color: transparent;
+    height: 50px;
+    width: 180px;
+    border: 1px solid #198754;
+    color: #198754;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.button-submit:hover {
+    background-color: #198754;
+    color: #14181c;
+    transition: 0.4s;
+}
+
+.button-submit:active {
+    transform: translateY(3px);
+    transition: 0.1s;
+}
+
+
+.selector-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 5.5%;
+}
+
+.selected {
+    background-color: #1f8a70 !important;
+}
+
+.Occupied {
+    background-color: #eb455f !important;
+}
+
+.seat:not(.Occupied):hover {
+    cursor: pointer;
+    transform: scale(1.5);
+    transition: 0.2s;
+}
+
+.screen {
+    height: 158px;
+    width: 100%;
+    margin: 15px 0;
+    background-color: whitesmoke;
+    box-shadow: 0px 5px 10px 2px rgb(255, 255, 255, 0.75);
+}
+
+.seat-booking-div-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid #b1b1b1;
-    color: #e3e2e2;
-    cursor: pointer;
-    margin: 2px;
-    /* Add some margin between seats for better visibility */
 }
 
-.selected-seat {
-    background-color: green;
+.seat-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
 }
 
-.booked-seat {
-    background-color: red;
+.seat-group-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 300px;
 }
 
-.selected-seat h1 {
-    color: white !important;
+.seat-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    justify-content: space-between;
+    /* grid-gap: 10px; */
 }
 
+.seat-booking-header-div {
+    font-size: 26px;
+    color: DarkGoldenRod;
+    margin-bottom: 12px;
+    font-weight: 500;
+    letter-spacing: 1.25px;
+}
 
+.seat-booking-info-zone {
+    color: #9ab;
+    margin: 25px 12px;
+}
 
+#seat-booking-info-zone {
+    display: inline-flex;
+    color: #eb455f
+}
