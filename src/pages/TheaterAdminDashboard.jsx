@@ -32,7 +32,30 @@ const TheaterAdminDashboard = () => {
                 <details class="admin_details">
                 <summary class="admin_summary">Phoenix Mall</summary>
                 <hr class="admin_summary"/>
-                <p>Timing: 10:00 AM to 10:00PM</p>
+                    <ul>
+                        <li>
+                            <details class="admin_details">
+                            <summary class="admin_summary">Avatar 2<button class="admin_button" type="button">Delete</button></summary>
+                            <hr class="admin_summary"/>
+                            <ul>
+                                <li><p>Timing: 10:00 AM to 12:00 PM<button class="admin_button" type="button">Delete</button></p></li>
+                                <li><p>Timing: 1:00 PM to 3:00 PM<button class="admin_button" type="button">Delete</button></p></li>
+                                <li><p>Timing: 5:00 AM to 7:00 PM<button class="admin_button" type="button">Delete</button></p></li>
+                            </ul>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="admin_details">
+                            <summary class="admin_summary">Godzilla minus 1<button class="admin_button" type="button">Delete</button></summary>
+                            <hr class="admin_summary"/>
+                            <ul>
+                                <li><p>Timing: 9:00 AM to 11:00 AM<button class="admin_button" type="button">Delete</button></p></li>
+                                <li><p>Timing: 12:00 PM to 2:00 PM<button class="admin_button" type="button">Delete</button></p></li>
+                                <li><p>Timing: 4:00 AM to 6:00 PM<button class="admin_button" type="button">Delete</button></p></li>
+                            </ul>
+                            </details>
+                        </li>
+                    </ul>
                 </details>
             </td>
             <td class="admin_td">69</td> 

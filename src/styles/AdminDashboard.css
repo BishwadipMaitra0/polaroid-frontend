@@ -58,3 +58,12 @@
     color: white;
     border: 1px solid transparent;
 }
+
+.admin_summary .admin_button{
+    margin-left: 50px;
+    padding: 5px;
+}
+.admin_details .admin_button{
+    margin-left: 50px;
+    padding: 5px;
+}
