@@ -30,6 +30,7 @@ const OthersListPage = ({ isTrending }) => {
     }
 
     useEffect(() => {
+        document.title = `${username}'s "${listName}" Page`
         getListData()
     }, [])
 
