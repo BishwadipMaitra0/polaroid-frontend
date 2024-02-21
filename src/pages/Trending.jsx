@@ -38,7 +38,7 @@ const Trending = ({ duration }) => {
                                 {duration==='week' ? "trending this week" : "trending today"}
                             </div>
                             <div class="listpage_div-time-since-update">
-                                {listData?.createdAt}
+                                Updated 6h ago
                             </div>
                             <div class="listpage_div-list-tagline">
                                 {duration==='week' ? "Movies Most Popular This Week" : "Movies Most Popular Today"}

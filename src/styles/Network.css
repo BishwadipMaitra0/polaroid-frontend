@@ -13,9 +13,10 @@
   width: 55%;
 }
 
-.follower-watched-count,
-.follower-list-count,
-.follower-favorite-count {
+.follower-watched > a:not([href]),
+.follower-list > a:not([href]),
+.follower-favorite > a:not([href]) {
+  cursor: pointer;
   color: #789;
   font-size: 14px;
   margin-left: 5px;
@@ -24,9 +25,9 @@
   transition: 0.4s;
 }
 
-.follower-watched-count:hover,
-.follower-list-count:hover,
-.follower-favorite-count:hover {
+.follower-watched > a:not([href]):hover,
+.follower-list > a:not([href]):hover,
+.follower-favorite > a:not([href]):hover {
   color: whitesmoke;
   transition: 0.4s;
 }
@@ -74,17 +75,18 @@
   margin-left: 12px;
 }
 
-.follower-name {
-  font-weight: 500;
-  text-decoration: none;
-  color: whitesmoke;
-  font-size: 20px;
-  transition: 0.4s;
+.follower-metadata > a:not([href]) {
+    cursor: pointer;
+    font-weight: 500;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 20px;
+    transition: 0.4s;
 }
 
-.follower-name:hover {
-  transition: 0.4s;
-  color: #40bcf4;
+.follower-metadata > a:not([href]):hover {
+    transition: 0.4s;
+    color: #40bcf4;
 }
 
 .follower-network {
@@ -92,13 +94,14 @@
   font-size: 14px;
 }
 
-.follower-network>a {
+.follower-network>a:not([href]) {
   text-decoration: none;
   color: #789;
   transition: 0.4s;
 }
 
-.follower-network>a:hover {
+.follower-network>a:not([href]):hover {
+  cursor: pointer;
   color: #bcd;
   transition: 0.4s;
 }
@@ -137,6 +140,16 @@
   height: 100%;
 }
 
+.nav-link > a:not([href]) {
+    cursor: pointer;
+    color: white;
+}
+
+.nav-link > a:not([href]):hover {
+    cursor: pointer;
+    color: #40bcf4;
+}
+
 .section-name {
   font-size: 16px;
   text-decoration: none;
@@ -146,12 +159,12 @@
   transition: 0.2s;
 }
 
-.active {
-  color: whitesmoke;
+.nav-link > a:not([href]).active {
+  color: #ff9010;
 }
 
 .active:hover {
-  color: #ff9010 !important;
+  color: whitesmoke !important;
 }
 
 .section-name:hover {

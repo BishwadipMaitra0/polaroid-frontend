@@ -67,8 +67,8 @@
   /* border-right: 1px solid #24303c; */
 }
 
-.social-component-name {
-  color: #678;
+.social-component > a:not([href]) {
+    color: #678;
   display: block;
   font-size: 9px;
   font-weight: 400;
@@ -78,7 +78,8 @@
   transition: 0.2s;
 }
 
-.social-component-name:hover {
+.social-component > a:not([href]):hover {
+  cursor: pointer;
   color: #40bcf4;
   transition: 0.2s;
 }
@@ -103,15 +104,6 @@
   margin: 50px 0;
 }
 
-.section-name {
-  font-size: 16px;
-  text-decoration: none;
-  color: #9ab;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  transition: 0.2s;
-}
-
 .profile_nav-link {
   display: flex;
   flex-direction: column;
@@ -120,15 +112,24 @@
   height: 100%;
 }
 
-.active {
-  color: whitesmoke;
+.profile_nav-link > a:not([href]) {
+    font-size: 16px;
+  text-decoration: none;
+  color: #9ab;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  transition: 0.2s;
 }
 
-.section-name:hover {
+.profile_nav-link > a:not([href]):hover {
+  cursor: pointer;
   color: #40bcf4;
   transition: 0.2s;
 }
 
+.profile_nav-link > a:not([href]).active {
+    color: whitesmoke;
+}
 
 .profile_section-heading {
   display: flex;

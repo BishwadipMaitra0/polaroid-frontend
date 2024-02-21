@@ -40,7 +40,9 @@ nav ul {
 
 .navbar-list-element {
   display: inline-block;
+  color: #8291A5;
   font-weight: 550;
+  cursor: pointer;
 }
 
 .navbar-anchor,
@@ -54,6 +56,7 @@ nav ul {
 
 .navbar-anchor:hover,
 #navbar-anchor-id:hover,
+.navbar-list-element:hover,
 .active {
   color: #628ebc;
   text-decoration: none;
@@ -62,6 +65,10 @@ nav ul {
 .logo {
   color: #FFF;
   font-size: 22px;
+}
+
+.hoverPointerLogo {
+    cursor: pointer;
 }
 
 .nav-search {

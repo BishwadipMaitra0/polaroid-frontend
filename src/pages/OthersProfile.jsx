@@ -99,37 +99,37 @@ const OthersProfile = ({ currentUser }) => {
                                 <div class="profile-social-metadata">
                                     <div class="social-component">
                                         <div class="social-component-counter">  {user?.data?.watched?.length} </div>
-                                        <a href={`/watchedfilms/${username}`} class="social-component-name">films</a>
+                                        <a onClick={() => navigate(`/watchedfilms/${username}`)} class="social-component-name">films</a>
                                     </div>
                                     <div class="social-component">
                                         <div class="social-component-counter"> {listLength} </div>
-                                        <a href={`/lists/${username}`} class="social-component-name">lists</a>
+                                        <a onClick={() => navigate(`/lists/${username}`)} class="social-component-name">lists</a>
                                     </div>
                                     <div class="social-component">
                                         <div class="social-component-counter"> {user?.data?.following?.length} </div>
-                                        <a href={"/following/" + username} class="social-component-name">following</a>
+                                        <a onClick={() => navigate("/following/" + username)} class="social-component-name">following</a>
                                     </div>
                                     <div class="social-component">
                                         <div class="social-component-counter"> {user?.data?.followers?.length} </div>
-                                        <a href={"/followers/" + username} class="social-component-name">followers</a>
+                                        <a onClick={() => navigate("/followers/" + username)} class="social-component-name">followers</a>
                                     </div>
                                 </div>
                             </div>
                             <div class="select-section">
                                 <div class="profile_nav-link">
-                                    <a href={"/profile/"+username} class="section-name  active">profile</a>
+                                    <a onClick={() => navigate("/profile/"+username)} class="section-name  active">profile</a>
                                 </div>
                                 <div class="profile_nav-link">
-                                    <a href={"/watchedfilms/"+username} class="section-name">watched films</a>
+                                    <a onClick={() => navigate("/watchedfilms/"+username)} class="section-name">watched films</a>
                                 </div>
                                 <div class="profile_nav-link">
-                                    <a href={"/watchlist/"+username} class="section-name">watchlist</a>
+                                    <a onClick={() => navigate("/watchlist/"+username)} class="section-name">watchlist</a>
                                 </div>
                                 <div class="profile_nav-link">
-                                    <a href={"/lists/"+username} class="section-name">lists</a>
+                                    <a onClick={() => navigate("/lists/"+username)} class="section-name">lists</a>
                                 </div>
                                 <div class="profile_nav-link">
-                                    <a href={"/followers/"+username} class="section-name">network</a>
+                                    <a onClick={() => navigate("/followers/"+username)} class="section-name">network</a>
                                 </div>
                             </div>
 
@@ -140,10 +140,9 @@ const OthersProfile = ({ currentUser }) => {
                                 <></>
                             }
                             <div class="profile_grid-container">
-                                {/* <% for (let i=0; i<data.favourites.length; i++) { %> */}
                                 {thisUserData?.user?.favourites?.map((item) => (
                                     <div className="grid-img-container" key={item.id}>
-                                        <a href={`/film/${item.id}`}>
+                                        <a onClick={() => navigate(`/film/${item.id}`)}>
                                             <img
                                                 className="grid-img"
                                                 src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
@@ -155,20 +154,15 @@ const OthersProfile = ({ currentUser }) => {
                             </div>
 
                             <div class="profile_section-heading">recently watched</div>
-                            {/* <% if (data.watched.length===0) { %> */}
                             {thisUserData?.user?.watched?.length === 0 ?
                                 <p style={{ color: "white" }}>No movies added to watched yet!</p>
                                 :
                                 <></>
                             }
-                            {/* <% } %> */}
                             <div class="profile_grid-container">
-                                {/* <% for (let i=0; i<Math.min(data.watched.length, 6); i++) { %>
-      <div class="grid-img-container"> <a href=<%= "/film/"+data.watched[i].id %>> <img class="grid-img" src=<%= "https://image.tmdb.org/t/p/original/"+data.watched[i].poster_path %> alt="image"> </a> </div>
-    <% } %> */}
                                 {thisUserData?.user?.watched?.slice(0, Math.min(thisUserData?.user?.watched?.length, 6)).map((item) => (
                                     <div className="grid-img-container" key={item.id}>
-                                        <a href={`/film/${item.id}`}>
+                                        <a onClick={() => navigate(`/film/${item.id}`)}>
                                             <img
                                                 className="grid-img"
                                                 src={`https://image.tmdb.org/t/p/original/${item.poster_path}`}
@@ -180,7 +174,6 @@ const OthersProfile = ({ currentUser }) => {
                             </div>
                         </div>
                     </div>
-
                     <Footer />
                 </>
             }

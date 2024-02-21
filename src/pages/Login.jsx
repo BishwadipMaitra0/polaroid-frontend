@@ -166,7 +166,7 @@ const Login = () => {
                         </button>
                     </form>
                     <div className="login-div">
-                        New to Polaroid ? <a href="/user/register">Join now</a>
+                        New to Polaroid ? <a onClick={() => navigate("/user/register")}>Join now</a>
                     </div>
                     {/* <div class="error-div" id="alert-zone"> <%= error %> </div> */}
                     <div className="error-div" id="alert-zone">
@@ -174,7 +174,7 @@ const Login = () => {
                     </div>
                     <div className="login-div">
                         {" "}
-                        <a href="/user/forgotpassword">Forgot Password?</a>{" "}
+                        <a onClick={() => navigate('/user/forgotpassword')}>Forgot Password?</a>{" "}
                     </div>
                 </div>
                 <div className="img-div"></div>
