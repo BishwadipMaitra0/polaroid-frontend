@@ -35,6 +35,7 @@ import MyListPage from './pages/MyListPage'
 import OthersListPage from './pages/OthersListPage'
 import OthersLists from './pages/OthersLists'
 import Lists from './pages/Lists'
+import Trending from './pages/Trending'
 
 const App = () => {
 
@@ -88,6 +89,8 @@ const App = () => {
       <Route path='/list/:username/:listName' element={<OthersListPage isTrending={false} />}></Route>
       <Route path='/lists/:username' element={<OthersLists />}></Route>
       <Route path='/lists' element={<Lists />}></Route>
+      <Route path='/trending/day' element={<Trending duration={'day'} />}></Route>
+      <Route path='/trending/week' element={<Trending duration={'week'} />}></Route>
       <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/login' element={<AdminLogin adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>

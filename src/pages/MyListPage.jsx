@@ -14,7 +14,7 @@ const MyListPage = ({ isTrending }) => {
 
     const user = useAppSelector((state) => state.user)
 
-    const [data, setData] = useState({})
+    const [listData, setData] = useState({})
     const [loading, setLoading] = useState(false)
 
     const getListData = async () => {
@@ -33,12 +33,29 @@ const MyListPage = ({ isTrending }) => {
 
     const deleteItemHandler = async (e, item) => {
         e.preventDefault()
-        console.log(item)
-        // const res = await axios.post('http://localhost:3500/list/delete/', {
-        //     username: user.data.username,
-        //     listName: data.listName,
-        //     listItem: item
-        // })
+        console.log(listData)
+        const res = await axios.post('http://localhost:3500/user/delete/list', {
+            username: user.data.username,
+            listName: listData.listName,
+            listItem: item.id
+        })
+        .then((data) => {
+            console.log(data.data)
+            let tempData = listData
+
+            console.log(tempData)
+
+            tempData.items = tempData.items.filter((x) => {
+                return x.id !== item.id
+            })
+
+            console.log(tempData)
+
+            setData(tempData)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     useEffect(() => {
@@ -60,10 +77,10 @@ const MyListPage = ({ isTrending }) => {
                                 {"created by " + user?.data?.username}
                             </div>
                             <div class="listpage_div-time-since-update">
-                                {data?.createdAt}
+                                {listData?.createdAt}
                             </div>
                             <div class="listpage_div-list-tagline">
-                                {data?.listName}
+                                {listData?.listName}
                             </div>
                             <div class="listpage_div-list-description">
                                 {isTrending ?
@@ -74,23 +91,23 @@ const MyListPage = ({ isTrending }) => {
                                     </>
                                     :
                                     <>
-                                        {data?.description}
+                                        {listData?.description}
                                     </>
                                 }
                             </div>
                         </div>
                         {isTrending ?
                             <div class="listpage_grid-container" id="listpage_grid-container">
-                                {data?.results?.map((item, index) =>
-                                    <div class="listpage_grid-img-container"> <a href={"/film/" + data?.results[index].id}> <img class="listpage_grid-img" src={"https://image.tmdb.org/t/p/original" + data?.results[index].poster_path} alt="image" /> </a></div>
+                                {listData?.results?.map((item, index) =>
+                                    <div class="listpage_grid-img-container"> <a href={"/film/" + listData?.results[index].id}> <img class="listpage_grid-img" src={"https://image.tmdb.org/t/p/original" + listData?.results[index].poster_path} alt="image" /> </a></div>
                                 )}
                             </div>
                             :
                             <div class="listpage_grid-container" id="listpage_grid-container">
-                                {data?.items?.map((item, index) =>
+                                {listData?.items?.map((item, index) =>
                                     <div class="listpage_grid-img-container">
                                         <div class="listpage_grid-img-elements">
-                                            <div class="listpage_grid-img-container"> <a href={"/film/" + data?.items[index].id}> <img class="listpage_grid-img" src={"https://image.tmdb.org/t/p/original" + data?.items[index].poster_path} alt="image" /> </a></div>
+                                            <div class="listpage_grid-img-container"> <a href={"/film/" + listData?.items[index].id}> <img class="listpage_grid-img" src={"https://image.tmdb.org/t/p/original" + listData?.items[index].poster_path} alt="image" /> </a></div>
                                             <form onSubmit={(e) => deleteItemHandler(e, item)}>
                                                 <button type="submit" class="listpage_delete-film-button">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#456" class="bi bi-trash-fill delete-film-button-icon" viewBox="0 0 16 16" opacity="0.8">
