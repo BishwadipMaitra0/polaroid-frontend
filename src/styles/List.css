@@ -1,0 +1,137 @@
+.alllists_main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2% 20% 2% 20%;
+  color: whitesmoke;
+}
+
+.alllists_list-card-group {
+  display: grid;
+  gap: 20px 10px;
+}
+
+.alllists_list-card {
+  background-color: #14181c;
+  border: 1px solid #456;
+  border-radius: 8px;
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  width: 180px;
+}
+
+.alllists_list-card>a {
+  color: whitesmoke;
+  text-decoration: none;
+}
+
+.alllists_img-container>img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0px 0px;
+  border-bottom: 2px solid #456;
+}
+
+.alllists_list-card:hover {
+  border: 1px solid whitesmoke;
+}
+
+.alllists_description-container {
+  padding: 8px 8px;
+  font-size: 16px;
+}
+
+.alllists_white {
+  color: whitesmoke;
+}
+
+.alllists_more-btn {
+  border: 1px solid #456;
+  color: whitesmoke;
+  padding: 8px;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 0.4s;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.alllists_more-btn:hover {
+  border: 1px solid whitesmoke;
+  background-color: whitesmoke;
+  color: black;
+  transition: 0.4s;
+}
+
+.alllists_section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 99%;
+  margin: 16px 0;
+  padding: 16px 0;
+  border-bottom: 1px solid #456;
+}
+
+.alllists_section-header-description {
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 22px;
+}
+
+.alllists_description-header {
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #456;
+}
+
+.alllists_description-content {
+  margin: 5px 0px;
+  color: #789;
+}
+
+#grid-container {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media screen and (min-width: 450px) {
+  #grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 600px) {
+  #grid-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 850px) {
+  #grid-container {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  #grid-container {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  #grid-container {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  #grid-container {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import "../styles/Nav.css"
 import { useAppDispatch, useAppSelector } from '../app/hooks'
@@ -8,15 +7,17 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 //import { fetchOutUser } from '../features/userSlice';
 
-const AdminNavbar = () => {
+const AdminNavbar = (props) => {
+
+    const { adminLogin, setAdminLogin } = props
 
   //const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
   //const dispatch = useAppDispatch()
   
   const logoutHandler = () => {
-    //dispatch(fetchOutUser())
-    navigate('/')
+    setAdminLogin(false)
+    navigate('/admin/login')
   }
 
   return (
@@ -25,10 +26,10 @@ const AdminNavbar = () => {
       <div id="navElementsDiv">
         <ul id="navElements">
           <li class="navbar-list-element">
-            <a class="navbar-anchor" href="/admin/register" id="admin_register">Add admin</a>
+            <button class="navbar-anchor" onClick={() => navigate('/admin/addtadmin')} id="admin_register">Add theatre admin</button>
           </li>
           <li class="navbar-list-element">
-            <a class="navbar-anchor" href="/" id="home">Logout</a>
+            <button class="navbar-anchor" onClick={() => logoutHandler()} id="home">Logout</button>
           </li>
         </ul>
       </div>

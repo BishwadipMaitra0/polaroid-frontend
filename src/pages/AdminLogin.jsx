@@ -2,18 +2,14 @@ import { useEffect, useState } from "react";
 import "../styles/Login.css"
 import { useNavigate } from "react-router";
 import axios from "axios";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { fetchUser, userActions } from "../features/userSlice";
 
-const Login = () => {
+const AdminLogin = (props) => {
 
-    const navigate = useNavigate()
-    const dispatch = useAppDispatch()
-    const User = useAppSelector((state) => state.user)
+    const { adminLogin, setAdminLogin } = props
 
     const [isInvalidEmail, setIsInvalidEmail] = useState(false)
     const [alertZone, setAlertZone] = useState("")
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [submitDisabled, setSubmitDisabled] = useState(false)
 
@@ -22,29 +18,7 @@ const Login = () => {
     const [passwordOutline, setPasswordOutline] = useState("none")
     const [passwordBG, setPasswordBG] = useState("#a3d4ec")
 
-    // useEffect(() => {
-    //     emailValidation()
-    //     onFocusoutEmail()
-    //     onFocusoutPass()
-    //     disableButton()
-    // }, [])
-
-    function emailValidation() {
-        var emailRegex = /\S+@\S+\.\S+/;
-
-        if (email === "" || !email.match(emailRegex)) {
-            setAlertZone("Please enter a valid email address")
-            setIsInvalidEmail(true);
-        } else {
-            setAlertZone("")
-            setIsInvalidEmail(false);
-        }
-
-        onFocusoutEmail();
-        disableButton();
-
-        return !isInvalidEmail;
-    }
+    const navigate = useNavigate()
 
     function onFocusinEmail() {
         setEmailOutline("none")
@@ -70,62 +44,49 @@ const Login = () => {
         setPasswordBG("#a3d4ec")
     }
 
-    function disableButton() {
-        if (isInvalidEmail) {
-            setSubmitDisabled(true)
-        } else {
-            setSubmitDisabled(false)
-        }
-    }
-
     const submitHandler = async (e) => {
         e.preventDefault()
-        dispatch(fetchUser({ email: email, password: password }))
+        try {
+            if (username==="admin" && password==="Admin@123") {
+                setAdminLogin(true)
+                navigate('/admin/dashboard')
+            }
+            else {
+                setAlertZone("Admin credentials are incorrect!")
+            }
+        } catch (err) {
+            console.log(err)
+        }
     }
-
-    useEffect(() => {
-        // console.log(User)
-        document.title = "Login"
-        if (User.status === "failed" && User.method === "login") {
-            setAlertZone(User.error)
-        }
-        else if (User.status === "succeeded" && User.method === "login") {
-            navigate("/")
-        }
-
-        if (User.isLoggedIn === true) {
-            navigate('/', { replace: true })
-        }
-    }, [, User])
 
     return (
         <div className="mainLogin">
             <div className="div-container">
-                <img src="/assets/Logo.png" onClick={() => navigate("/")} alt="picture" className="logo" />
+                <img src="/assets/Logo.png" alt="picture" className="logo" />
                 <div className="text-div">
-                    <form id="loginForm" onChange={() => emailValidation()} onSubmit={submitHandler}>
-                        <div className="head-div">Log in</div>
+                    <form id="loginForm" onSubmit={submitHandler}>
+                        <div className="head-div">Admin Log In</div>
                         <div className="email-div">
                             <label
                                 htmlFor="email-input"
                                 className="email-label"
                                 style={{ opacity: "70%" }}
                             >
-                                Email address
+                                Username
                             </label>
                             <input
-                                value={email}
+                                value={username}
                                 onFocus={() => onFocusinEmail()}
                                 onBlur={() => onFocusoutEmail()}
                                 type="text"
                                 name="email"
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(e) => setUsername(e.target.value)}
                                 className="email-box"
                                 placeholder="input@example.com"
                                 id="email-input"
                                 required
                                 autoComplete="off"
-                                onInvalid={(e) => e.target.setCustomValidity("Email Address can not be empty")}
+                                onInvalid={(e) => e.target.setCustomValidity("Username can not be empty")}
                                 onInput={e => e.target.setCustomValidity('')}
                                 style={{ backgroundColor: emailBG, outline: emailOutline }}
                             />
@@ -162,19 +123,12 @@ const Login = () => {
                             id="submit-button"
                             disabled={submitDisabled}
                         >
-                            Log in
+                            Log In
                         </button>
                     </form>
-                    <div className="login-div">
-                        New to Polaroid ? <a href="/user/register">Join now</a>
-                    </div>
-                    {/* <div class="error-div" id="alert-zone"> <%= error %> </div> */}
+                    <hr></hr>
                     <div className="error-div" id="alert-zone">
                         {alertZone}
-                    </div>
-                    <div className="login-div">
-                        {" "}
-                        <a href="/user/forgotpassword">Forgot Password?</a>{" "}
                     </div>
                 </div>
                 <div className="img-div"></div>
@@ -183,4 +137,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default AdminLogin;

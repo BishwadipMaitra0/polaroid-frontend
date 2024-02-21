@@ -5,18 +5,19 @@ import Footer from '../components/Footer'
 import "../styles/WatchedFilms.css"
 import axios from 'axios'
 
-const WatchedFilms = ({ editable }) => {
+const Watchlist = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
 
-    const removedFromWatched = async (e, id) => {
+    const removedFromWatchlist = async (e, id) => {
         e.preventDefault()
+        console.log(user.data.email)
         try {
-            const res = await axios.post(`http://localhost:3500/user/watcheddelete/${id}`, {
+            const res = await axios.post(`http://localhost:3500/user/watchlistdelete/${id}`, {
                 email: user.data.email
             })
             const resData = await res.data
-            
+
             console.log(resData)
         }
         catch (err) {
@@ -25,7 +26,7 @@ const WatchedFilms = ({ editable }) => {
     }
 
     useEffect(() => {
-        document.title = "Watched Films"
+        document.title = "Watchlist"
     }, [, user])
 
     return (
@@ -33,7 +34,7 @@ const WatchedFilms = ({ editable }) => {
             <Navbar />
             <div class="wf-main">
                 <div class="wfheader">
-                    <div> {user?.data?.username}'s watched films</div>
+                    <div> {user?.data?.username}'s watchlist</div>
                     {/* <label class="switch">
                         <input type="checkbox" class="grid-num-control" autocomplete="off" onclick="changeGridLayout()"
                             id="grid-checkbox" />
@@ -41,7 +42,7 @@ const WatchedFilms = ({ editable }) => {
                     </label> */}
                 </div>
                 <div class="wfgrid-container" id="wfgrid-container">
-                    {user?.data?.watched?.map((film) => (
+                    {user?.data?.planToWatch?.map((film) => (
                         <div key={film.id} className="wfgrid-img-container">
                             <div className="wfgrid-img-elements">
                                 <a href={`/film/${film.id}`}>
@@ -52,7 +53,7 @@ const WatchedFilms = ({ editable }) => {
                                     />
                                 </a>
                                 {editable && (
-                                    <form onSubmit={(e) => removedFromWatched(e, film.id)}>
+                                    <form onSubmit={(e) => removedFromWatchlist(e, film.id)}>
                                         <button type="submit" className="wfdelete-film-button">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -78,4 +79,4 @@ const WatchedFilms = ({ editable }) => {
     )
 }
 
-export default WatchedFilms
+export default Watchlist

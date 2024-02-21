@@ -1,14 +1,22 @@
 import React, { useEffect, useState, useRef } from 'react'
 import "../styles/Login.css"
-import { useNavigate } from 'react-router'
 import { useAppSelector } from '../app/hooks'
 import axios from 'axios'
+import { useNavigate } from 'react-router'
 
-const Register = () => {
+const TheatreAdminTiming = (props) => {
+
+    const { theatreAdminLogin, setTheatreAdminLogin } = props
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!theatreAdminLogin) {
+            navigate('/theater_admin/login')
+        }
+    }, [])
 
     const [error, setError] = useState("")
     const [error2, setError2] = useState("")
-    const navigate = useNavigate()
 
     const [location, setLocation] = useState("")
     const [mname, setMName] = useState("")
@@ -22,23 +30,12 @@ const Register = () => {
 
     const altert1Ref = useRef(null)
     const altert2Ref = useRef(null)
-
-    const User = useAppSelector((state) => state.user)
     
     useEffect(() => {
-        // console.log(User)
-// TODO: Uncomment this and update it backend part
-//        if (User.status === "failed" && User.method === "login") {
-//            setError(User.error)
-//        }
-//        else if (User.status === "succeeded" && User.method === "login") {
-//            navigate("/")
-//        }
-//
-//        if (User.isLoggedIn === true) {
-//            navigate('/', { replace: true })
-//        }
-    }, [, User])
+        if (!theatreAdminLogin) {
+            navigate('/theater_admin/login')
+        }
+    }, [])
 
     function disableButton() {
 //        if (!isPassSame || isInvalidEmail || !isPassStrong) {
@@ -197,4 +194,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default TheatreAdminTiming

@@ -37,6 +37,7 @@ const Films = () => {
   }
 
   useEffect(() => {
+    document.title = "Films"
     fetchData()
   }, [])
 

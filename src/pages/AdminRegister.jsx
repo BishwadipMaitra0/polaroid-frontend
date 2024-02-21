@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router'
 import { useAppSelector } from '../app/hooks'
 import axios from 'axios'
 
-const AdminRegister = () => {
+const AdminRegister = (props) => {
+
+    const {adminLogin, setAdminLogin} = props
 
     const [error, setError] = useState("")
     const [error2, setError2] = useState("")
@@ -26,22 +28,6 @@ const AdminRegister = () => {
 
     const altert1Ref = useRef(null)
     const altert2Ref = useRef(null)
-
-    const User = useAppSelector((state) => state.user)
-
-    useEffect(() => {
-        // console.log(User)
-        if (User.status === "failed" && User.method === "login") {
-            setError(User.error)
-        }
-        else if (User.status === "succeeded" && User.method === "login") {
-            navigate("/")
-        }
-
-        if (User.isLoggedIn === true) {
-            navigate('/', { replace: true })
-        }
-    }, [, User])
 
     function onFocusoutRePass() {
         if (!isPassSame || !isPassStrong) {
@@ -183,13 +169,13 @@ const AdminRegister = () => {
     const submitHandler = async (e) => {
         console.log("hi")
         e.preventDefault()
-        const res = await axios.post("http://localhost:3500/user/register", {
+        const res = await axios.post("http://localhost:3500/admin/createtheatreadmin", {
             username: username,
             password: password
         })
             .then((data) => {
                 console.log(data)
-                navigate('/user/login')
+                altert1Ref.current.innerHTML = data.data.message
             })
             .catch((err) => {
                 console.log(err)
@@ -197,6 +183,12 @@ const AdminRegister = () => {
                 altert1Ref.current.innerHTML = err.response.data.error
             })
     }
+
+    useEffect(() => {
+        if (!adminLogin) {
+            navigate('/admin/login')
+        }
+    }, [])
 
     useEffect(() => {
         validateForm()
@@ -208,7 +200,7 @@ const AdminRegister = () => {
                 <img src="/assets/Logo.png" onClick={() => navigate('/')} class="logoreg" />
                 <div class="text-div">
                     <form id="registerForm" onSubmit={submitHandler}>
-                        <div class="head-div">Admin Sign up</div>
+                        <div class="head-div">Create a New Theatre Admin</div>
 
                         <div class="email-div">
                             <label htmlFor="name-input" class="email-label" style={{ opacity: "70%" }}>Username</label>

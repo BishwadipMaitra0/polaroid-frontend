@@ -16,19 +16,20 @@ const Profile = ({ currentUser }) => {
   const getUserData = async () => {
     setLoading(true)
     const res = await axios.post("http://localhost:3500/user/getuser", {
-        username: user.data.username
+      username: user.data.username
     })
-    .then((data) => {
+      .then((data) => {
         console.log(data.data)
         setLoading(false)
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(err)
         setLoading(false)
-    })
+      })
   }
 
   useEffect(() => {
+    document.title = "Profile"
     getUserData()
   }, [, user])
 
@@ -92,7 +93,7 @@ const Profile = ({ currentUser }) => {
                   <a href="/user/list" class="section-name">list</a>
                 </div>
                 <div class="profile_nav-link">
-                  <a href="/user/followers" class="section-name">network</a>
+                  <a href={`/followers/${user.data.username}`} class="section-name">network</a>
                 </div>
               </div>
 
