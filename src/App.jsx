@@ -34,7 +34,8 @@ import OthersWatchlist from './pages/OthersWatchlist'
 import MyListPage from './pages/MyListPage'
 import OthersListPage from './pages/OthersListPage'
 import OthersLists from './pages/OthersLists'
-import Lists from './pages/Lists'
+import Lists from './pages/Lists'..
+import Booking from './pages/Booking'
 import Trending from './pages/Trending'
 
 const App = () => {
@@ -81,6 +82,7 @@ const App = () => {
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
+      <Route path='/booking/:count' element={<Booking />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
@@ -95,7 +97,7 @@ const App = () => {
       <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/login' element={<AdminLogin adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
-      <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin}/>}></Route>
+      <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
