@@ -26,10 +26,10 @@ const AdminNavbar = (props) => {
       <div id="navElementsDiv">
         <ul id="navElements">
           <li class="navbar-list-element">
-            <button class="navbar-anchor" onClick={() => navigate('/admin/addtadmin')} id="admin_register">Add theatre admin</button>
+            <a class="navbar-anchor" onClick={() => navigate('/admin/addtadmin')} id="admin_register">Add theatre admin</a>
           </li>
           <li class="navbar-list-element">
-            <button class="navbar-anchor" onClick={() => logoutHandler()} id="home">Logout</button>
+            <a class="navbar-anchor" onClick={() => logoutHandler()} id="home">Logout</a>
           </li>
         </ul>
       </div>

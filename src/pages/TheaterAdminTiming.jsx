@@ -37,20 +37,7 @@ const TheatreAdminTiming = (props) => {
         }
     }, [])
 
-    function disableButton() {
-//        if (!isPassSame || isInvalidEmail || !isPassStrong) {
-//            setDisabled((val) => {
-//                val = true
-//                return val
-//            })
-//        }
-//        else {
-//            setDisabled((val) => {
-//                val = false
-//                return val
-//            })
-//        }
-    }
+    
 
     function onFocusoutMName() {
         mnameRef.current.style.backgroundColor = "#a3d4ec";
@@ -79,65 +66,22 @@ const TheatreAdminTiming = (props) => {
         timingRef.current.style.backgroundColor = "white";
     }
 
-// TODO: Maybe we don't need this?
-    function validateForm() {
-    //    var emailValidation;
-    //    var passValidation;
-    //    var passStrength;
-
-    //    emailValidation = checkEmail();
-    //    passValidation = CheckPassword();
-    //    passStrength = strongPassCheck();
-
-    //    if ((emailValidation === false) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
-    //        altert1Ref.current.innerHTML = "Please enter a valid email address";
-    //        altert2Ref.current.innerHTML = "Password does not match";
-    //    }
-    //    else if ((emailValidation === false) && (passValidation === true) && (passStrength === false)) {
-    //        altert1Ref.current.innerHTML = "Please enter a valid email address";
-    //        altert2Ref.current.innerHTML = "Please enter a strong password";
-    //    }
-    //    else if ((emailValidation === false) && (passValidation === true) && (passStrength === true)) {
-    //        altert1Ref.current.innerHTML = "Please enter a valid email address";
-    //        altert2Ref.current.innerHTML = "";
-    //    }
-    //    else if ((emailValidation === true) && (passValidation === false) && ((passStrength === false) || (passStrength === true))) {
-    //        altert1Ref.current.innerHTML = "Password does not match";
-    //        altert2Ref.current.innerHTML = "";
-    //    }
-    //    else if (passStrength === false) {
-    //        altert1Ref.current.innerHTML = "Please enter a strong password";
-    //        altert2Ref.current.innerHTML = "";
-    //    }
-    //    else {
-    //        altert1Ref.current.innerHTML = "";
-    //        altert2Ref.current.innerHTML = "";
-    //    }
-
-    //    return emailValidation && passValidation && passStrength;
-    }
-
     const submitHandler = async (e) => {
-        console.log("hi")
         e.preventDefault()
-// TODO: Uncomment this and update it
-//        const res = await axios.post("http://localhost:3500/user/register", {
-//            mname: mname,
-//        })
-//            .then((data) => {
-//                console.log(data)
-//                navigate('/user/login')
-//            })
-//            .catch((err) => {
-//                console.log(err)
-//                // setError(err.response.data.error)
-//                altert1Ref.current.innerHTML = err.response.data.error
-//            })
-    }
+        console.log(location, mname, timing)
 
-    useEffect(() => {
-        validateForm()
-    }, [mname, location, timing])
+        axios.post("http://localhost:3500/theatreadmin/addshow", {
+            location: location,
+            movieName: mname,
+            timings: [timing]
+        })
+        .then((res) => {
+            console.log(res.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
 
     return (
         <div class="main-register">
@@ -158,7 +102,7 @@ const TheatreAdminTiming = (props) => {
                         </div>
                         
                         <div class="email-div">
-                            <label htmlFor="name-input" class="email-label" style={{ opacity: "70%" }}>Movie Name</label>
+                            <label htmlFor="name-input" class="email-label" style={{ opacity: "70%" }}>Movie ID</label>
                             <input type="username" ref={mnameRef} value={mname} onChange={(e) => setMName(e.target.value)} name="mname" class="email-box" placeholder="Barbie" id="name-input" required autoComplete="off"
                                 onFocus={onFocusinMName}
                                 onBlur={onFocusoutMName}
