@@ -6,6 +6,8 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import "../styles/Profile.css"
 import { useNavigate } from 'react-router'
+import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
 const Profile = ({ currentUser }) => {
 
@@ -18,14 +20,14 @@ const Profile = ({ currentUser }) => {
 
     const convertToBase64 = (file) => {
         return new Promise((resolve, reject) => {
-          const fileReader = new FileReader()
-          fileReader.readAsDataURL(file)
-          fileReader.onload = () => {
-            resolve(fileReader.result)
-          }
-          fileReader.onerror = (error) => {
-            reject(error)
-          }
+            const fileReader = new FileReader()
+            fileReader.readAsDataURL(file)
+            fileReader.onload = () => {
+                resolve(fileReader.result)
+            }
+            fileReader.onerror = (error) => {
+                reject(error)
+            }
         })
     }
 
@@ -59,12 +61,12 @@ const Profile = ({ currentUser }) => {
                         email: user.data.email,
                         image: base64
                     })
-                    .then((res2) => {
-                        console.log(res2.data)
-                    })
-                    .catch((err2) => {
-                        console.log(err2)
-                    })
+                        .then((res2) => {
+                            console.log(res2.data)
+                        })
+                        .catch((err2) => {
+                            console.log(err2)
+                        })
                 });
         } catch (err) {
             console.log(err);
@@ -80,6 +82,18 @@ const Profile = ({ currentUser }) => {
     useEffect(() => {
 
     }, [user])
+
+    const VisuallyHiddenInput = styled('input')({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: 1,
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: 1,
+    });
 
     return (
         <>
@@ -98,7 +112,18 @@ const Profile = ({ currentUser }) => {
                                     <div class="profile-metadata">
                                         <div class="profile-name"> {user?.data?.username} </div>
                                         <form encType='multipart/form-data' onSubmit={handleSubmit}>
-                                            <input type="file" name="avatar" onChange={async (e) => { await handleSubmit(e) }} id="phacku"></input>
+                                            {/* <input type="file" name="avatar" onChange={async (e) => { await handleSubmit(e) }}></input> */}
+                                            <Button
+                                                component="label"
+                                                role={undefined}
+                                                variant="outlined"
+                                                tabIndex={-1}
+                                                name="avatar"
+                                                onChange={async (e) => { await handleSubmit(e) }}
+                                            >
+                                                Upload avatar
+                                                <VisuallyHiddenInput type="file" />
+                                            </Button>
                                         </form>
                                         {!currentUser ?
                                             <button class="followButton">FOLLOW</button>

@@ -34,7 +34,7 @@ import OthersWatchlist from './pages/OthersWatchlist'
 import MyListPage from './pages/MyListPage'
 import OthersListPage from './pages/OthersListPage'
 import OthersLists from './pages/OthersLists'
-import Lists from './pages/Lists'..
+import Lists from './pages/Lists'
 import Booking from './pages/Booking'
 import Trending from './pages/Trending'
 
