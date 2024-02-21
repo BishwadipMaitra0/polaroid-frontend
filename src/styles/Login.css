@@ -127,7 +127,8 @@
     color: grey;
   }
   
-  .login-div > a {
+  .login-div > a:not([href]) {
+    cursor: pointer;
     text-decoration: none;
     color: white;
   }
