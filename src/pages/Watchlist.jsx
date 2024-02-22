@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector } from '../app/hooks'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import "../styles/WatchedFilms.css"
 import axios from 'axios'
+import { fetchUserDetails } from '../features/userSlice'
 
 const Watchlist = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
+    const dispatch = useAppDispatch()
 
     const removedFromWatchlist = async (e, id) => {
         e.preventDefault()
@@ -23,6 +25,7 @@ const Watchlist = ({ editable }) => {
         catch (err) {
             console.log(err)
         }
+        dispatch(fetchUserDetails({}))
     }
 
     useEffect(() => {
