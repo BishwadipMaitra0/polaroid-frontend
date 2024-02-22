@@ -9,14 +9,13 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 const TheaterAdminNavbar = (props) => {
 
-    const { theatreAdminLogin, setTheatreAdminLogin } = props
+  const { theatreAdminLogin, setTheatreAdminLogin, setTheatreAdminName } = props
 
-  //const user = useAppSelector((state) => state.user)
   const navigate = useNavigate()
-  //const dispatch = useAppDispatch()
   
   const logoutHandler = () => {
     setTheatreAdminLogin(false)
+    setTheatreAdminName("")
     navigate('/theater_admin/login')
   }
 
@@ -29,7 +28,7 @@ const TheaterAdminNavbar = (props) => {
             <a class="navbar-anchor" onClick={() => navigate('/theater_admin/timing')} id="theater_admin_timing">Add timing</a>
           </li>
           <li class="navbar-list-element">
-            <a class="navbar-anchor" onClick={() => navigate('/')} id="home">Logout</a>
+            <a class="navbar-anchor" onClick={logoutHandler} id="home">Logout</a>
           </li>
         </ul>
       </div>

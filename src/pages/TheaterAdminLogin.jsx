@@ -5,7 +5,7 @@ import axios from "axios";
 
 const TheaterAdminLogin = (props) => {
 
-    const { theatreAdminLogin, setTheatreAdminLogin } = props
+    const { theatreAdminLogin, setTheatreAdminLogin, setTheatreAdminName } = props
 
     const [isInvalidEmail, setIsInvalidEmail] = useState(false)
     const [alertZone, setAlertZone] = useState("")
@@ -46,19 +46,19 @@ const TheaterAdminLogin = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        try {
-            const res = await axios.post("http://localhost:3500/theatreadmin/login", {
-                username: username,
-                password: password
-            })
-    
-            const data = await res.data
+        axios.post("http://localhost:3500/theatreadmin/login", {
+            username: username,
+            password: password
+        })
+        .then((data) => {
             setTheatreAdminLogin(true)
+            setTheatreAdminName(username)
             navigate('/theater_admin/dashboard')
-        } catch (err) {
+
+        })
+        .catch((err) => {
             console.log(err)
-            setAlertZone(err.response.data.error)
-        }
+        })
     }
 
     return (

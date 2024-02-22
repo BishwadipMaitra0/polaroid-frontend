@@ -42,10 +42,10 @@ const App = () => {
 
   const dispatch = useAppDispatch()
   const User = useAppSelector((state) => state.user)
-  const LoginState = useAppSelector((state) => state.login)
 
   const [adminLogin, setAdminLogin] = useState(false)
   const [theatreAdminLogin, setTheatreAdminLogin] = useState(false)
+  const [theatreAdminName, setTheatreAdminName] = useState("")
 
   useEffect(() => {
     dispatch(fetchUserDetails({}))
@@ -96,9 +96,9 @@ const App = () => {
       <Route path='/admin/dashboard' element={<AdminDashboard adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/addtadmin' element={<AdminRegister adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
       <Route path='/admin/login' element={<AdminLogin adminLogin={adminLogin} setAdminLogin={setAdminLogin} />}></Route>
-      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
-      <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
-      <Route path='/theater_admin/login' element={<TheaterAdminLogin theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
+      <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
+      <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
+      <Route path='/theater_admin/login' element={<TheaterAdminLogin setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

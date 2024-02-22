@@ -4,13 +4,14 @@ import getMovieById from "../api/getMovieById"
 import getMovieCredits from "../api/getMovieCredits"
 import getWatchProviders from "../api/getWatchProviders"
 import getSimilarMovies from "../api/getSimilarMovies"
-import { useAppSelector } from '../app/hooks'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 import Loader from '../components/Loader'
 import axios from 'axios'
 import "../styles/Film.css"
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useNavigate } from 'react-router'
+import { fetchUserDetails } from '../features/userSlice'
 
 const Film = () => {
 
@@ -19,6 +20,7 @@ const Film = () => {
     const { id } = useParams()
     const [isLoading, setLoading] = useState(true)
     const user = useAppSelector((state) => state.user)
+    const dispatch = useAppDispatch()
 
     const [data, setData] = useState()
     const [cast, setCast] = useState()
@@ -219,8 +221,6 @@ const Film = () => {
             .then((data) => {
                 console.log(data)
                 console.log("Review done!!")
-                // window.location.reload()
-
             })
             .catch((data) => {
                 console.log(data)

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router'
 
 const TheatreAdminTiming = (props) => {
 
-    const { theatreAdminLogin, setTheatreAdminLogin } = props
+    const { theatreAdminLogin, setTheatreAdminLogin, theatreAdminName } = props
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -73,10 +73,12 @@ const TheatreAdminTiming = (props) => {
         axios.post("http://localhost:3500/theatreadmin/addshow", {
             location: location,
             movieName: mname,
-            timings: [timing]
+            timings: [timing],
+            adminName: theatreAdminName
         })
         .then((res) => {
             console.log(res.data)
+            navigate('/theater_admin/dashboard')
         })
         .catch((err) => {
             console.log(err)

@@ -29,14 +29,18 @@ const AdminDashboard = (props) => {
     const deleteTheatreAdmin = async (adminName) => {
         try {
             const res = await axios.post("http://localhost:3500/admin/deletetheatreadmin", {
-                adminName: adminName
+                username: adminName
             })
             const data = await res.data
 
             let updatedAdmins = admins
+            console.log(data)
+            console.log(updatedAdmins)
             updatedAdmins = updatedAdmins.filter((x) => {
-                return x.adminName !== adminName
+                return x.username !== adminName
             })
+
+            console.log(updatedAdmins)
 
             setAdmins(updatedAdmins)
         } catch (err) {

@@ -33,24 +33,19 @@ const MyListPage = ({ isTrending }) => {
 
     const deleteItemHandler = async (e, item) => {
         e.preventDefault()
-        console.log(listData)
-        const res = await axios.post('http://localhost:3500/user/delete/list', {
+        axios.post('http://localhost:3500/user/delete/list', {
             username: user.data.username,
             listName: listData.listName,
             listItem: item.id
         })
         .then((data) => {
-            console.log(data.data)
             let tempData = listData
-
+            console.log(listData)
             console.log(tempData)
-
             tempData.items = tempData.items.filter((x) => {
                 return x.id !== item.id
             })
-
             console.log(tempData)
-
             setData(tempData)
         })
         .catch((err) => {
