@@ -46,6 +46,8 @@ const TheaterAdminDashboard = (props) => {
                     for (let j=0; j<tempData[i].movieInfo.length; j++) {
                         if (tempData[i].movieInfo[j].movieName === movieName) {
                             tempData[i].movieInfo[j].timings = tempData[i].movieInfo[j].timings.filter((x) => {
+                                console.log(x.startTiming, startTiming, typeof(x.startTiming), typeof(startTiming))
+                                console.log(x.startTiming === startTiming)
                                 return x.startTiming !== startTiming && x.endTiming !== endTiming && x.runDate !== runDate
                             })
                         }
