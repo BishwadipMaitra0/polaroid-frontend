@@ -1,21 +1,32 @@
-body {
+.booking-main {
     margin: 0;
     padding: 0;
     background-color: #14181c;
     color: white;
-}
-
-.booking-main {
     display: flex;
     max-width: 100%;
     padding: 5% 0;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.booking-main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 25%;
 }
 
 .booking-contact-essentials {
     margin-bottom: 35px;
+}
+
+.booking-email-div {
+    margin-bottom: 2%;
+    /* width: 100%; */
 }
 
 .booking-email-label {
@@ -25,37 +36,38 @@ body {
     opacity: 70%;
 }
 
-.booking-email-div {
-    margin-bottom: 5%;
-}
-
 .booking-email-box {
     display: block;
-    width: 450px;
-    padding: 2% 2%;
+    width: 100%;
+    height: 45px;
+    padding: 12px 12px;
     font-size: 18px;
     font-weight: 400;
     border-radius: 8px;
     background-color: #a3d4ec;
     border: none;
+    /* color: black; */
+    /* outline: none; */
     margin-top: 12px;
 }
 
 .booking-address-box {
     display: block;
-    width: 450px;
-    height: 100px;
-    padding: 2% 2%;
+    width: 100%;
+    height: 95px;
+    padding: 12px 12px;
     font-size: 18px;
     font-weight: 400;
     border-radius: 8px;
     background-color: #a3d4ec;
     border: none;
+    /* color: black; */
+    /* outline: none; */
     margin-top: 12px;
 }
 
 .booking-gender-drop-box {
-    /* display: block; */
+    display: block;
     margin: 12px 0px 15px 15px;
     width: 200px;
     padding: 2% 2%;
@@ -87,7 +99,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin: 15px 15px;
 }
 
 .booking-error-div {
