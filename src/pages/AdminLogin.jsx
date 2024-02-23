@@ -47,7 +47,7 @@ const AdminLogin = (props) => {
     const submitHandler = async (e) => {
         e.preventDefault()
         try {
-            if (username==="admin" && password==="Admin@123") {
+            if (username === "admin" && password === "Admin@123") {
                 setAdminLogin(true)
                 navigate('/admin/dashboard')
             }
@@ -62,7 +62,7 @@ const AdminLogin = (props) => {
     return (
         <div className="mainLogin">
             <div className="div-container">
-                <img src="/assets/Logo.png" alt="picture" className="logo" />
+                <img src="/assets/Logo.png" onClick={() => navigate("/")} alt="picture" className="logo" />
                 <div className="text-div">
                     <form id="loginForm" onSubmit={submitHandler}>
                         <div className="head-div">Admin Log In</div>
