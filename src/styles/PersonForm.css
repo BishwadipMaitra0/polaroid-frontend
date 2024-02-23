@@ -1,51 +1,135 @@
-/* Style for the form container */
-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #14181c;
+    color: white;
 }
 
-/* Style for the input fields and labels */
-label {
+.booking-main {
+    display: flex;
+    max-width: 100%;
+    padding: 5% 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.booking-contact-essentials {
+    margin-bottom: 35px;
+}
+
+.booking-email-label {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 70%;
+}
+
+.booking-email-div {
+    margin-bottom: 5%;
+}
+
+.booking-email-box {
     display: block;
-    margin-bottom: 10px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-/* Style for the submit button */
-button {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Style for the person containers */
-div {
-    border: 1px solid #ddd;
+    width: 450px;
+    padding: 2% 2%;
+    font-size: 18px;
+    font-weight: 400;
     border-radius: 8px;
-    padding: 10px;
-    margin-bottom: 20px;
+    background-color: #a3d4ec;
+    border: none;
+    margin-top: 12px;
 }
 
-h3 {
-    margin-top: 0;
+.booking-address-box {
+    display: block;
+    width: 450px;
+    height: 100px;
+    padding: 2% 2%;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    background-color: #a3d4ec;
+    border: none;
+    margin-top: 12px;
+}
+
+.booking-gender-drop-box {
+    /* display: block; */
+    margin: 12px 0px 15px 15px;
+    width: 200px;
+    padding: 2% 2%;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 8px;
+    background-color: #a3d4ec;
+    border: none;
+}
+
+.booking-gender-div {
+    margin-bottom: 35px;
+}
+
+.booking-accept-terms {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.booking-accept-terms-checkbox {
+    transform: scale(1.5);
+    margin-right: 15px;
+}
+
+.booking-control-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.booking-error-div {
+    height: 15px;
+    line-height: 15px;
+    color: red;
+    margin-bottom: 5px;
+}
+
+.booking-personal-info:focus {
+    outline: none;
+    background-color: white;
+}
+
+.booking-personal-info {
+    outline: none;
+    background-color: #a3d4ec;
+}
+
+.booking-movie-selector {
+    display: block;
+    margin: 12px 0px 15px 0px;
+    width: auto;
+    padding: 4% 4%;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    background-color: #a3d4ec;
+    border: none;
+}
+
+.booking-movie-selector-label {
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 70%;
+}
+
+.booking-selector-container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: flex-start; */
+    /* margin-right: 5.5%; */
+    margin-bottom: 15%;
 }

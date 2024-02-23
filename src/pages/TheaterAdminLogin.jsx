@@ -51,10 +51,10 @@ const TheaterAdminLogin = (props) => {
             password: password
         })
         .then((data) => {
+            console.log(data.data)
             setTheatreAdminLogin(true)
             setTheatreAdminName(username)
             navigate('/theater_admin/dashboard')
-
         })
         .catch((err) => {
             console.log(err)

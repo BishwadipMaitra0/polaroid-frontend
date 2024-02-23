@@ -318,7 +318,7 @@ const Register = () => {
                             </svg>
                         </button>
                     </form>
-                    <div class="login-div">Already have an account ? <a href="/user/login">Log in</a></div>
+                    <div class="login-div">Already have an account ? <a onClick={() => navigate('/user/login')}>Log in</a></div>
                     <div class="pass-info">
                         Password must be minimum of 8 characters and maximum of 16 characters, atleast one uppercase letter, atleast one lowercase letter,
                         one number, one special character.

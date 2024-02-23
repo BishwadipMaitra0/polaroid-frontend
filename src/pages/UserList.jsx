@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import axios from 'axios'
 import { useAppSelector } from '../app/hooks'
 import Navbar from '../components/Navbar'
@@ -24,6 +24,8 @@ const UesrList = () => {
 
   const handleClose = () => setShowModal(false)
   const handleShow = () => setShowModal(true)
+
+  const navigate = useNavigate()
 
   const handleListCreate = async () => {
     setLoading(true)
@@ -119,7 +121,7 @@ const UesrList = () => {
                           <div class="list-content">
                             <div class="list-metadata">
                               <div class="list-header">
-                                <a style={{ textDecoration: "none" }} href={"/user/list/" + item.listName.split(" ").join("%20")} > <div class="mylist-name"> {item.listName} </div> </a>
+                                <a style={{ textDecoration: "none" }} onClick={() => navigate("/user/list/" + item.listName.split(" ").join("%20"))} > <div class="mylist-name"> {item.listName} </div> </a>
                               </div>
                               <form>
                                 <button type="button" class="delete-button" onClick={() => deleteSubmitHandler(item.listName)}>

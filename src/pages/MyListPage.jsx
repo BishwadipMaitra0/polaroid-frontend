@@ -47,6 +47,7 @@ const MyListPage = ({ isTrending }) => {
             })
             console.log(tempData)
             setData(tempData)
+            getListData()
         })
         .catch((err) => {
             console.log(err)
