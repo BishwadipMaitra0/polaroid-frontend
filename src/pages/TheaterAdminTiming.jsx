@@ -102,12 +102,13 @@ const TheatreAdminTiming = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        console.log(location, mname, timing)
 
         axios.post("http://localhost:3500/theatreadmin/addshow", {
             location: location,
             movieName: mname,
-            timings: [timing],
+            startTime: starttime,
+            endTime: endtime,
+            runDate: timing,
             adminName: theatreAdminName
         })
             .then((res) => {
