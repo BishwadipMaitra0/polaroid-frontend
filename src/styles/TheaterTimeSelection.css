@@ -1,0 +1,45 @@
+
+.select-div{
+    margin-bottom: 5%;
+}
+
+.select-box{
+    display: block;
+    appearance: none;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 0.375rem;
+    background-color: #a3d4ec;
+    border: none;
+    cursor: pointer;
+}
+
+.select-div{
+    min-width: 350px;
+    position: relative;
+}
+
+.select-div::before,
+.select-div::after {
+    --size: 0.3rem;
+    position: absolute;
+    content: "";
+    right: 1rem;
+    pointer-events: none;
+}
+
+.select-div::before {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid black;
+    top: 65%;
+}
+
+.select-div::after {
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid black;
+    top: 75%;
+}

@@ -39,6 +39,8 @@ import Booking from './pages/Booking'
 import Trending from './pages/Trending'
 import MyForm from './pages/PersonForm'
 import Booking2 from './pages/Booking2'
+import OngoingMovies from './pages/OngoingMovies'
+import TheaterTimeSelection from './pages/TheaterTimeSelection'
 
 const App = () => {
 
@@ -103,6 +105,8 @@ const App = () => {
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/personform' element={<MyForm />}></Route>
+      <Route path='/ongoing' element={<OngoingMovies/>}></Route>
+      <Route path='/theater_selection' element={<TheaterTimeSelection/>}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
