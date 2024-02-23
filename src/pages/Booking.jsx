@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import '../styles/Booking.css';
+import '../styles/Booking.css'
 
 function Booking() {
 
