@@ -41,6 +41,7 @@ import MyForm from './pages/PersonForm'
 import Booking2 from './pages/Booking2'
 import OngoingMovies from './pages/OngoingMovies'
 import TheaterTimeSelection from './pages/TheaterTimeSelection'
+import BookingForm from './pages/BookingForm'
 
 const App = () => {
 
@@ -86,7 +87,6 @@ const App = () => {
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
-      <Route path='/booking2' element={<Booking2 />}></Route>
       <Route path='/booking/:count' element={<Booking />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
@@ -107,6 +107,7 @@ const App = () => {
       <Route path='/personform' element={<MyForm />}></Route>
       <Route path='/ongoing' element={<OngoingMovies/>}></Route>
       <Route path='/theater_selection' element={<TheaterTimeSelection/>}></Route>
+      <Route path='/bookingform' element={<BookingForm />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

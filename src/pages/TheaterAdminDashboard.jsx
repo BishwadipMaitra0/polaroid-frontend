@@ -30,11 +30,13 @@ const TheaterAdminDashboard = (props) => {
             })
     }
 
-    const deleteTiming = async (location, movieName, timing) => {
+    const deleteTiming = async (location, movieName, startTiming, endTiming, runDate) => {
         axios.post("http://localhost:3500/theatreadmin/show", {
             location: location,
             movieName: movieName,
-            timing: timing
+            startTiming: startTiming,
+            endTiming: endTiming,
+            runDate, runDate
         })
         .then((data) => {
             console.log(data.data)
@@ -44,7 +46,9 @@ const TheaterAdminDashboard = (props) => {
                     for (let j=0; j<tempData[i].movieInfo.length; j++) {
                         if (tempData[i].movieInfo[j].movieName === movieName) {
                             tempData[i].movieInfo[j].timings = tempData[i].movieInfo[j].timings.filter((x) => {
-                                return x.timing !== timing
+                                console.log(x.startTiming, startTiming, typeof(x.startTiming), typeof(startTiming))
+                                console.log(x.startTiming === startTiming)
+                                return x.startTiming !== startTiming && x.endTiming !== endTiming && x.runDate !== runDate
                             })
                         }
                     }
@@ -85,6 +89,29 @@ const TheaterAdminDashboard = (props) => {
         })
     }
 
+    const convertDateToString = (startTimeString, endTimeString) => {
+        // Create Date objects from the given strings
+        const startTime = new Date(startTimeString);
+        const endTime = new Date(endTimeString);
+
+        // Custom formatting function for time
+        const formatTime = (date) => {
+        const hours = date.getHours().toString().padStart(2, '0');
+        const minutes = date.getMinutes().toString().padStart(2, '0');
+        return `${hours}:${minutes}`;
+        };
+
+        // Format the date strings
+        const formattedStartDate = startTime.toLocaleDateString('en-US', { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+        const formattedStartTime = formatTime(startTime);
+        const formattedEndTime = formatTime(endTime);
+
+        // Create the final string
+        const finalString = `${formattedStartDate}, ${formattedStartTime} to ${formattedEndTime}`;
+
+        return finalString
+    }
+
     useEffect(() => {
         if (!theatreAdminLogin) {
             navigate('/theater_admin/login')
@@ -109,21 +136,21 @@ const TheaterAdminDashboard = (props) => {
                                 <th class="admin_th">No. of movies</th>
                                 <th class="admin_th"> </th>
                             </tr>
-                            {movieData.map((location, index) =>
+                            {movieData?.map((location, index) =>
                                 <tr>
                                     <td class="admin_td">
                                         <details class="admin_details">
-                                            <summary class="admin_summary"> {location.location} </summary>
+                                            <summary class="admin_summary"> {location?.location} </summary>
                                             <hr class="admin_summary" />
                                             <ul>
-                                                {location.movieInfo.map((movie, index2) =>
+                                                {location?.movieInfo?.map((movie, index2) =>
                                                     <li>
                                                         <details class="admin_details">
-                                                            <summary class="admin_summary"> {movie.movieName} <button class="admin_button" type="button" onClick={async (e) => await deleteMovie(location.location, movie.movieName)}>Delete</button></summary>
+                                                            <summary class="admin_summary"> {movie?.movieName} <button class="admin_button" type="button" onClick={async (e) => await deleteMovie(location?.location, movie?.movieName)}>Delete</button></summary>
                                                             <hr class="admin_summary" />
                                                             <ul>
-                                                                {movie.timings.map((timing, index3) =>
-                                                                    <li><p> {timing.timing} <button class="admin_button" type="button" onClick={async (e) => await deleteTiming(location.location, movie.movieName, timing.timing)}>Delete</button></p></li>
+                                                                {movie?.timings?.map((timing, index3) =>
+                                                                    <li><p> {convertDateToString(timing?.startTiming, timing?.endTiming)} <button class="admin_button" type="button" onClick={async (e) => await deleteTiming(location?.location, movie?.movieName, timing?.startTiming, timing?.endTiming, timing?.runDate)}>Delete</button></p></li>
                                                                 )}
                                                             </ul>
                                                         </details>
@@ -132,8 +159,8 @@ const TheaterAdminDashboard = (props) => {
                                             </ul>
                                         </details>
                                     </td>
-                                    <td class="admin_td"> {location.movieInfo.length} </td>
-                                    <td class="admin_td delete_column"><button class="admin_button" type="button" onClick={async (e) => await deleteLocation(location.location)}>Delete</button></td>
+                                    <td class="admin_td"> {location?.movieInfo?.length} </td>
+                                    <td class="admin_td delete_column"><button class="admin_button" type="button" onClick={async (e) => await deleteLocation(location?.location)}>Delete</button></td>
                                 </tr>
                             )}
                         </table>
