@@ -50,21 +50,21 @@ const TheaterAdminLogin = (props) => {
             username: username,
             password: password
         })
-        .then((data) => {
-            console.log(data.data)
-            setTheatreAdminLogin(true)
-            setTheatreAdminName(username)
-            navigate('/theater_admin/dashboard')
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((data) => {
+                console.log(data.data)
+                setTheatreAdminLogin(true)
+                setTheatreAdminName(username)
+                navigate('/theater_admin/dashboard')
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     return (
         <div className="mainLogin">
             <div className="div-container">
-                <img src="/assets/Logo.png" alt="picture" className="logo" />
+                <img src="/assets/Logo.png" onClick={() => navigate("/")} alt="picture" className="logo" />
                 <div className="text-div">
                     <form id="loginForm" onSubmit={submitHandler}>
                         <div className="head-div">Theatre Admin Log In</div>
