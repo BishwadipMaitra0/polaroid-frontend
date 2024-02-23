@@ -37,8 +37,7 @@ import OthersLists from './pages/OthersLists'
 import Lists from './pages/Lists'
 import Booking from './pages/Booking'
 import Trending from './pages/Trending'
-import MyForm from './pages/PersonForm'
-import Booking2 from './pages/Booking2'
+import BookingForm from './pages/BookingForm'
 
 const App = () => {
 
@@ -84,7 +83,6 @@ const App = () => {
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
-      <Route path='/booking2' element={<Booking2 />}></Route>
       <Route path='/booking/:count' element={<Booking />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
@@ -102,7 +100,7 @@ const App = () => {
       <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
-      <Route path='/personform' element={<MyForm />}></Route>
+      <Route path='/bookingform' element={<BookingForm />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
