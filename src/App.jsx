@@ -102,8 +102,8 @@ const App = () => {
       <Route path='/theater_admin/dashboard' element={<TheaterAdminDashboard setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
-      <Route path='/ongoing' element={<OngoingMovies/>}></Route>
-      <Route path='/theater_selection' element={<TheaterTimeSelection/>}></Route>
+      <Route path='/ongoing' element={<OngoingMovies />}></Route>
+      <Route path='/theater_selection' element={<TheaterTimeSelection />}></Route>
       <Route path='/bookingform' element={<BookingForm />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
