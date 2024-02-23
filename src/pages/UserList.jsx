@@ -44,17 +44,25 @@ const UesrList = () => {
   const deleteSubmitHandler = async (listname) => {
     setLoading(true)
 
-    const deleteList = await axios.post('http://localhost:3500/user/list/delete', {
+    axios.delete(`http://localhost:3500/user/list/delete/${listname}/${user.data.username}`, {
       username: user?.data?.username,
       listName: listname
     })
+      .then(async (res) => {
+        console.log("hi in res then")
+        console.log(res.data)
+        let templists = lists
+        templists = templists.filter((x) => {
+          return x.listName !== listname
+        })
 
-    await deleteList.data
-
-    console.log(listname)
-    fetchData()
-
-    setLoading(false)
+        setLists(templists)
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.log(err)
+        setLoading(false)
+      })
   }
 
 
@@ -78,6 +86,10 @@ const UesrList = () => {
     fetchData()
     document.title = "My Lists"
   }, [, user])
+
+  useEffect(() => {
+
+  }, [lists])
 
 
   return (
@@ -123,13 +135,13 @@ const UesrList = () => {
                               <div class="list-header">
                                 <a style={{ textDecoration: "none" }} onClick={() => navigate("/user/list/" + item.listName.split(" ").join("%20"))} > <div class="mylist-name"> {item.listName} </div> </a>
                               </div>
-                              <form>
+                              <>
                                 <button type="button" class="delete-button" onClick={() => deleteSubmitHandler(item.listName)}>
                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="grey" class="bi bi-trash-fill" viewBox="0 0 16 16" opacity="0.8">
                                     <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
                                   </svg>
                                 </button>
-                              </form>
+                              </>
                             </div>
                             <div class="list-desc">
                               {item.description}
