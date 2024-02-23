@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "../styles/Search.css"
+import "../styles/Ongoing.css"
 import axios from 'axios'
 import getMovieByName from '../api/getMovieByName'
 import Navbar from '../components/Navbar'
@@ -12,7 +13,9 @@ const OngoingMovies = () => {
             <Navbar />
             <div class="searchpage_main_container">
                 <div class="main_searchpage">
-                        <h1>Ongoing Films</h1>
+                        <div class="header">
+                            <div class="header-description">Ongoing Films</div>
+                        </div>
                         <div class="element-container">
                             <div class="film-image-container">
                                 <img class="film-image" src={"https://image.tmdb.org/t/p/original"} alt="image" />
