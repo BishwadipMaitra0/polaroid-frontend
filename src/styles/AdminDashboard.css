@@ -1,23 +1,46 @@
-.admin_main{
-  background-color: #14181c;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+.admin_main {
+    margin: 2% 10% 2% 10%;
+    background-color: #14181c;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.admin_table{
+.admin_table {
     color: white;
-    word-wrap:break-word;
+    word-wrap: break-word;
     table-layout: fixed;
     margin-top: 25px;
 }
 
-.admin_table, .admin_th, .admin_td {
+.admin-header-bar {
+    color: #9ab;
+    text-transform: uppercase;
+    border-bottom: 1px solid #456;
+    border-top: 1px solid #456;
+    color: #678;
+    font-size: 16px;
+    line-height: 1;
+    min-height: 30px;
+    padding: 10px 0;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-width: 60%;
+}
+
+.admin_table,
+.admin_th,
+.admin_td {
     border: 1px solid rgb(86, 92, 100);
 }
 
-.admin_th, .admin_td{
+.admin_th,
+.admin_td {
     padding: 15px;
 }
 
@@ -25,16 +48,17 @@
     border: 1px solid rgb(86, 92, 100);
 }
 
-.admin_details > .admin_summary {
-  list-style: none;
+.admin_details>.admin_summary {
+    list-style: none;
 }
-.admin_details > summary::-webkit-details-marker {
-  display: none;
+
+.admin_details>summary::-webkit-details-marker {
+    display: none;
 }
 
 .delete_column {
-  text-align: center;
-  vertical-align: middle;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .admin_button {
@@ -53,17 +77,18 @@
     opacity: 0.8;
 }
 
-.admin_button:active{
+.admin_button:active {
     background-color: red;
     color: white;
     border: 1px solid transparent;
 }
 
-.admin_summary .admin_button{
+.admin_summary .admin_button {
     margin-left: 50px;
     padding: 5px;
 }
-.admin_details .admin_button{
+
+.admin_details .admin_button {
     margin-left: 50px;
     padding: 5px;
 }

@@ -38,29 +38,29 @@ const TheaterAdminDashboard = (props) => {
             endTiming: endTiming,
             runDate, runDate
         })
-        .then((data) => {
-            console.log(data.data)
-            let tempData = movieData
-            for (let i=0; i<tempData.length; i++) {
-                if (tempData[i].location === location) {
-                    for (let j=0; j<tempData[i].movieInfo.length; j++) {
-                        if (tempData[i].movieInfo[j].movieName === movieName) {
-                            tempData[i].movieInfo[j].timings = tempData[i].movieInfo[j].timings.filter((x) => {
-                                console.log(x.startTiming, startTiming, typeof(x.startTiming), typeof(startTiming))
-                                console.log(x.startTiming === startTiming)
-                                return x.startTiming !== startTiming && x.endTiming !== endTiming && x.runDate !== runDate
-                            })
+            .then((data) => {
+                console.log(data.data)
+                let tempData = movieData
+                for (let i = 0; i < tempData.length; i++) {
+                    if (tempData[i].location === location) {
+                        for (let j = 0; j < tempData[i].movieInfo.length; j++) {
+                            if (tempData[i].movieInfo[j].movieName === movieName) {
+                                tempData[i].movieInfo[j].timings = tempData[i].movieInfo[j].timings.filter((x) => {
+                                    console.log(x.startTiming, startTiming, typeof (x.startTiming), typeof (startTiming))
+                                    console.log(x.startTiming === startTiming)
+                                    return x.startTiming !== startTiming && x.endTiming !== endTiming && x.runDate !== runDate
+                                })
+                            }
                         }
                     }
                 }
-            }
 
-            console.log(tempData)
-            setMovieData(tempData)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+                console.log(tempData)
+                setMovieData(tempData)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const deleteMovie = async (location, movieName) => {
@@ -68,12 +68,12 @@ const TheaterAdminDashboard = (props) => {
             location: location,
             movieName: movieName
         })
-        .then((data) => {
-            console.log(data.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((data) => {
+                console.log(data.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const deleteLocation = async (location) => {
@@ -81,12 +81,12 @@ const TheaterAdminDashboard = (props) => {
             location: location,
             adminName: theatreAdminName
         })
-        .then((data) => {
-            console.log(data.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
+            .then((data) => {
+                console.log(data.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
     }
 
     const convertDateToString = (startTimeString, endTimeString) => {
@@ -96,9 +96,9 @@ const TheaterAdminDashboard = (props) => {
 
         // Custom formatting function for time
         const formatTime = (date) => {
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
-        return `${hours}:${minutes}`;
+            const hours = date.getHours().toString().padStart(2, '0');
+            const minutes = date.getMinutes().toString().padStart(2, '0');
+            return `${hours}:${minutes}`;
         };
 
         // Format the date strings
@@ -128,8 +128,10 @@ const TheaterAdminDashboard = (props) => {
                 :
                 <>
                     <AdminNavbar theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} setTheatreAdminName={setTheatreAdminName} />
-                    <p style={{ color: "white" }}>Logged in as {theatreAdminName} </p>
                     <div class="admin_main">
+                        <div class="admin-header-bar">
+                            <div> Logged in as <strong>{theatreAdminName}</strong></div>
+                        </div>
                         <table class="admin_table">
                             <tr>
                                 <th class="admin_th">Name of Theatre</th>
