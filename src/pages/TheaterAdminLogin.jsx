@@ -84,7 +84,7 @@ const TheaterAdminLogin = (props) => {
                                 name="email"
                                 onChange={(e) => setUsername(e.target.value)}
                                 className="email-box"
-                                placeholder="input@example.com"
+                                placeholder="username"
                                 id="email-input"
                                 required
                                 autoComplete="off"

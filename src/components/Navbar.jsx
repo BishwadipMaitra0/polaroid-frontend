@@ -76,6 +76,9 @@ const Navbar = () => {
                   <NavDropdown.Item onClick={() => navigate("/user/watchedfilms")}>
                     Watched Films
                   </NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => navigate("/ongoing")}>
+                    Ongoing Shows
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={() => navigate('/followers/' + user.data.username)}>
                     Network
                   </NavDropdown.Item>
