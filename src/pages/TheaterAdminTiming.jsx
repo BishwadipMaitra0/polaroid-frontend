@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react'
 import "../styles/Login.css"
-import { useAppSelector } from '../app/hooks'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 
 const TheatreAdminTiming = (props) => {
 
@@ -23,6 +24,7 @@ const TheatreAdminTiming = (props) => {
     const [timing, setDate] = useState()
     const [starttime, setStartTime] = useState()
     const [endtime, setEndTime] = useState()
+    const [price, setPrice] = useState(0)
 
     const [sbDisabled, setDisabled] = useState(false)
 
@@ -31,7 +33,6 @@ const TheatreAdminTiming = (props) => {
     const timingRef = useRef(null)
     const startTime = useRef()
     const endTime = useRef()
-    const btn = useRef()
 
     const altert1Ref = useRef(null)
     const altert2Ref = useRef(null)
@@ -89,16 +90,57 @@ const TheatreAdminTiming = (props) => {
         endTime.current.style.backgroundColor = "white";
     }
 
-    const validateTiming = () => {
-        if (startTime.current.value >= endTime.current.value) {
-            setError("Start Time can not be greater than or equal to End Time")
-            btn.current.disabled = true
+    const validateID = () => {
+        let movieIDRegex = /^[0-9]+$/
+
+        if (mname !== '' && !mname.match(movieIDRegex)) {
+            setError("Enter a valid movie ID")
+            return false
         }
         else {
             setError("")
-            btn.current.disabled = false
+            return true
         }
     }
+
+    const validateTiming = () => {
+        if (starttime !== '' && starttime >= endtime) {
+            setError("Start Time can not be greater than or equal to End Time")
+            return false
+        }
+        else {
+            setError("")
+            return true
+        }
+    }
+
+    const validatePrice = () => {
+        if (price >= 0) {
+            setError("")
+            return true
+        }
+        else {
+            setError("Price must be greater than equal to 0")
+            return false
+        }
+    }
+
+    const validate = () => {
+        if (validateID() && validateTiming() && validatePrice()) {
+            setDisabled(false)
+        }
+        else {
+            setDisabled(true)
+        }
+    }
+
+    useEffect(() => {
+        document.title = "Add a movie timings"
+    }, [])
+
+    useEffect(() => {
+        validate()
+    }, [price, starttime, endtime, mname])
 
     const submitHandler = async (e) => {
         e.preventDefault()
@@ -109,7 +151,8 @@ const TheatreAdminTiming = (props) => {
             startTime: starttime,
             endTime: endtime,
             runDate: timing,
-            adminName: theatreAdminName
+            adminName: theatreAdminName,
+            price: +(price)
         })
             .then((res) => {
                 console.log(res.data)
@@ -125,7 +168,7 @@ const TheatreAdminTiming = (props) => {
             <div class="div-container">
                 <img src="/assets/Logo.png" onClick={() => navigate('/')} class="logoreg" />
                 <div class="text-div">
-                    <form id="registerForm" onSubmit={submitHandler} onChange={validateTiming}>
+                    <form id="registerForm" onSubmit={submitHandler}>
                         <div class="head-div">Add New Timing</div>
 
                         <div class="email-div">
@@ -178,7 +221,16 @@ const TheatreAdminTiming = (props) => {
                             />
                         </div>
 
-                        <button ref={btn} type="submit" class="btn btn-outline-info" style={{ width: "100%" }} id="submit-button" disabled={sbDisabled}>
+                        <div class="email-div">
+                            <label htmlFor="fare-input" class="email-label" style={{ opacity: "70%" }}>Ticket Price</label>
+                            <InputGroup className="mb-3" id="fare-label">
+                                <InputGroup.Text style={{ backgroundColor: "#abc", outline: "none" }} >Rs.</InputGroup.Text>
+                                <Form.Control style={{ backgroundColor: "#a3d4ec", outline: "none" }} value={price} onChange={(e) => setPrice(e.target.value)} />
+                                <InputGroup.Text style={{ backgroundColor: "#abc", outline: "none" }}>.00</InputGroup.Text>
+                            </InputGroup>
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-info" style={{ width: "100%" }} id="submit-button" disabled={sbDisabled}>
                             Add Timing
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z" />
