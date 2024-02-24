@@ -60,6 +60,7 @@ const Settings = () => {
 
   useEffect(() => {
     document.title = "Settings"
+    if (!user.isLoggedIn) navigate('/user/login')
   }, [])
 
   useEffect(() => {

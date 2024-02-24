@@ -56,6 +56,7 @@ const MyListPage = ({ isTrending }) => {
 
     useEffect(() => {
         document.title = `${listName}`
+        if (!user.isLoggedIn) navigate('/user/login')
     }, [])
 
     useEffect(() => {

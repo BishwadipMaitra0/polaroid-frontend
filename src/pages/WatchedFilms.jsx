@@ -5,11 +5,13 @@ import Footer from '../components/Footer'
 import "../styles/WatchedFilms.css"
 import axios from 'axios'
 import { fetchUserDetails } from '../features/userSlice'
+import { useNavigate } from 'react-router'
 
 const WatchedFilms = ({ editable }) => {
 
     const user = useAppSelector((state) => state.user)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const removedFromWatched = async (e, id) => {
         e.preventDefault()
@@ -33,6 +35,7 @@ const WatchedFilms = ({ editable }) => {
 
     useEffect(() =>{
         dispatch(fetchUserDetails({}))
+        if (!user.isLoggedIn) navigate('/user/login')
     }, [])
 
     return (

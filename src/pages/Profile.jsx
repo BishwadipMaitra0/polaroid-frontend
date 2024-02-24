@@ -83,6 +83,10 @@ const Profile = ({ currentUser }) => {
 
     }, [user])
 
+    useEffect(() => {
+        if (!user.isLoggedIn) navigate('/user/login')
+    }, [])
+
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
         clipPath: 'inset(50%)',

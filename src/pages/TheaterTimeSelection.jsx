@@ -2,10 +2,16 @@ import React, { useEffect, useState, useRef } from 'react'
 import "../styles/Login.css"
 import "../styles/TheaterTimeSelection.css"
 import { useNavigate } from 'react-router'
+import { useAppSelector } from '../app/hooks'
 
 const TheaterTimeSelection = () => {
 
     const navigate = useNavigate()
+    const user = useAppSelector((state) => state.user)
+
+    useEffect(() => {
+        if (!user.isLoggedIn) navigate('/user/login')
+    }, [])
 
     const [theater, setTheater] = useState()
     const [timing, setTiming] = useState()

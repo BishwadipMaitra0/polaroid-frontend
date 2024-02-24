@@ -88,9 +88,12 @@ const UesrList = () => {
   }, [, user])
 
   useEffect(() => {
-
+    
   }, [lists])
-
+  
+  useEffect(() => {
+    if (!user.isLoggedIn) navigate('/user/login')
+  }, [])
 
   return (
     <>

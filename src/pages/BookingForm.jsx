@@ -1,12 +1,18 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import '../styles/BookingForm.css'
 import { useNavigate } from 'react-router';
+import { useAppSelector } from '../app/hooks';
 
 const BookingForm = () => {
 
   const navigate = useNavigate()
+  const user = useAppSelector((state) => state.user)
+
+  useEffect(() => {
+    if (!user.isLoggedIn) navigate('/user/login')
+  }, [])
 
   const emailRef = useRef()
   const mobilenoRef = useRef()

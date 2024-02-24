@@ -1,10 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import '../styles/Booking.css'
+import { useAppSelector } from '../app/hooks';
 
 function Booking() {
+
+    const user = useAppSelector((state) => state.user)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user.isLoggedIn) navigate('/user/login')
+    }, [])
 
   const { count } = useParams()
   let seatcount = +count
