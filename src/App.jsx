@@ -40,6 +40,7 @@ import Trending from './pages/Trending'
 import OngoingMovies from './pages/OngoingMovies'
 import TheaterTimeSelection from './pages/TheaterTimeSelection'
 import BookingForm from './pages/BookingForm'
+import BookingHistory from './pages/BookingHistory'
 
 const App = () => {
 
@@ -105,6 +106,7 @@ const App = () => {
       <Route path='/ongoing' element={<OngoingMovies />}></Route>
       <Route path='/theater_selection' element={<TheaterTimeSelection />}></Route>
       <Route path='/bookingform' element={<BookingForm />}></Route>
+      <Route path='/bookinghistory' element={<BookingHistory />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

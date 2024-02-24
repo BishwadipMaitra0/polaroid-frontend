@@ -1,0 +1,56 @@
+/*Override element-container from Search.css*/
+.element-container {
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.booking-details{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.resend-button{
+    color: orange;
+    border: 1px solid orange;
+}
+
+.cancel-button{
+    color: red;
+    border: 1px solid red;
+}
+
+.button {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right:10px;
+    font-weight: 550;
+}
+
+.button:hover {
+    opacity: 0.8;
+}
+
+.cancel-button:active{
+    background-color: red;
+    color: white;
+    border: 1px solid transparent;
+}
