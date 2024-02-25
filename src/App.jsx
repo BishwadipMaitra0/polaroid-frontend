@@ -88,7 +88,7 @@ const App = () => {
       <Route path='/profile/:username' element={<OthersProfile currentUser={false} />}></Route>
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
-      <Route path='/booking/:count' element={<Booking />}></Route>
+      <Route path='/booking' element={<Booking />}></Route>
       <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
@@ -106,12 +106,12 @@ const App = () => {
       <Route path='/theater_admin/timing' element={<TheaterAdminTiming theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/login' element={<TheaterAdminLogin setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/ongoing' element={<OngoingMovies />}></Route>
-      <Route path='/theater_selection' element={<TheaterTimeSelection />}></Route>
+      <Route path='/theater_selection/:movieid' element={<TheaterTimeSelection />}></Route>
       <Route path='/bookingform' element={<BookingForm />}></Route>
       <Route path='/user/bookinghistory' element={<BookingHistory />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
 }
-
+    
 export default App

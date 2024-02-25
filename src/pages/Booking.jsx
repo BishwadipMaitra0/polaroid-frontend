@@ -4,21 +4,23 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import '../styles/Booking.css'
 import { useAppSelector } from '../app/hooks';
+import axios from 'axios';
 
 function Booking() {
 
     const user = useAppSelector((state) => state.user)
     const navigate = useNavigate()
 
-    useEffect(() => {
-        if (!user.isLoggedIn) navigate('/user/login')
-    }, [])
+    // useEffect(() => {
+    //     if (!user.isLoggedIn) navigate('/user/login')
+    // }, [])
 
-  const { count } = useParams()
+  let count = localStorage.getItem("nopeople")
   let seatcount = +count
 
   const zone = useRef()
-  const btn = useRef()
+  
+  const [btDis, setBtDis] = useState(true)
 
   const [selectedSeats, setSelectedSeats] = useState(0)
   const [bookedSeats, setBookedSeats] = useState([])
@@ -40,11 +42,11 @@ function Booking() {
   useEffect(() => {
     if (seatcount !== selectedSeats) {
       zone.current.style.color = "#eb455f"
-      btn.current.disabled = true
+      setBtDis(true)
     }
     else {
       zone.current.style.color = "LimeGreen"
-      btn.current.disabled = false
+      setBtDis(false)
     }
 
     console.log(selectedSeats)
@@ -77,8 +79,11 @@ function Booking() {
   }
 
   const submitHandler = () => {
+    console.log("hi")
     setBookedSeats(tempbookedSeats)
     setSeatMatrix(tempseatMatrix)
+
+    console.log(tempbookedSeats)
   }
 
 
@@ -86,8 +91,38 @@ function Booking() {
   let tempbookedSeats = []
   let tempseatMatrix = seatMatrix
 
+  const getSeatData = async () => {
+    const movieId = localStorage.getItem("movieId")
+    const location = localStorage.getItem("theater")
+    const runDate = localStorage.getItem("runDate")
+    const startTiming = localStorage.getItem("startTiming")
+    const endTiming = localStorage.getItem("endTiming")
+
+    axios.get(`http://localhost:3500/loctim/${movieId}`)
+    .then((data) => {
+        const apiResponse = data.data
+        
+        let show
+        for (let i=0; i<apiResponse.length; i++) {
+            if (apiResponse[i].location === location) {
+                console.log("found location!")
+                console.log(apiResponse[i].timings.runDate, typeof(apiResponse[i].timings.runDate))
+                if (apiResponse[i].timings.runDate === runDate && apiResponse[i].timings.startTiming === startTiming && apiResponse[i].timings.endTiming === endTiming) {
+                    show = apiResponse[i]
+                }
+            }
+        }
+
+        setSeatMatrix(show.timings.seating)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+  }
+
   useEffect(() => {
-    document.title = "Book you seat"
+    document.title = "Seat Selection"
+    getSeatData()
   }, [])
 
   return (
@@ -128,7 +163,7 @@ function Booking() {
         <div class="seat-booking-info-zone">
           You have selected&nbsp;<div ref={zone} id="seat-booking-info-zone">{selectedSeats}</div>&nbsp;seats.
         </div>
-        <button type="button" class="btn btn-outline-success" ref={btn} id="submit-button" onClick={(e) => { submitHandler() }} disabled>Proceed to Payment</button>
+        <button type="button" class="btn btn-outline-success" id="submit-button" onClick={() => submitHandler()} disabled={btDis}>Proceed to Payment</button>
       </div>
       <Footer />
     </>

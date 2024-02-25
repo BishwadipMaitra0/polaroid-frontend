@@ -7,6 +7,8 @@ import { useAppSelector } from '../app/hooks';
 
 const BookingForm = () => {
 
+  const maxAllowedTickets = 8
+
   const navigate = useNavigate()
   const user = useAppSelector((state) => state.user)
 
@@ -86,7 +88,7 @@ const BookingForm = () => {
     let isvalid = true
     let count = +val
 
-    if ((count >= 1) && (count <= 4)) {
+    if ((count >= 1) && (count <= maxAllowedTickets)) {
       isvalid = true
     }
     else {
@@ -146,7 +148,7 @@ const BookingForm = () => {
           </div>
           <div class="booking-email-div">
             <label class="booking-email-label" htmlFor="booking-no-people">Enter the number of people</label>
-            <input class="booking-email-box" onChange={(e) => rangeValidator(e.target.value)} type="number" id="booking-no-people" min={1} max={4} required placeholder='1' />
+            <input class="booking-email-box" onChange={(e) => rangeValidator(e.target.value)} type="number" id="booking-no-people" min={1} max={maxAllowedTickets} required placeholder='1' />
           </div>
           <div class="booking-email-div">
             <label class="booking-email-label" htmlFor="booking-address">Enter your address</label>
