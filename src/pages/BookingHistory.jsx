@@ -25,8 +25,8 @@ const BookingHistory = () => {
                         <div class="header">
                             <div class="header-description">Booking History</div>
                         </div>
-                        <div class="element-container">
-                            <div class="content-container">
+                        <div class="book-history-element-container">
+                            <div class="book-history-content-container">
                                <div class="film-image-container">
                                    <img class="film-image" src={"https://image.tmdb.org/t/p/original"} alt="image" />
                                </div>
@@ -45,9 +45,9 @@ const BookingHistory = () => {
                                    </div>
                                </div>
                             </div>
-                            <div class="button-container">
-                                <button type="button" class="button cancel-button">Cancel</button>
-                                <button type="button" class="button resend-button">Resend</button>
+                            <div class="book-history-button-container">
+                                <button type="button" class="book-history-button book-history-cancel-button">Cancel</button>
+                                <button type="button" class="book-history-button book-history-resend-button">Resend</button>
                             </div>
                         </div>
                 </div>

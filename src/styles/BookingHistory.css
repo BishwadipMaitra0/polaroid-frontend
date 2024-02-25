@@ -1,12 +1,12 @@
 /*Override element-container from Search.css*/
-.element-container {
+.book-history-element-container {
     display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
 }
 
-.content-container{
+.book-history-content-container{
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -18,23 +18,23 @@
     padding: 0;
 }
 
-.button-container{
+.book-history-button-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.resend-button{
+.book-history-resend-button{
     color: orange;
     border: 1px solid orange;
 }
 
-.cancel-button{
+.book-history-cancel-button{
     color: red;
     border: 1px solid red;
 }
 
-.button {
+.book-history-button {
     background-color: transparent;
     padding: 10px;
     border-radius: 5px;
@@ -45,11 +45,11 @@
     font-weight: 550;
 }
 
-.button:hover {
+.book-history-button:hover {
     opacity: 0.8;
 }
 
-.cancel-button:active{
+.book-history-cancel-button:active{
     background-color: red;
     color: white;
     border: 1px solid transparent;
