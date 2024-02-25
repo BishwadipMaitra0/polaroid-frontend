@@ -44,8 +44,8 @@ const OngoingMovies = () => {
             <Navbar />
             <div class="searchpage_main_container">
                 <div class="main_searchpage">
-                    <div class="header">
-                        <div class="header-description">Ongoing Films</div>
+                    <div class="ongoing-header">
+                        <div class="ongoing-header-description">Ongoing Films</div>
                     </div>
                     {movies.map((movie, index) =>
                         <div class="element-container">
