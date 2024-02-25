@@ -112,7 +112,7 @@ const BookingForm = () => {
     localStorage.setItem("address", address)
     localStorage.setItem("nopeople", nopeople)
 
-    navigate(`/booking/${nopeople}`)
+    navigate('/booking')
   }
 
 

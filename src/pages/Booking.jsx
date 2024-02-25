@@ -6,20 +6,16 @@ import '../styles/Booking.css'
 import { useAppSelector } from '../app/hooks';
 import axios from 'axios';
 
-function Booking() {
+const Booking = () => {
 
-    const user = useAppSelector((state) => state.user)
-    const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     if (!user.isLoggedIn) navigate('/user/login')
-    // }, [])
+  const user = useAppSelector((state) => state.user)
+  const navigate = useNavigate()
 
   let count = localStorage.getItem("nopeople")
   let seatcount = +count
 
   const zone = useRef()
-  
+
   const [btDis, setBtDis] = useState(true)
 
   const [selectedSeats, setSelectedSeats] = useState(0)
@@ -53,12 +49,17 @@ function Booking() {
   }, [selectedSeats])
 
   const selectCurrentSeat = (row, col, e) => {
-    // console.log("selectCurrentSeat" + row + col + " " + Date.now())
-    console.log("count" + seatcount)
+    let tempbookedSeats = bookedSeats
+    let tempseatMatrix = seatMatrix
+
+    console.log("first")
+    console.log(tempbookedSeats)
 
     if (tempseatMatrix[row][col] === 1) {
       tempseatMatrix[row][col]++
-      tempbookedSeats.push("" + row + col)
+
+      tempbookedSeats.push([row, col])
+
       e.target.style.backgroundColor = "#1f8a70";
       console.log(e.target.style.backgroundColor)
 
@@ -67,29 +68,33 @@ function Booking() {
     else if (tempseatMatrix[row][col] === 2) {
       tempseatMatrix[row][col]--
 
-      let index = tempseatMatrix.indexOf("" + row + col);
-      if (index !== -1)
-        tempseatMatrix.splice(index, 1);
+      let index
+      for (index = 0; index < tempbookedSeats.length; index++) {
+        let temp = tempbookedSeats[index]
+        if (temp[0] === row && temp[1] === col)
+          break
+      }
+
+      tempbookedSeats.splice(index, 1);
 
       e.target.style.backgroundColor = "#bad7e9";
       console.log(e.target.style.backgroundColor)
 
       setSelectedSeats((n) => { return n - 1 })
     }
+
+    setBookedSeats(tempbookedSeats)
+    setSeatMatrix(tempseatMatrix)
   }
 
   const submitHandler = () => {
     console.log("hi")
-    setBookedSeats(tempbookedSeats)
-    setSeatMatrix(tempseatMatrix)
+    // setBookedSeats(tempbookedSeats)
+    // setSeatMatrix(tempseatMatrix)
 
-    console.log(tempbookedSeats)
+    console.log(bookedSeats)
   }
 
-
-  // keep these under fetchData() handler
-  let tempbookedSeats = []
-  let tempseatMatrix = seatMatrix
 
   const getSeatData = async () => {
     const movieId = localStorage.getItem("movieId")
@@ -99,25 +104,25 @@ function Booking() {
     const endTiming = localStorage.getItem("endTiming")
 
     axios.get(`http://localhost:3500/loctim/${movieId}`)
-    .then((data) => {
+      .then((data) => {
         const apiResponse = data.data
-        
+
         let show
-        for (let i=0; i<apiResponse.length; i++) {
-            if (apiResponse[i].location === location) {
-                console.log("found location!")
-                console.log(apiResponse[i].timings.runDate, typeof(apiResponse[i].timings.runDate))
-                if (apiResponse[i].timings.runDate === runDate && apiResponse[i].timings.startTiming === startTiming && apiResponse[i].timings.endTiming === endTiming) {
-                    show = apiResponse[i]
-                }
+        for (let i = 0; i < apiResponse.length; i++) {
+          if (apiResponse[i].location === location) {
+            console.log("found location!")
+            console.log(apiResponse[i].timings.runDate, typeof (apiResponse[i].timings.runDate))
+            if (apiResponse[i].timings.runDate === runDate && apiResponse[i].timings.startTiming === startTiming && apiResponse[i].timings.endTiming === endTiming) {
+              show = apiResponse[i]
             }
+          }
         }
 
         setSeatMatrix(show.timings.seating)
-    })
-    .catch((err) => {
+      })
+      .catch((err) => {
         console.log(err)
-    })
+      })
   }
 
   useEffect(() => {
