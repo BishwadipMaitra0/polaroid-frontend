@@ -41,6 +41,7 @@ import OngoingMovies from './pages/OngoingMovies'
 import TheaterTimeSelection from './pages/TheaterTimeSelection'
 import BookingForm from './pages/BookingForm'
 import BookingHistory from './pages/BookingHistory'
+import ForgotPassword from './pages/ForgotPassword'
 
 const App = () => {
 
@@ -75,6 +76,7 @@ const App = () => {
       <Route path='/film/:id' element={<Film />}></Route>
       <Route path='/user/login' element={<Login />}></Route>
       <Route path='/user/register' element={<Register />}></Route>
+      <Route path='/user/forgotpassword' element={<ForgotPassword />}></Route>
       <Route path='/user/settings' element={<Settings />}></Route>
       <Route path='/user/list' element={<UesrList />}></Route>
       <Route path='/user/list/:listName' element={<MyListPage isTrending={false} />}></Route>
@@ -106,7 +108,7 @@ const App = () => {
       <Route path='/ongoing' element={<OngoingMovies />}></Route>
       <Route path='/theater_selection' element={<TheaterTimeSelection />}></Route>
       <Route path='/bookingform' element={<BookingForm />}></Route>
-      <Route path='/bookinghistory' element={<BookingHistory />}></Route>
+      <Route path='/user/bookinghistory' element={<BookingHistory />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

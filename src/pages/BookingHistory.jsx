@@ -5,8 +5,17 @@ import axios from 'axios'
 import getMovieByName from '../api/getMovieByName'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useAppSelector } from '../app/hooks'
+import { useNavigate } from 'react-router'
 
 const BookingHistory = () => {
+
+    const user = useAppSelector((state) => state.user)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!user.isLoggedIn) navigate('/user/login')
+    }, [])
 
     return (
         <>
