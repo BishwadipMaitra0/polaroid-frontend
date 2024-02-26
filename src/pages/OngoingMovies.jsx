@@ -58,7 +58,8 @@ const OngoingMovies = () => {
                             <div class="header-description">Ongoing Films</div>
                         </div>
                         {movies.map((movie, index) =>
-                            <div class="element-container">
+                            <div class="ongoing-element-container">
+                            	<div class="ongoing-content-container">
                                 <div class="film-image-container">
                                     <img class="film-image" src={"https://image.tmdb.org/t/p/original" + movie.poster_path} alt="image" />
                                 </div>
@@ -71,6 +72,10 @@ const OngoingMovies = () => {
                                         Directed By
                                         <div class="film-director"> {movie.director} </div>
                                     </div>
+                                </div>
+                                </div>
+                                <div class="ongoing-button-container">
+                                    <button type="button" class="ongoing-button ongoing-book-button">Book Now!</button>
                                 </div>
                             </div>
                         )}

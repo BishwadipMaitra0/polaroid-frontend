@@ -11,3 +11,58 @@
   font-weight: 400;
   font-size: 22px;
 }
+
+.ongoing-element-container {
+    display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.ongoing-content-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.ongoing-button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ongoing-resend-button{
+    color: orange;
+    border: 1px solid orange;
+}
+
+.ongoing-book-button{
+    color: blue;
+    border: 1px solid blue;
+}
+
+.ongoing-cancel-button{
+    color: red;
+    border: 1px solid red;
+}
+
+.ongoing-button {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right:10px;
+    font-weight: 550;
+}
+
+.ongoing-button:hover {
+    opacity: 0.8;
+}
+
+.ongoing-cancel-button:active{
+    background-color: red;
+    color: white;
+    border: 1px solid transparent;
+}
