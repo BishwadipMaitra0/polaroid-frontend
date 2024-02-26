@@ -89,10 +89,37 @@ const Booking = () => {
 
   const submitHandler = () => {
     console.log("hi")
-    // setBookedSeats(tempbookedSeats)
-    // setSeatMatrix(tempseatMatrix)
+    localStorage.setItem("seatArray", bookedSeats)
+
+    const movieName = localStorage.getItem("movieId")
+    const customerName = localStorage.getItem("name")
+    const customerEmail = localStorage.getItem("email")
+    const runDate = localStorage.getItem("runDate")
+    const startTiming = localStorage.getItem("startTiming")
+    const endTiming = localStorage.getItem("endTiming")
+    const location = localStorage.getItem("theater")
+    const dateString = localStorage.getItem("timing")
+    const email = user.data.email
 
     console.log(bookedSeats)
+    axios.post("http://localhost:3500/confirmticket", {
+        ticketNumbers: bookedSeats,
+        movieName: movieName,
+        customerName: customerName,
+        customerEmail: customerEmail,
+        runDate: runDate,
+        startTiming: startTiming,
+        endTiming: endTiming,
+        location: location,
+        email: user.data.email,
+        dateString: dateString
+    })
+    .then((data) => {
+        console.log(data.data)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
   }
 
 
@@ -129,6 +156,10 @@ const Booking = () => {
     document.title = "Seat Selection"
     getSeatData()
   }, [])
+
+//   useEffect(() => {
+//     if (!user.isLoggedIn) navigate('/user/login')
+//   }, [])
 
   return (
     <>
