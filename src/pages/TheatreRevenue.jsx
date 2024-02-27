@@ -3,6 +3,7 @@ import AdminNavbar from '../components/TheaterAdminNavbar'
 import Footer from '../components/Footer'
 import { useEffect, useState } from 'react'
 import '../styles/AdminDashboard.css'
+import '../styles/TheaterRevenue.css'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
@@ -73,6 +74,14 @@ const MovieRevenue = (props) => {
                     <div class="admin_main">
                         <div class="admin-header-bar">
                             <div> Logged in as <strong>{theatreAdminName}</strong></div>
+                        </div>
+                        <div class="revenue-select-div">
+                            <label htmlFor="history-select" class="email-label" style={{ opacity: "70%" }}>Filter by:</label>
+                            <select name="" id="history-select" class="revenue-select-box" required autoComplete="off">
+                            		<option value="all">All</option>
+                            		<option value="last_week">Last Week</option>
+                            		<option value="last_month">Last Month</option>
+                            </select>
                         </div>
                         <table class="admin_table">
                             <tr>
