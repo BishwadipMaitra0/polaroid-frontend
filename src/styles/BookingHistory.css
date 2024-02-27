@@ -1,9 +1,25 @@
 /*Override element-container from Search.css*/
+.book-history-header {
+    color: #9ab;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-bottom: 1px solid #456;
+    font-size: 16px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    width: 100%;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+  }
+
 .book-history-element-container {
     display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #456;
 }
 
 .book-history-content-container{

@@ -17,7 +17,6 @@ const BookingHistory = () => {
     const [bookingHistory, setBookingHistory] = useState([])
 
     const getBookingHistory = async () => {
-        console.log(user.data.email)
         axios.post(`http://localhost:3500/user/bookinghistory`, {
             email: user?.data?.email
         })
@@ -72,6 +71,7 @@ const BookingHistory = () => {
     const mapTicketsToString = (ticketsArray) => {
         let str = ""
         for (let i=0; i<ticketsArray.length; i++) {
+            ticketsArray[i][1] = ticketsArray[i][1] + 1
             if (i !== ticketsArray.length - 1) {
                 str += "" + ticketMapping[ticketsArray[i][0]] + ticketsArray[i][1] + ", "
             }
@@ -83,8 +83,22 @@ const BookingHistory = () => {
         return str
     }
 
-    const cancelTicket = (item) => {
-        
+    const cancelTicket = async (item) => {
+        axios.post("http://localhost:3500/cancelticket", {
+            email: user.data.email,
+            movieName: item.movieName,
+            runDate: item.runDate,
+            startTiming: item.startTiming,
+            endTiming: item.endTiming,
+            ticketNumbers: item.ticketNumbers,
+            location: item.location
+        })
+        .then((data) => {
+            console.log(data.data)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
     useEffect(() => {
@@ -97,7 +111,7 @@ const BookingHistory = () => {
             <Navbar />
             <div class="searchpage_main_container">
                 <div class="main_searchpage">
-                        <div class="header">
+                        <div class="book-history-header">
                             <div class="header-description">Booking History</div>
                         </div>
                         {bookingHistory.map((item, index) => 
@@ -122,7 +136,7 @@ const BookingHistory = () => {
                                 </div>
                                 </div>
                                 <div class="book-history-button-container">
-                                    <button type="button" class="book-history-button book-history-cancel-button" onClick={cancelTicket(item)}>Cancel</button>
+                                    <button type="button" class="book-history-button book-history-cancel-button" onClick={async() => await cancelTicket(item)}>Cancel</button>
                                     {/* <button type="button" class="book-history-button book-history-resend-button">Resend</button> */}
                                 </div>
                             </div>

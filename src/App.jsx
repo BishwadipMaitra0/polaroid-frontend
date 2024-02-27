@@ -42,8 +42,7 @@ import TheaterTimeSelection from './pages/TheaterTimeSelection'
 import BookingForm from './pages/BookingForm'
 import BookingHistory from './pages/BookingHistory'
 import ForgotPassword from './pages/ForgotPassword'
-import TheaterRevenue from './pages/TheaterRevenue'
-import MovieRevenue  from './pages/MovieRevenue'
+import TheatreRevenue  from './pages/TheatreRevenue'
 
 const App = () => {
 
@@ -111,8 +110,7 @@ const App = () => {
       <Route path='/theater_selection/:movieid' element={<TheaterTimeSelection />}></Route>
       <Route path='/bookingform' element={<BookingForm />}></Route>
       <Route path='/user/bookinghistory' element={<BookingHistory />}></Route>
-      <Route path='/theater_revenue' element={<TheaterRevenue/>}></Route>
-      <Route path='/movie_revenue' element={<MovieRevenue/>}></Route>
+      <Route path='/theater_admin/theater_revenue' element={<TheatreRevenue setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

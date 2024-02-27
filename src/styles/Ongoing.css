@@ -1,9 +1,25 @@
 .ongoing-header {
-  color: whitesmoke;
-  width: 99%;
-  margin: 16px 0;
-  padding: 16px 0;
-  border-bottom: 1px solid #456;
+    color: #9ab;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-bottom: 1px solid #456;
+    font-size: 16px;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    width: 100%;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+.ongoing-film-name {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  color: white !important;
+  font-size: 24px;
+  margin-right: 8px;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 
 .ongoing-header-description {
@@ -17,6 +33,9 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #456;
 }
 
 .ongoing-content-container{

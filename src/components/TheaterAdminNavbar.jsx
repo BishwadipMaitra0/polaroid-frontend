@@ -28,6 +28,9 @@ const TheaterAdminNavbar = (props) => {
             <a class="navbar-anchor" onClick={() => navigate('/theater_admin/timing')} id="theater_admin_timing">Add timing</a>
           </li>
           <li class="navbar-list-element">
+            <a class="navbar-anchor" onClick={() => navigate('/theater_admin/theater_revenue')} id="theater_admin_timing">Theatre Revenue</a>
+          </li>
+          <li class="navbar-list-element">
             <a class="navbar-anchor" onClick={logoutHandler} id="home">Logout</a>
           </li>
         </ul>

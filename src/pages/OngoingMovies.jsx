@@ -54,7 +54,7 @@ const OngoingMovies = () => {
                 :
                 <div class="searchpage_main_container">
                     <div class="main_searchpage">
-                        <div class="header">
+                        <div class="ongoing-header">
                             <div class="header-description">Ongoing Films</div>
                         </div>
                         {movies.map((movie, index) =>
@@ -65,7 +65,7 @@ const OngoingMovies = () => {
                                 </div>
                                 <div class="film-content">
                                     <div class="film-header">
-                                        <a class="film-name" onClick={() => navigate(`/film/${movie.movieId}`)} > {movie.title} </a>
+                                        <a class="ongoing-film-name" onClick={() => navigate(`/film/${movie.movieId}`)} > {movie.title} </a>
                                         <div class="film-year"> {movie.year} </div>
                                     </div>
                                     <div class="film-desc">
@@ -75,7 +75,7 @@ const OngoingMovies = () => {
                                 </div>
                                 </div>
                                 <div class="ongoing-button-container">
-                                    <button type="button" class="ongoing-button ongoing-book-button">Book Now!</button>
+                                    <button type="button" class="ongoing-button ongoing-book-button" onClick={() => navigate(`/theater_selection/${movie.movieId}`)}>Book Now</button>
                                 </div>
                             </div>
                         )}
