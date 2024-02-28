@@ -1,0 +1,66 @@
+.successpage_container {
+    text-align: center;
+    padding: 40px 0;
+    background: #14181c;
+  }
+
+
+.successpage_card h1 {
+  color: #88B04B;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-weight: 900;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.successpage_card p {
+  color: #404F5E;
+  font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  margin: 0;
+}
+
+i.successpage_checkmark {
+  color: #9ABC66;
+  font-size: 100px;
+  line-height: 200px;
+  margin-left: -15px;
+}
+
+.successpage_circle {
+  border-radius: 200px;
+  height: 200px;
+  width: 200px;
+  background: #f0ffda;
+  margin: 0 auto;
+}
+
+.successpage_card {
+  background: white;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.successpage_home-button1 {
+  background-color: #88B04B;
+  color: #fff;
+  margin-top: 20px;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.successpage_home-button1:hover {
+  background-color: #558d01;
+}
+
+.successpage_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

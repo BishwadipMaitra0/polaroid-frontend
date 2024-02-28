@@ -1,1 +1,2 @@
 export const api_key = "66744abfdd015ee6c526f268a8bb5e01"
+export const stripe_public_key = "pk_test_51Ond5cSIbhuzzn4uHPV1tDd9R947oSVy6N0kzxYRU6V7zffwPo1BRAg7KVPW3xxuWWB1jY8OUfqQC5OdX9uG3Y0l00RoEE15Q2"
