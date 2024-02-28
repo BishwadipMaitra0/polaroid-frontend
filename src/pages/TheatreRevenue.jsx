@@ -7,7 +7,7 @@ import '../styles/TheaterRevenue.css'
 import { useNavigate } from 'react-router'
 import axios from 'axios'
 
-const MovieRevenue = (props) => {
+const TheatreRevenue = (props) => {
 
     const { theatreAdminLogin, setTheatreAdminLogin, setTheatreAdminName, theatreAdminName } = props
     const navigate = useNavigate()
@@ -85,9 +85,9 @@ const MovieRevenue = (props) => {
                         </div>
                         <table class="admin_table">
                             <tr>
-                                <th class="admin_th">Name of Movie</th>
-                                <th class="admin_th">No. of tickets sold</th>
-                                <th class="admin_th">Revenue</th>
+                                <th class="admin_th">Name of Theatre</th>
+                                <th class="admin_th">No. of Tickets Sold</th>
+                                <th class="admin_th">Total Revenue</th>
                             </tr>
                             {movieData?.map((location, index) =>
                                 <tr>
@@ -104,4 +104,5 @@ const MovieRevenue = (props) => {
         </>
     )
 }
-export default MovieRevenue
+
+export default TheatreRevenue
