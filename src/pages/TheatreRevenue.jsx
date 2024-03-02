@@ -14,6 +14,7 @@ const TheatreRevenue = (props) => {
 
     const [loading, setLoading] = useState(false)
     const [movieData, setMovieData] = useState([])
+    const [filter, setFilter] = useState("")
 
     const convertDateToString = (startTimeString, endTimeString) => {
         // Create Date objects from the given strings
@@ -40,7 +41,7 @@ const TheatreRevenue = (props) => {
 
     const getInfo = async () => {
         setLoading(true)
-        axios.post("http://localhost:3500/theatreadmin/locationstats", {
+        axios.post(`http://localhost:3500/theatreadmin/locationstats/${filter}`, {
             theatreAdminUsername: theatreAdminName
         })
             .then((data) => {
@@ -62,6 +63,10 @@ const TheatreRevenue = (props) => {
         getInfo()
     }, [])
 
+    useEffect(() => {
+        getInfo()
+    }, [filter])
+
     return (
         <>
             {loading ?
@@ -77,10 +82,10 @@ const TheatreRevenue = (props) => {
                         </div>
                         <div class="revenue-select-div">
                             <label htmlFor="history-select" class="email-label" style={{ opacity: "70%" }}>Filter by:</label>
-                            <select name="" id="history-select" class="revenue-select-box" required autoComplete="off">
-                            		<option value="all">All</option>
-                            		<option value="last_week">Last Week</option>
-                            		<option value="last_month">Last Month</option>
+                            <select name="" id="history-select" value={filter} class="revenue-select-box" required autoComplete="off" onChange={(e) => setFilter(e.target.value)}>
+                                <option value="">All</option>
+                                <option value="week">Last Week</option>
+                                <option value="month">Last Month</option>
                             </select>
                         </div>
                         <table class="admin_table">
