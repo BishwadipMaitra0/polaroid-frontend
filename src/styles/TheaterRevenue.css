@@ -1,9 +1,9 @@
-.revenue-select-div{
-	width: 10%;
-    margin-bottom: 5%;
+.revenue-select-div {
+    width: 10%;
+    margin-bottom: 1%;
 }
 
-.revenue-select-box{
+.revenue-select-box {
     display: block;
     appearance: none;
     width: 100%;
@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-.revenue-select-div{
+.revenue-select-div {
     min-width: 350px;
     position: relative;
 }
