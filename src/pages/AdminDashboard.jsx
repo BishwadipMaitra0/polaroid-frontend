@@ -11,7 +11,7 @@ const AdminDashboard = (props) => {
 
     const { adminLogin, setAdminLogin } = props
 
-    const [admins, setAdmins] = useState({adminsData: [], overallAdminData: {}})
+    const [admins, setAdmins] = useState({ adminsData: [], overallAdminData: {} })
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
@@ -55,6 +55,10 @@ const AdminDashboard = (props) => {
         getAdminData()
     }, [])
 
+    useEffect(() => {
+        document.title = "Admin Dashboard"
+    }, [])
+
     return (
         <>
             {loading ?
@@ -65,10 +69,16 @@ const AdminDashboard = (props) => {
                 <>
                     <AdminNavbar adminLogin={adminLogin} setAdminLogin={setAdminLogin} />
                     <div class="admin_main">
+                        <div class="admin-header-bar">
+                            <div> Logged in as Super User: Admin</div>
+                        </div>
                         <table class="admin_table">
                             <tr>
                                 <th class="admin_th">Name of Theatre Admin</th>
                                 <th class="admin_th">No. of theaters</th>
+                                <th class="admin_th">Revenue</th>
+                                {/* <th class="admin_th">Total Seats</th> */}
+                                <th class="admin_th">Seats Booked</th>
                                 <th class="admin_th"> </th>
                             </tr>
                             {admins.adminsData.map((item, index) =>
@@ -85,6 +95,9 @@ const AdminDashboard = (props) => {
                                         </details>
                                     </td>
                                     <td class="admin_td"> {item.locationsData.length} </td>
+                                    <td class="admin_td"> Rs. {item.thisAdminRevenue} </td>
+                                    {/* <td class="admin_td"> {item.thisAdminTotalSeats} </td> */}
+                                    <td class="admin_td"> {item.thisAdminSeatsBooked} </td>
                                     <td class="admin_td delete_column"><button class="admin_button" type="button" onClick={(e) => deleteTheatreAdmin(item.theatreAdminName)}>Delete</button></td>
                                 </tr>
                             )}

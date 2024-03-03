@@ -1,5 +1,5 @@
 .admin_main {
-    margin: 2% 10% 2% 10%;
+    margin: 2% 5% 2% 5%;
     background-color: #14181c;
     font-family: sans-serif;
     display: flex;
@@ -59,6 +59,7 @@
 .delete_column {
     text-align: center;
     vertical-align: middle;
+    width: 100%;
 }
 
 .admin_button {

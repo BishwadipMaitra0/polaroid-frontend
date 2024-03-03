@@ -119,6 +119,10 @@ const TheaterAdminDashboard = (props) => {
         getInfo()
     }, [])
 
+    useEffect(() => {
+        document.title = "Theater Admin Dashboard"
+    }, [])
+
     return (
         <>
             {loading ?
@@ -130,7 +134,7 @@ const TheaterAdminDashboard = (props) => {
                     <AdminNavbar theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} setTheatreAdminName={setTheatreAdminName} />
                     <div class="admin_main">
                         <div class="admin-header-bar">
-                            <div> Logged in as <strong>{theatreAdminName}</strong></div>
+                            <div> Logged in as Theater Admin: <strong>{theatreAdminName}</strong></div>
                         </div>
                         <table class="admin_table">
                             <tr>

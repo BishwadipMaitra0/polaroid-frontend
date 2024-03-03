@@ -61,6 +61,10 @@ const TheaterAdminLogin = (props) => {
             })
     }
 
+    useEffect(() => {
+        document.title = "Theater Admin Login"
+    }, [])
+
     return (
         <div className="mainLogin">
             <div className="div-container">
