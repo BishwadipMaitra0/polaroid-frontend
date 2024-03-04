@@ -133,6 +133,9 @@ const TheaterAdminLogin = (props) => {
                         >
                             Log In
                         </button>
+                        <button type="button" class="btn btn-outline-warning" style={{ width: "100%", marginTop: "15px" }} id="submit-button" onClick={() => navigate('/')} >
+                            Home
+                        </button>
                     </form>
                     <hr></hr>
                     <div className="error-div" id="alert-zone">
