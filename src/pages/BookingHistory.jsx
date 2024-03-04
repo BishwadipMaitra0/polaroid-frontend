@@ -95,6 +95,7 @@ const BookingHistory = () => {
         })
         .then((data) => {
             console.log(data.data)
+            getBookingHistory()
         })
         .catch((err) => {
             console.log(err)
