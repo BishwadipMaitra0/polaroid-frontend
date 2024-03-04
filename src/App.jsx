@@ -115,7 +115,7 @@ const App = () => {
       <Route path='/theater_admin/theater_revenue' element={<TheatreRevenue setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/movie_revenue' element={<MovieRevenue setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/payment/success' element={<Success />}></Route>
-      <Route path='/payment/failure' element={<E505 />}></Route>
+      <Route path='/payment/failure' element={<Failure />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )
