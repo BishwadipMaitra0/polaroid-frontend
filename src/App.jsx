@@ -42,7 +42,7 @@ import TheaterTimeSelection from './pages/TheaterTimeSelection'
 import BookingForm from './pages/BookingForm'
 import BookingHistory from './pages/BookingHistory'
 import ForgotPassword from './pages/ForgotPassword'
-import TheatreRevenue  from './pages/TheatreRevenue'
+import TheatreRevenue from './pages/TheatreRevenue'
 import Success from './pages/Success'
 import Failure from './pages/Failure'
 import MovieRevenue from './pages/MovieRevenue'
@@ -93,7 +93,6 @@ const App = () => {
       <Route path='/followers/:user' element={<Follower />}></Route>
       <Route path='/following/:user' element={<Following />}></Route>
       <Route path='/booking' element={<Booking />}></Route>
-      <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='/networkerror' element={<E505 />}></Route>
       <Route path='/about' element={<AboutUs />}></Route>
       <Route path='/faq' element={<FAQ />}></Route>
@@ -116,7 +115,7 @@ const App = () => {
       <Route path='/theater_admin/theater_revenue' element={<TheatreRevenue setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/theater_admin/movie_revenue' element={<MovieRevenue setTheatreAdminName={setTheatreAdminName} theatreAdminName={theatreAdminName} theatreAdminLogin={theatreAdminLogin} setTheatreAdminLogin={setTheatreAdminLogin} />}></Route>
       <Route path='/payment/success' element={<Success />}></Route>
-      <Route path='/payment/failure' element={<Failure />}></Route>
+      <Route path='/payment/failure' element={<E505 />}></Route>
       <Route path='*' element={<E404 />}></Route>
     </Routes >
   )

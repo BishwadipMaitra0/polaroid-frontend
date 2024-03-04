@@ -96,6 +96,7 @@ const TheaterTimeSelection = () => {
         localStorage.setItem("startTiming", currentStartTiming)
         localStorage.setItem("endTiming", currentEndTiming)
         localStorage.setItem("runDate", currentRunDate)
+        localStorage.setItem("price", price)
 
         convertStringToTiming(timing.toString())
 

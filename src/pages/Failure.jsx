@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "../styles/Failure.css"
 
 const Failure = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const handleHomeClick = () => {
     navigate('/');
   };
@@ -16,7 +16,7 @@ const Failure = () => {
         </div>
         <h1>Failure</h1>
         <p>
-          You payment has failed! <br /> Please Try Again or Contact Us at "polaroid@proton.me"
+          You payment has failed! <br /> Please Try Again or Contact Us at "support@proton.me"
         </p>
         <button className="home-button" onClick={handleHomeClick}>
           Go to Home
