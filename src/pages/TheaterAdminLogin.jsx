@@ -51,12 +51,14 @@ const TheaterAdminLogin = (props) => {
             password: password
         })
             .then((data) => {
-                console.log(data.data)
+                // console.log(data.data)
+                setAlertZone("")
                 setTheatreAdminLogin(true)
                 setTheatreAdminName(username)
                 navigate('/theater_admin/dashboard')
             })
             .catch((err) => {
+                setAlertZone("Theater Admin credentials are incorrect!")
                 console.log(err)
             })
     }

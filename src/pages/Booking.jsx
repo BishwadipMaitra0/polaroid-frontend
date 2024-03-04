@@ -117,8 +117,8 @@ const Booking = () => {
             dateString: dateString
         })
             .then(async (data) => {
-                console.log(data.data)
-                // makePayment()
+                // console.log(data.data)
+                makePayment()
             })
             .catch((err) => {
                 console.log(err)
@@ -128,9 +128,15 @@ const Booking = () => {
     const makePayment = async () => {
         const stripe = await loadStripe(stripe_public_key);
 
+        const strPrice = localStorage.getItem("price")
+        const price = +strPrice
+
+        const strQuantity = localStorage.getItem("nopeople")
+        const quantity = +strQuantity
+
         const body = {
-            movieName: 597,
-            name:"Titanic"
+            price: price,
+            quantity: quantity
         }
         const headers = {
             "Content-Type": "application/json"
