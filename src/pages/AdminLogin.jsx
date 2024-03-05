@@ -82,7 +82,7 @@ const AdminLogin = (props) => {
                                 name="email"
                                 onChange={(e) => setUsername(e.target.value)}
                                 className="email-box"
-                                placeholder="input@example.com"
+                                placeholder="username"
                                 id="email-input"
                                 required
                                 autoComplete="off"
@@ -124,6 +124,9 @@ const AdminLogin = (props) => {
                             disabled={submitDisabled}
                         >
                             Log In
+                        </button>
+                        <button type="button" class="btn btn-outline-warning" style={{ width: "100%", marginTop: "15px" }} id="submit-button" onClick={() => navigate('/')} >
+                            Home
                         </button>
                     </form>
                     <hr></hr>
