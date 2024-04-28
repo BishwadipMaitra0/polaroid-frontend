@@ -137,7 +137,12 @@ const BookingHistory = () => {
                                 </div>
                                 </div>
                                 <div class="book-history-button-container">
-                                    <button type="button" class="book-history-button book-history-cancel-button" onClick={async() => await cancelTicket(item)}>Cancel</button>
+                                    {
+                                        item.startTiming.getTime() > new Date().getTime() ? 
+                                        <button type="button" class="book-history-button book-history-cancel-button" onClick={async() => await cancelTicket(item)}>Cancel</button>
+                                        :
+                                        <></>
+                                    }
                                     {/* <button type="button" class="book-history-button book-history-resend-button">Resend</button> */}
                                 </div>
                             </div>
