@@ -149,7 +149,7 @@ const TheaterTimeSelection = () => {
     }
 
     const fetchData = async () => {
-        axios.get(`http://localhost:3500/loctim/${movieid}`)
+        axios.get(`https://polaroid-backend.onrender.com/loctim/${movieid}`)
             .then((data) => {
                 // console.log("hello")
                 console.log(data.data)

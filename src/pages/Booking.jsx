@@ -104,7 +104,7 @@ const Booking = () => {
         const email = user.data.email
 
         console.log(bookedSeats)
-        axios.post("http://localhost:3500/confirmticket", {
+        axios.post("https://polaroid-backend.onrender.com/confirmticket", {
             ticketNumbers: bookedSeats,
             movieName: movieName,
             customerName: customerName,
@@ -141,7 +141,7 @@ const Booking = () => {
         const headers = {
             "Content-Type": "application/json"
         }
-        const response = await fetch("http://localhost:3500/api/create-checkout-session", {
+        const response = await fetch("https://polaroid-backend.onrender.com/api/create-checkout-session", {
             method: "POST",
             headers: headers,
             body: JSON.stringify(body)
@@ -165,7 +165,7 @@ const Booking = () => {
         const startTiming = localStorage.getItem("startTiming")
         const endTiming = localStorage.getItem("endTiming")
 
-        axios.get(`http://localhost:3500/loctim/${movieId}`)
+        axios.get(`https://polaroid-backend.onrender.com/loctim/${movieId}`)
             .then((data) => {
                 const apiResponse = data.data
 

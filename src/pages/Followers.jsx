@@ -19,7 +19,7 @@ const Followers = () => {
 
         console.log(user)
 
-        const followers = await axios.get(`http://localhost:3500/followers/${user}`)
+        const followers = await axios.get(`https://polaroid-backend.onrender.com/followers/${user}`)
         await followers.data
 
         setData(followers.data)

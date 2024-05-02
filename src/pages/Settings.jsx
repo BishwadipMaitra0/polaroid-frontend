@@ -74,7 +74,7 @@ const Settings = () => {
 
     console.log(username, originalPassword, newPassword, user.data.email)
 
-    const res = await axios.post("http://localhost:3500/user/settings", {
+    const res = await axios.post("https://polaroid-backend.onrender.com/user/settings", {
       username: username,
       originalPassword: originalPassword,
       newPassword: newPassword,

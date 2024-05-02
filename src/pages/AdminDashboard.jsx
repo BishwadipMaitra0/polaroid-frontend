@@ -18,7 +18,7 @@ const AdminDashboard = (props) => {
 
     const getAdminData = async () => {
         setLoading(true)
-        const res = await axios.get("http://localhost:3500/admin/getadmindetails")
+        const res = await axios.get("https://polaroid-backend.onrender.com/admin/getadmindetails")
         const data = await res.data
 
         console.log(data)
@@ -28,7 +28,7 @@ const AdminDashboard = (props) => {
 
     const deleteTheatreAdmin = async (adminName) => {
         try {
-            const res = await axios.post("http://localhost:3500/admin/deletetheatreadmin", {
+            const res = await axios.post("https://polaroid-backend.onrender.com/admin/deletetheatreadmin", {
                 username: adminName
             })
             const data = await res.data

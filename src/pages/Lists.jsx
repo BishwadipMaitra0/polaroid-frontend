@@ -12,7 +12,7 @@ const Lists = () => {
 
     const getLists = async () => {
         setLoading(true)
-        const res = await axios.get("http://localhost:3500/lists")
+        const res = await axios.get("https://polaroid-backend.onrender.com/lists")
             .then((data) => {
                 console.log(data.data)
                 setLists(data.data)

@@ -29,7 +29,7 @@ const UesrList = () => {
 
   const handleListCreate = async () => {
     setLoading(true)
-    const newlist = await axios.post('http://localhost:3500/user/createlist', {
+    const newlist = await axios.post('https://polaroid-backend.onrender.com/user/createlist', {
       listName: listHeading,
       description: listDesc
     })
@@ -44,7 +44,7 @@ const UesrList = () => {
   const deleteSubmitHandler = async (listname) => {
     setLoading(true)
 
-    axios.delete(`http://localhost:3500/user/list/delete/${listname}/${user.data.username}`, {
+    axios.delete(`https://polaroid-backend.onrender.com/user/list/delete/${listname}/${user.data.username}`, {
       username: user?.data?.username,
       listName: listname
     })
@@ -70,7 +70,7 @@ const UesrList = () => {
   const fetchData = async () => {
     setLoading(true)
 
-    const list = await axios.post(`http://localhost:3500/user/list`, {
+    const list = await axios.post(`https://polaroid-backend.onrender.com/user/list`, {
       username: user?.data?.username
     })
     await list.data

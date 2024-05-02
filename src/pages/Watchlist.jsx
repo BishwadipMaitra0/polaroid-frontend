@@ -17,7 +17,7 @@ const Watchlist = ({ editable }) => {
         e.preventDefault()
         console.log(user.data.email)
         try {
-            const res = await axios.post(`http://localhost:3500/user/watchlistdelete/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/user/watchlistdelete/${id}`, {
                 email: user.data.email
             })
             const resData = await res.data

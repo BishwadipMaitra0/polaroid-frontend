@@ -11,7 +11,7 @@ const initialState = {
 }
 
 axios.defaults.withCredentials = true
-const BASE_URL = "http://localhost:3500/"
+const BASE_URL = "https://polaroid-backend.onrender.com/"
 
 const api = BASE_URL + "user/login"
 export const fetchUser = createAsyncThunk("fetch/fetchUser", async (credentials, { rejectWithValue }) => {

@@ -33,7 +33,7 @@ const Profile = ({ currentUser }) => {
 
     const getUserData = async () => {
         setLoading(true)
-        const res = await axios.post("http://localhost:3500/user/getuser", {
+        const res = await axios.post("https://polaroid-backend.onrender.com/user/getuser", {
             username: user.data.username
         })
             .then((data) => {
@@ -54,10 +54,10 @@ const Profile = ({ currentUser }) => {
             const formData = new FormData();
             formData.append("profileImg", e.target.files[0]);
             axios
-                .post("http://localhost:3500/user/uploadImage", formData, {})
+                .post("https://polaroid-backend.onrender.com/user/uploadImage", formData, {})
                 .then(async (res) => {
                     console.log(res.data)
-                    axios.post("http://localhost:3500/user/imgdatabase", {
+                    axios.post("https://polaroid-backend.onrender.com/user/imgdatabase", {
                         email: user.data.email,
                         image: base64
                     })

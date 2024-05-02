@@ -21,7 +21,7 @@ const OthersProfile = ({ currentUser }) => {
 
     const getUserData = async () => {
         setLoading(true)
-        const res = await axios.post("http://localhost:3500/user/getuser", {
+        const res = await axios.post("https://polaroid-backend.onrender.com/user/getuser", {
             username: username
         })
             .then((data) => {
@@ -48,11 +48,11 @@ const OthersProfile = ({ currentUser }) => {
 
         let res
         if (followingThisUser) {
-            res  = await axios.post(`http://localhost:3500/profile/unfollow/${username}`)
+            res  = await axios.post(`https://polaroid-backend.onrender.com/profile/unfollow/${username}`)
             setFollowingThisUser(false)
         }
         else {
-            res = await axios.post(`http://localhost:3500/profile/follow/${username}`)
+            res = await axios.post(`https://polaroid-backend.onrender.com/profile/follow/${username}`)
             setFollowingThisUser(true)
         }
         console.log(res.data)

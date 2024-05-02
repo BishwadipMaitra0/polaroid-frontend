@@ -95,7 +95,7 @@ const ForgotPassword = () => {
     }
 
     const sendOTP = async () => {
-        axios.post("http://localhost:3500/forgotpassword", {
+        axios.post("https://polaroid-backend.onrender.com/forgotpassword", {
             email: email
         })
         .then((data) => {
@@ -112,7 +112,7 @@ const ForgotPassword = () => {
     }
 
     const verifyOTP = async () => {
-        axios.post("http://localhost:3500/verifyotp", {
+        axios.post("https://polaroid-backend.onrender.com/verifyotp", {
             otp: otp,
             email: email
         })
@@ -126,7 +126,7 @@ const ForgotPassword = () => {
 
     const changePassword = async (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3500/changepassword", {
+        axios.post("https://polaroid-backend.onrender.com/changepassword", {
             email: email,
             password: password
         })

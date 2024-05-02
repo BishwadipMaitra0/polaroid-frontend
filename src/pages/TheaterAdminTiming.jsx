@@ -145,7 +145,7 @@ const TheatreAdminTiming = (props) => {
     const submitHandler = async (e) => {
         e.preventDefault()
 
-        axios.post("http://localhost:3500/theatreadmin/addshow", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/addshow", {
             location: location,
             movieName: mname,
             startTime: starttime,

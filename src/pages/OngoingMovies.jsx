@@ -16,7 +16,7 @@ const OngoingMovies = () => {
 
     const fetchData = async () => {
         setLoading(true)
-        axios.get("http://localhost:3500/ongoingshows")
+        axios.get("https://polaroid-backend.onrender.com/ongoingshows")
             .then(async (data) => {
                 console.log(data.data)
                 for (let i = 0; i < data.data.length; i++) {

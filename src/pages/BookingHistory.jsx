@@ -17,7 +17,7 @@ const BookingHistory = () => {
     const [bookingHistory, setBookingHistory] = useState([])
 
     const getBookingHistory = async () => {
-        axios.post(`http://localhost:3500/user/bookinghistory`, {
+        axios.post(`https://polaroid-backend.onrender.com/user/bookinghistory`, {
             email: user?.data?.email
         })
         .then(async (data) => {
@@ -84,7 +84,7 @@ const BookingHistory = () => {
     }
 
     const cancelTicket = async (item) => {
-        axios.post("http://localhost:3500/cancelticket", {
+        axios.post("https://polaroid-backend.onrender.com/cancelticket", {
             email: user.data.email,
             movieName: item.movieName,
             runDate: item.runDate,

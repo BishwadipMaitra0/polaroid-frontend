@@ -46,7 +46,7 @@ const TheaterAdminLogin = (props) => {
 
     const submitHandler = async (e) => {
         e.preventDefault()
-        axios.post("http://localhost:3500/theatreadmin/login", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/login", {
             username: username,
             password: password
         })

@@ -41,7 +41,7 @@ const TheatreRevenue = (props) => {
 
     const getInfo = async () => {
         setLoading(true)
-        axios.post(`http://localhost:3500/theatreadmin/locationstats/${filter}`, {
+        axios.post(`https://polaroid-backend.onrender.com/theatreadmin/locationstats/${filter}`, {
             theatreAdminUsername: theatreAdminName
         })
             .then((data) => {

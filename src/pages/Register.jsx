@@ -240,7 +240,7 @@ const Register = () => {
     const submitHandler = async (e) => {
         console.log("hi")
         e.preventDefault()
-        const res = await axios.post("http://localhost:3500/user/register", {
+        const res = await axios.post("https://polaroid-backend.onrender.com/user/register", {
             email: email,
             username: username,
             password: password

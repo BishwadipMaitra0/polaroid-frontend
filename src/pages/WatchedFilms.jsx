@@ -16,7 +16,7 @@ const WatchedFilms = ({ editable }) => {
     const removedFromWatched = async (e, id) => {
         e.preventDefault()
         try {
-            const res = await axios.post(`http://localhost:3500/user/watcheddelete/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/user/watcheddelete/${id}`, {
                 email: user.data.email
             })
             const resData = await res.data

@@ -169,7 +169,7 @@ const AdminRegister = (props) => {
     const submitHandler = async (e) => {
         console.log("hi")
         e.preventDefault()
-        const res = await axios.post("http://localhost:3500/admin/createtheatreadmin", {
+        const res = await axios.post("https://polaroid-backend.onrender.com/admin/createtheatreadmin", {
             username: username,
             password: password
         })

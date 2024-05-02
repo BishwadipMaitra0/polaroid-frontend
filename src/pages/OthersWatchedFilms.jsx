@@ -17,7 +17,7 @@ const OthersWatchedFilms = () => {
 
     const getUserData = async () => {
         setLoading(true)
-        const res = await axios.post("http://localhost:3500/user/getuser", {
+        const res = await axios.post("https://polaroid-backend.onrender.com/user/getuser", {
             username: username
         })
             .then((data) => {

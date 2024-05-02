@@ -16,7 +16,7 @@ const TheaterAdminDashboard = (props) => {
 
     const getInfo = async () => {
         setLoading(true)
-        axios.post("http://localhost:3500/theatreadmin/info", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/info", {
             username: theatreAdminName
         })
             .then((data) => {
@@ -31,7 +31,7 @@ const TheaterAdminDashboard = (props) => {
     }
 
     const deleteTiming = async (location, movieName, startTiming, endTiming, runDate) => {
-        axios.post("http://localhost:3500/theatreadmin/show", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/show", {
             location: location,
             movieName: movieName,
             startTiming: startTiming,
@@ -64,7 +64,7 @@ const TheaterAdminDashboard = (props) => {
     }
 
     const deleteMovie = async (location, movieName) => {
-        axios.post("http://localhost:3500/theatreadmin/movie", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/movie", {
             location: location,
             movieName: movieName
         })
@@ -77,7 +77,7 @@ const TheaterAdminDashboard = (props) => {
     }
 
     const deleteLocation = async (location) => {
-        axios.post("http://localhost:3500/theatreadmin/location", {
+        axios.post("https://polaroid-backend.onrender.com/theatreadmin/location", {
             location: location,
             adminName: theatreAdminName
         })

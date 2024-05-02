@@ -19,7 +19,7 @@ const MyListPage = ({ isTrending }) => {
 
     const getListData = async () => {
         setLoading(true)
-        const res = await axios.get(`http://localhost:3500/list/${user?.data?.username}/${listName}`)
+        const res = await axios.get(`https://polaroid-backend.onrender.com/list/${user?.data?.username}/${listName}`)
             .then((data) => {
                 console.log(data.data)
                 setData(data.data)
@@ -33,7 +33,7 @@ const MyListPage = ({ isTrending }) => {
 
     const deleteItemHandler = async (e, item) => {
         e.preventDefault()
-        axios.post('http://localhost:3500/user/delete/list', {
+        axios.post('https://polaroid-backend.onrender.com/user/delete/list', {
             username: user.data.username,
             listName: listData.listName,
             listItem: item.id

@@ -53,14 +53,14 @@ const Film = () => {
         const similar = await getSimilarMovies(id)
         setSimilar(similar)
 
-        const reviews = await axios.get(`http://localhost:3500/filmreviews/${id}`)
+        const reviews = await axios.get(`https://polaroid-backend.onrender.com/filmreviews/${id}`)
         console.log(reviews)
         setReviews(reviews.data)
 
         console.log(user.data.isLoggedIn)
 
         if (user.data.isLoggedIn) {
-            const listsData = await axios.post(`http://localhost:3500/getmylists`, {
+            const listsData = await axios.post(`https://polaroid-backend.onrender.com/getmylists`, {
                 username: user.data.username
             })
             await listsData.data
@@ -93,7 +93,7 @@ const Film = () => {
 
     const addToFavs = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/addtofavs/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/addtofavs/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -109,7 +109,7 @@ const Film = () => {
 
     const removeFromFavs = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/removefromfavs/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/removefromfavs/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -125,7 +125,7 @@ const Film = () => {
 
     const addToWatchlist = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/addtowatchlist/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/addtowatchlist/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -141,7 +141,7 @@ const Film = () => {
 
     const removeFromWatchlist = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/removefromwatchlist/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/removefromwatchlist/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -157,7 +157,7 @@ const Film = () => {
 
     const addToWatched = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/addtowatched/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/addtowatched/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -173,7 +173,7 @@ const Film = () => {
 
     const removeFromWatched = async () => {
         try {
-            const res = await axios.post(`http://localhost:3500/removefromwatched/${id}`, {
+            const res = await axios.post(`https://polaroid-backend.onrender.com/removefromwatched/${id}`, {
                 email: user.data.email
             })
             await res.data
@@ -191,7 +191,7 @@ const Film = () => {
         console.log(listName)
 
         try {
-            const res = await axios.post("http://localhost:3500/user/addtolist", {
+            const res = await axios.post("https://polaroid-backend.onrender.com/user/addtolist", {
                 listItem: id,
                 listName: listName
             })
@@ -214,7 +214,7 @@ const Film = () => {
 
     const submitReview = async (e) => {
         e.preventDefault()
-        const res = await axios.post(`http://localhost:3500/film/${id}`, {
+        const res = await axios.post(`https://polaroid-backend.onrender.com/film/${id}`, {
             rating: stars,
             body: review
         })
